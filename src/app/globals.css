@@ -1,0 +1,462 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  TASARIM TOKEN'LARI  ·  DESIGN TOKENS   —   "Aurora" paleti
+ *  Renkleri değiştirmek istersen sadece burayı düzenle; tüm site uyar.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@theme {
+  /* Zemin katmanları — nötr, hafif sıcak karbon tonları */
+  --color-ink-950: #08090c;
+  --color-ink-900: #0b0d12;
+  --color-ink-850: #101318;
+  --color-ink-800: #161a21;
+  --color-ink-700: #212630;
+  --color-ink-600: #2e3541;
+
+  /* Metin */
+  --color-fg: #edeff4;
+  --color-fg-muted: #9aa3b2;
+  --color-fg-subtle: #6b7482;
+
+  /* Aksanlar — nane yeşili + periwinkle mavi + yumuşak pembe */
+  --color-accent: #00e19a;
+  --color-accent-bright: #5cffc9;
+  --color-accent-2: #6f9bff;
+  --color-accent-3: #ff7ab8;
+
+  /* Tipografi */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Yumuşama eğrileri */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  TEMEL KATMAN
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  * {
+    border-color: var(--color-ink-700);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* sabit header başlıkları örtmesin */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink-950);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+    color: #04120c;
+  }
+
+  /* Klavye ile gezinenler için net odak halkası */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-bright);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink-950);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-700);
+    border-radius: 99px;
+    border: 2px solid var(--color-ink-950);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-600);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  YARDIMCI SINIFLAR
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@layer utilities {
+  /* Sabit degrade metin */
+  .text-gradient {
+    background-image: linear-gradient(
+      110deg,
+      var(--color-fg) 0%,
+      var(--color-accent-bright) 45%,
+      var(--color-accent-2) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Sürekli akan degrade metin — hero başlığı için */
+  .text-gradient-anim {
+    background-image: linear-gradient(
+      110deg,
+      var(--color-fg) 0%,
+      var(--color-accent-bright) 25%,
+      var(--color-accent-2) 50%,
+      var(--color-accent-3) 70%,
+      var(--color-fg) 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 9s ease-in-out infinite;
+  }
+
+  /* Cam yüzey */
+  .glass {
+    background-color: color-mix(in oklab, var(--color-ink-850) 70%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  /* Kartın üst kenarındaki ince ışık çizgisi */
+  .edge-light {
+    position: relative;
+  }
+  .edge-light::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-accent) 70%, transparent),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out-soft);
+  }
+  .edge-light:hover::before {
+    opacity: 1;
+  }
+
+  /* ── İmleci takip eden ışık (kartlar) ────────────────────────────────────
+   * --mx / --my değerlerini JS (Spotlight bileşeni) yazar.             */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  /* Yüzeydeki yumuşak parıltı */
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      380px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--color-accent) 14%, transparent),
+      transparent 62%
+    );
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-out-soft);
+  }
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+  /* Kenarlıktaki parlayan iz */
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: radial-gradient(
+      280px circle at var(--mx, 50%) var(--my, 50%),
+      var(--color-accent),
+      transparent 70%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-out-soft);
+  }
+  .spotlight:hover::before {
+    opacity: 0.7;
+  }
+
+  /* 3B eğilme — Tilt bileşeni --rx / --ry yazar */
+  .tilt {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 0.35s var(--ease-out-soft);
+  }
+
+  /* Arka plandaki ızgara dokusu */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-ink-700) 55%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-ink-700) 55%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+  /* Fare şeridin üzerindeyken yavaşla */
+  .marquee-mask:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  KAYDIRMAYLA BELİREN İÇERİK  (IntersectionObserver tetikler)
+ * ═══════════════════════════════════════════════════════════════════════════ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.75s var(--ease-out-soft),
+    transform 0.75s var(--ease-out-soft),
+    filter 0.75s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Harf harf beliren başlık */
+[data-char] {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.45em) rotateX(-55deg) scale(0.94);
+  filter: blur(8px);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 0.8s var(--ease-out-soft),
+    transform 0.8s var(--ease-spring),
+    filter 0.8s var(--ease-out-soft);
+  transition-delay: var(--char-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+[data-char="shown"] {
+  opacity: 1;
+  transform: none;
+  /* blur(0) değil `none`: sıfır olmayan bir filter kalıcı stacking context
+     yaratır ve harflerin degradesini bozar. `none` da yumuşak geçer —
+     filter interpolasyonunda kimlik değeri olarak ele alınır. */
+  filter: none;
+}
+
+/* Harflerin her biri kendi degradesini taşır.
+   Degradeyi üst başlığa verip harfleri dönüştürmek, filter/transform'un
+   yarattığı stacking context yüzünden background-clip:text'i bozardı;
+   bu yüzden clip her harfin kendi üzerinde. Hepsi aynı anda animasyonlandığı
+   için başlık tek parça hâlinde renk değiştirir. */
+.char-gradient [data-char] {
+  background-image: linear-gradient(
+    110deg,
+    var(--color-fg) 0%,
+    var(--color-accent-bright) 25%,
+    var(--color-accent-2) 50%,
+    var(--color-accent-3) 72%,
+    var(--color-fg) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 9s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  KEYFRAME'LER
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+/* Arka plan lekelerinin yavaş sürüklenmesi */
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6vw, -4vh, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-3vw, 5vh, 0) scale(0.95);
+  }
+}
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-7vw, 6vh, 0) scale(0.9);
+  }
+}
+.animate-aurora-a {
+  animation: aurora-a 26s ease-in-out infinite;
+}
+.animate-aurora-b {
+  animation: aurora-b 32s ease-in-out infinite;
+}
+
+/* Yazı imleci */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret-blink 1.05s step-end infinite;
+}
+
+/* Aşağı kaydır oku */
+@keyframes nudge-down {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+.animate-nudge {
+  animation: nudge-down 2s ease-in-out infinite;
+}
+
+/* Kartların üzerinden geçen parlama */
+@keyframes sheen {
+  from {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+/* Düz sınıf yerine @utility: Tailwind'in varyant üretebilmesi için gerekli
+   (ör. `group-hover:animate-sheen`). */
+@utility animate-sheen {
+  animation: sheen 1.1s var(--ease-out-soft);
+}
+
+/* Zaman çizelgesi noktasının nefes alması */
+@keyframes dot-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 22%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in oklab, var(--color-accent) 8%, transparent);
+  }
+}
+.animate-dot-glow {
+  animation: dot-glow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  HAREKET AZALTMA TERCİHİ  —  erişilebilirlik gereği
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal],
+  [data-char] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .tilt {
+    transform: none;
+  }
+}
+
+/* Yazdırma — CV olarak çıktı alınabilsin */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+}

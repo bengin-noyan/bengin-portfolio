@@ -1,0 +1,17 @@
+# Depoda satır sonlarını LF olarak normalize et; checkout'ta platforma bırak.
+# Windows/macOS/Linux arasında gereksiz diff gürültüsünü önler.
+* text=auto eol=lf
+
+# İkili dosyalar — dönüştürme ve diff uygulanmasın.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.pdf  binary
+*.woff  binary
+*.woff2 binary
+
+# Kilit dosyası diff'lerde gereksiz yer kaplamasın.
+package-lock.json -diff linguist-generated
