@@ -17,20 +17,24 @@ npm run build     # üretim derlemesi   → /out klasörü
 
 ---
 
-## ⚠ Yayına almadan önce değiştir
+## İçerik durumu
 
-`src/content/site.ts` içinde şu yer tutucular duruyor:
+`src/content/site.ts` içindeki tüm metinler **BENGİN-NOYAN-CV-guncel.pdf**'ten alındı
+(2026). Yer tutucu kalmadı. CV'nin kendisi `public/cv.pdf` olarak duruyor ve
+header ile hero'daki **CV'yi indir** düğmeleri `Bengin-Noyan-CV.pdf` adıyla indiriyor.
+
+Geriye kalan birkaç açık nokta:
 
 | Alan | Şu an | Ne yapmalı |
 |------|-------|------------|
-| `socials` | `kullaniciadin` | GitHub ve LinkedIn kullanıcı adını yaz |
-| `projects` | 4 örnek proje | Kendi projelerinle değiştir, açıklamalara somut sonuç ekle |
-| `experience` | `Şirket Adı` | Gerçek staj/işlerini yaz — yoksa `[]` yapıp bölümü gizle |
-| `education[].period` | `2021 — 2026` | Başlangıç yılını düzelt |
-| `profile.location` | `Denizli` | Kendi şehrini yaz |
-| `about.stats` | `10+` proje | Gerçek sayıyla değiştir |
 | `seo.siteUrl` | Vercel örneği | Deploy sonrası gerçek adresi yaz |
-| `public/cv.pdf` | yok | CV'ni ekle (yoksa `profile.resumeUrl = ""`) |
+| `projects[].links` | boş | Repo herkese açıksa GitHub adresini ekle |
+| `projects[].year` | 2025 / 2026 | CV'de yıl yok, çıkarım yapıldı — teyit et |
+| `projects[].image` | boş | `public/projects/` içine ekran görüntüsü koy |
+| `references` | boş | Referansın iletişim bilgisi bilinçli olarak yayınlanmadı |
+
+> **CV'yi güncellediğinde:** yeni PDF'i `public/cv.pdf` üzerine kopyala ve
+> `src/content/site.ts` içindeki ilgili metinleri elden geçir.
 
 ---
 
@@ -52,10 +56,12 @@ Dosya numaralandırılmış bölümlere ayrılmıştır:
 | 4 | `skillGroups` | Yetenek kategorileri ve etiketleri |
 | 5 | `projects` | Proje kartları |
 | 6 | `experience` | İş deneyimi zaman çizelgesi |
-| 7 | `education` | Eğitim ve sertifikalar |
-| 8 | `contact` | İletişim bölümü başlık ve metni |
-| 9 | `ui` | Menü ve buton yazıları |
-| 10 | `seo` | Site adresi, açıklama, anahtar kelimeler |
+| 7 | `education` | Eğitim |
+| 8 | `languages` · `certifications` | Diller ve sertifikalar |
+| 9 | `references` | Referanslar (varsayılan olarak boş) |
+| 10 | `contact` | İletişim bölümü başlık ve metni |
+| 11 | `ui` | Menü ve buton yazıları |
+| 12 | `seo` | Site adresi, açıklama, anahtar kelimeler |
 
 ### İki dillilik
 

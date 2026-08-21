@@ -139,9 +139,11 @@ export function Projects() {
 
               <div className="flex flex-col justify-center p-7 sm:p-10">
                 <div className="flex items-center gap-3">
-                  <span className="rounded-full border border-accent-2/30 bg-accent-2/10 px-2.5 py-1 font-mono text-[11px] text-accent-2">
-                    {project.year}
-                  </span>
+                  {project.year ? (
+                    <span className="rounded-full border border-accent-2/30 bg-accent-2/10 px-2.5 py-1 font-mono text-[11px] text-accent-2">
+                      {project.year}
+                    </span>
+                  ) : null}
                   <span className="font-mono text-[11px] tracking-widest text-fg-subtle uppercase">
                     Featured
                   </span>
@@ -185,9 +187,11 @@ export function Projects() {
                     <h3 className="text-lg font-semibold tracking-tight text-fg transition-colors duration-300 group-hover:text-accent-bright">
                       {project.title}
                     </h3>
-                    <span className="font-mono text-xs text-fg-subtle">
-                      {project.year}
-                    </span>
+                    {project.year ? (
+                      <span className="font-mono text-xs text-fg-subtle">
+                        {project.year}
+                      </span>
+                    ) : null}
                   </div>
 
                   <p className="mt-2.5 text-sm leading-relaxed text-fg-muted">

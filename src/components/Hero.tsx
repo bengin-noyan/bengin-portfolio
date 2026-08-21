@@ -96,7 +96,7 @@ export function Hero() {
               <Magnetic strength={0.18}>
                 <a
                   href={profile.resumeUrl}
-                  download
+                  download={profile.resumeFileName}
                   className="inline-flex items-center gap-2 rounded-xl border border-ink-700 bg-ink-850/60 px-6 py-3.5 text-sm font-semibold text-fg backdrop-blur transition-colors duration-300 hover:border-accent/50 hover:bg-ink-800"
                 >
                   <Icon name="download" className="size-4" />

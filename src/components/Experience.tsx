@@ -1,6 +1,6 @@
 "use client";
 
-import { education, experience, ui } from "@/content/site";
+import { certifications, education, experience, languages, ui } from "@/content/site";
 import { useLang } from "@/lib/i18n";
 import { Icon } from "./ui/Icon";
 import { Reveal } from "./ui/Reveal";
@@ -53,8 +53,13 @@ export function Experience() {
                     )}
                   </h3>
 
-                  <span className="font-mono text-xs whitespace-nowrap text-fg-subtle">
+                  <span className="text-right font-mono text-xs whitespace-nowrap text-fg-subtle">
                     {t(job.period)}
+                    {job.location ? (
+                      <span className="block text-[11px] text-fg-subtle/70">
+                        {t(job.location)}
+                      </span>
+                    ) : null}
                   </span>
                 </div>
 
@@ -112,10 +117,72 @@ export function Experience() {
                   <div className="mt-2 font-mono text-xs text-accent-2">
                     {item.period}
                   </div>
+                  {item.note ? (
+                    <div className="mt-2 text-xs leading-relaxed text-fg-subtle">
+                      {t(item.note)}
+                    </div>
+                  ) : null}
                 </Spotlight>
               </Reveal>
             ))}
           </div>
+        </div>
+      ) : null}
+
+      {/* Diller & sertifikalar */}
+      {languages.length > 0 || certifications.length > 0 ? (
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {languages.length > 0 ? (
+            <Reveal>
+              <Spotlight
+                tilt
+                maxTilt={5}
+                className="h-full rounded-2xl border border-ink-800 bg-ink-900/40 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-ink-600"
+              >
+                <h3 className="text-sm font-semibold tracking-widest text-fg-subtle uppercase">
+                  {t(ui.sectionLanguages)}
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {languages.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-baseline justify-between gap-3 text-sm"
+                    >
+                      <span className="text-fg">{t(item.name)}</span>
+                      <span className="font-mono text-xs text-accent-2">
+                        {t(item.level)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Spotlight>
+            </Reveal>
+          ) : null}
+
+          {certifications.length > 0 ? (
+            <Reveal delay={110}>
+              <Spotlight
+                tilt
+                maxTilt={5}
+                className="h-full rounded-2xl border border-ink-800 bg-ink-900/40 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-ink-600"
+              >
+                <h3 className="text-sm font-semibold tracking-widest text-fg-subtle uppercase">
+                  {t(ui.sectionCertifications)}
+                </h3>
+                <ul className="mt-4 space-y-2.5">
+                  {certifications.map((item, i) => (
+                    <li key={i} className="flex gap-3 text-sm text-fg-muted">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 size-1 shrink-0 rounded-full bg-accent"
+                      />
+                      {t(item)}
+                    </li>
+                  ))}
+                </ul>
+              </Spotlight>
+            </Reveal>
+          ) : null}
         </div>
       ) : null}
     </Section>

@@ -9,8 +9,8 @@
  *
  *  İpucu: Bir bölümü tamamen gizlemek için dizisini boş bırak → []
  *
- *  ⚠ YER TUTUCULAR: "Şirket Adı", "kullaniciadin" ve projeler bölümündeki
- *    açıklamalar örnektir — yayına almadan önce kendi bilgilerinle değiştir.
+ *  İçerik kaynağı: BENGİN-NOYAN-CV-guncel.pdf (2026). Aşağıdaki metinler
+ *  bu CV'den alınmıştır; yer tutucu kalmadı.
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 export type Lang = "tr" | "en";
@@ -41,16 +41,16 @@ export const profile = {
   focus: {
     tr: [
       "ERP & süreç otomasyonu",
-      "C# · .NET · Go · Python",
-      "Makine Öğrenmesi entegrasyonu",
-      "Görüntü İşleme",
+      "Go · C# · .NET · Python",
+      "Native masaüstü (Wails3)",
+      "Görüntü İşleme & YOLOv8",
       "Veritabanı mimarisi",
     ],
     en: [
       "ERP & process automation",
-      "C# · .NET · Go · Python",
-      "Machine Learning integration",
-      "Computer Vision",
+      "Go · C# · .NET · Python",
+      "Native desktop (Wails3)",
+      "Computer Vision & YOLOv8",
       "Database architecture",
     ],
   } as L<string[]>,
@@ -67,7 +67,6 @@ export const profile = {
     en: "Graduating · Open to opportunities",
   } as L,
 
-  /** ⚠ Şehri kendi konumunla değiştir. */
   location: {
     tr: "Denizli, Türkiye · Uzaktan çalışmaya açık",
     en: "Denizli, Türkiye · Open to remote",
@@ -76,22 +75,29 @@ export const profile = {
   email: "benginnyn72@gmail.com",
 
   /** Boş bırakırsan telefon satırı hiç görünmez. */
-  phone: "",
+  phone: "+90 546 685 9909",
 
   /**
-   * CV dosyan. PDF'ini `public/` klasörüne koy ve adını buraya yaz.
-   * Örn: public/cv.pdf  →  "/cv.pdf"    ·    Butonu gizlemek için: ""
+   * CV dosyan: public/cv.pdf olarak duruyor.
+   * Butonu gizlemek istersen: ""
    */
   resumeUrl: "/cv.pdf",
+
+  /** İndirilirken dosyaya verilecek ad. */
+  resumeFileName: "Bengin-Noyan-CV.pdf",
 };
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 2 · SOSYAL BAĞLANTILAR   ⚠ "kullaniciadin" yerine kendi kullanıcı adını yaz
+ * 2 · SOSYAL BAĞLANTILAR
  *     icon seçenekleri: "github" | "linkedin" | "x" | "mail" | "dribbble" | "link"
  * ─────────────────────────────────────────────────────────────────────────── */
 export const socials = [
-  { label: "GitHub", href: "https://github.com/kullaniciadin", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/kullaniciadin", icon: "linkedin" },
+  { label: "GitHub", href: "https://github.com/bengin-noyan", icon: "github" },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/bengin-noyan-028b07312",
+    icon: "linkedin",
+  },
   { label: "E-posta", href: "mailto:" + profile.email, icon: "mail" },
 ];
 
@@ -116,165 +122,292 @@ export const about = {
   /** Hakkımda bölümünün yanındaki rakamlar. Gizlemek için: [] */
   stats: [
     { value: "2026", label: { tr: "Mezuniyet yılı", en: "Graduation year" } as L },
-    { value: "4", label: { tr: "Ana ekosistem", en: "Core ecosystems" } as L },
-    { value: "10+", label: { tr: "Geliştirilen proje", en: "Projects built" } as L },
+    { value: "4", label: { tr: "Kapsamlı proje", en: "In-depth projects" } as L },
+    { value: "5", label: { tr: "Ana ekosistem", en: "Core ecosystems" } as L },
     { value: "ERP", label: { tr: "Uzmanlık odağı", en: "Focus area" } as L },
   ],
 };
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 4 · YETENEKLER
+ * 4 · YETENEKLER   (CV · BECERİLER)
  * ─────────────────────────────────────────────────────────────────────────── */
 export const skillGroups = [
   {
-    title: { tr: "Diller & Çalışma Zamanı", en: "Languages & Runtimes" } as L,
-    items: ["C#", ".NET", "Go", "Python", "JavaScript", "SQL"],
+    title: {
+      tr: "Yazılım Geliştirme & Diller",
+      en: "Software Development & Languages",
+    } as L,
+    items: [
+      "Go (Golang)",
+      "C#",
+      ".NET",
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "C",
+      "HTML5",
+      "CSS3",
+      "Visual Basic (VBA)",
+    ],
   },
   {
-    title: { tr: "Web & Masaüstü", en: "Web & Desktop" } as L,
-    items: ["ASP.NET Core", "Entity Framework", "WPF", "WinForms", "REST API", "Blazor"],
+    title: { tr: "Web, Masaüstü & Mimariler", en: "Web, Desktop & Architecture" } as L,
+    items: [
+      "Wails3",
+      "Vue 3",
+      "React 18",
+      "Streamlit",
+      "RESTful API",
+      "Modüler Mimari",
+      "RBAC",
+      "Database Migrations",
+      "UBL-TR 1.2 (e-Fatura)",
+    ],
   },
   {
-    title: { tr: "Veri & Yapay Zekâ", en: "Data & AI" } as L,
-    items: ["MS SQL Server", "PostgreSQL", "pandas", "scikit-learn", "OpenCV", "NumPy"],
+    title: { tr: "Veritabanı & Veri Yönetimi", en: "Databases & Data Management" } as L,
+    items: [
+      "PostgreSQL",
+      "MS SQL Server",
+      "SQLite",
+      "Firebase",
+      "SQL",
+      "ER Diyagramları",
+      "3NF Normalizasyon",
+    ],
   },
   {
-    title: { tr: "Sistem & Araçlar", en: "Systems & Tooling" } as L,
-    items: ["Git", "Docker", "Linux", "Visual Studio", "Postman", "Sistem analizi"],
+    title: { tr: "Yapay Zekâ & Görüntü İşleme", en: "AI & Computer Vision" } as L,
+    items: [
+      "YOLOv8",
+      "Computer Vision",
+      "Deep Learning",
+      "OpenCV",
+      "Ultralytics",
+      "Google Gemini API",
+      "Scikit-learn",
+      "NumPy",
+      "Pandas",
+      "Plotly",
+    ],
+  },
+  {
+    title: { tr: "Araçlar & Metodolojiler", en: "Tooling & Methodologies" } as L,
+    items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+      "VS Code",
+      "Visual Studio",
+      "PyCharm",
+      "SDLC",
+      "UML Modelleme",
+      "DFD",
+      "Fizibilite (NPV/IRR)",
+    ],
   },
 ];
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 5 · PROJELER   ⚠ Aşağıdakiler alan örnekleridir — kendi projelerinle değiştir.
+ * 5 · PROJELER   (CV · PROJELER)
  *     featured: true  →  büyük kart olarak, listenin başında gösterilir.
  *     image: görselini public/projects/ içine at, yolunu buraya yaz.
  *            Boş bırakırsan başlıktan türetilen bir degrade kapak üretilir.
+ *     links: repo/demo bağlantıların herkese açıksa buraya yaz;
+ *            boş bırakılan bağlantının butonu hiç görünmez.
+ *     year:  boş bırakırsan yıl rozeti gösterilmez.
  * ─────────────────────────────────────────────────────────────────────────── */
 export const projects = [
   {
-    title: "ERP · Stok ve Sipariş Modülü",
-    year: "2025",
+    title: "Bitki Hastalığı Teşhisi ve Tarımsal Verimlilik Analizi",
+    year: "2026",
     featured: true,
     blurb: {
-      tr: "C# ve .NET ile geliştirilen, stok hareketlerini ve sipariş süreçlerini uçtan uca yöneten kurumsal modül.",
-      en: "An enterprise module built with C# and .NET that manages stock movements and order processes end to end.",
+      tr: "Bitirme tezi: YOLOv8 tabanlı bilgisayarlı görü ile bitki hastalıklarını teşhis eden ve sonuçları reaktif bir karar destek paneline taşıyan uçtan uca otonom sistem.",
+      en: "Graduation thesis: an end-to-end autonomous system that diagnoses plant diseases with YOLOv8-based computer vision and surfaces the results in a reactive decision-support dashboard.",
     } as L,
     description: {
-      tr: "Süreç analizinden veritabanı tasarımına, arayüzden raporlamaya kadar tüm katmanları kendim kurguladım. Katmanlı mimari, Entity Framework ile veri erişimi ve rol bazlı yetkilendirme üzerine oturuyor. Buraya projenin çözdüğü somut problemi ve ölçülebilir sonucunu yaz.",
-      en: "I designed every layer myself, from process analysis and database design through to the UI and reporting. Built on a layered architecture with Entity Framework data access and role-based authorisation. Describe the concrete problem it solved and the measurable outcome here.",
+      tr: "Derin öğrenme tabanlı bilgisayarlı görü ve bulut mimarilerini entegre eden uçtan uca bir otonom teşhis sistemi tasarladım. Roboflow ve Kaggle veri kümeleri üzerinde transfer learning ve hiper-parametre optimizasyonu ile eğitilen Ultralytics YOLOv8 Medium modeli %94.1 mAP50 doğruluk başarımı ve 2 saniyenin altında çıkarım latansı elde etti. Model çıktıları SQLite ve Firebase mimarileriyle senkronize edilerek, Streamlit tabanlı reaktif arayüzde Pandas ve Plotly ile zirai eylem planlarına dönüştürülüyor.",
+      en: "I designed an end-to-end autonomous diagnosis system integrating deep-learning computer vision with cloud architecture. An Ultralytics YOLOv8 Medium model, trained on Roboflow and Kaggle datasets with transfer learning and hyper-parameter optimisation, reached 94.1% mAP50 accuracy at sub-two-second inference latency. Model output is synchronised through SQLite and Firebase and turned into agricultural action plans on a reactive Streamlit interface using Pandas and Plotly.",
     } as L,
-    tags: ["C#", ".NET", "Entity Framework", "MS SQL Server", "WPF"],
+    tags: [
+      "Python",
+      "YOLOv8",
+      "Ultralytics",
+      "Computer Vision",
+      "Streamlit",
+      "SQLite",
+      "Firebase",
+      "Pandas",
+      "Plotly",
+    ],
     image: "",
-    links: { demo: "", repo: "https://github.com/kullaniciadin/erp-modul" },
+    links: { demo: "", repo: "" },
   },
   {
-    title: "Görüntü İşleme ile Kalite Kontrol",
-    year: "2025",
+    title: "BraDent — Diş Kliniği Yönetim Otomasyonu",
+    year: "2026",
     featured: true,
     blurb: {
-      tr: "Üretim hattı görüntülerinden hatalı ürünleri ayıran, Python ve OpenCV tabanlı görüntü işleme sistemi.",
-      en: "A Python and OpenCV computer vision system that separates defective products from production line imagery.",
+      tr: "Diş klinikleri için yerel ağ topolojisinde, istemci-sunucu modelinde eşzamanlı çalışan masaüstü klinik otomasyon sistemi.",
+      en: "A desktop clinic automation system for dental practices, running concurrently on a client-server model over a local network.",
     } as L,
     description: {
-      tr: "Görüntü ön işleme, öznitelik çıkarımı ve sınıflandırma adımlarını içeren bir işlem hattı kurdum. Model çıktıları bir masaüstü arayüzü üzerinden operatöre anlık olarak sunuluyor. Buraya kullandığın veri kümesini, model başarımını ve gerçek kullanım senaryosunu yaz.",
-      en: "I built a pipeline covering image preprocessing, feature extraction and classification. Model output is surfaced to the operator in real time through a desktop interface. Describe your dataset, model performance and the real-world scenario here.",
+      tr: "FDI (ISO 3950) uluslararası dental standardına uygun dinamik diş topolojisi, hekim takvimli asenkron randevu yönetimi, seans tabanlı tedavi planlaması ve taksitli finansal süreç takip modülleri geliştirdim. PostgreSQL 17 üzerinde 23 tablolu normalize şema ve version-controlled sıralı SQL migration yönetimi sağladım; NetGSM entegrasyonlu asenkron arka plan SMS bildirim kuyruğu servisi yapılandırdım.",
+      en: "I built a dynamic tooth topology compliant with the FDI (ISO 3950) international dental standard, asynchronous appointment management on practitioner calendars, session-based treatment planning and instalment-based financial tracking modules. On PostgreSQL 17 I delivered a normalised 23-table schema with version-controlled sequential SQL migrations, plus an asynchronous background SMS notification queue service integrated with NetGSM.",
     } as L,
-    tags: ["Python", "OpenCV", "scikit-learn", "NumPy"],
+    tags: ["Go", "Wails3", "Vue 3", "TypeScript", "PostgreSQL 17", "NetGSM API", "Vite"],
     image: "",
-    links: { demo: "", repo: "https://github.com/kullaniciadin/kalite-kontrol" },
+    links: { demo: "", repo: "" },
   },
   {
-    title: "Go ile Süreç Otomasyon Servisi",
-    year: "2024",
+    title: "MLS KİMYA — Muhasebe & İş Takip Otomasyonu",
+    year: "2026",
     featured: false,
     blurb: {
-      tr: "Tekrarlayan iş adımlarını zamanlanmış görevlerle yürüten, Go ile yazılmış hafif servis.",
-      en: "A lightweight Go service that runs repetitive business steps as scheduled jobs.",
+      tr: "CGO-free saf Go ve Wails3 mimarisinde geliştirilmiş, sıfır bağımlılıklı tek dosyalı (.exe) native masaüstü muhasebe otomasyonu.",
+      en: "A zero-dependency, single-file (.exe) native desktop accounting automation built on a CGO-free pure Go and Wails3 architecture.",
     } as L,
     description: {
-      tr: "Eşzamanlılık için goroutine tabanlı bir işçi havuzu, dış sistemlerle iletişim için REST arayüzü ve yapılandırılabilir görev tanımları içeriyor.",
-      en: "Includes a goroutine-based worker pool for concurrency, a REST interface for talking to external systems, and configurable job definitions.",
+      tr: "Kayan nokta hassasiyet kayıplarını ve yuvarlama sapmalarını engellemek için deterministik tamsayı aritmetiği (int64 fixed-point) üzerine kurgulanmış, TCMB XML entegrasyonlu ve izole birim testli bir kur farkı hesap motoru yazdım. Gömülü SQL migration altyapısı, otomatik yedekleme/recovery mekanizmaları, Excelize ile veri dışa aktarımı ve senkronize cari ekstre raporlama altyapısı kurguladım.",
+      en: "I wrote an exchange-rate calculation engine built on deterministic integer arithmetic (int64 fixed-point) to eliminate floating-point precision loss and rounding drift, integrated with TCMB XML and covered by isolated unit tests. I also built embedded SQL migration infrastructure, automatic backup/recovery mechanisms, Excelize-based data export and synchronised account-statement reporting.",
     } as L,
-    tags: ["Go", "REST API", "PostgreSQL", "Docker"],
+    tags: ["Go", "Wails3", "Vue 3", "TypeScript", "SQLite (modernc)", "Vite", "Excelize"],
     image: "",
-    links: { demo: "", repo: "https://github.com/kullaniciadin/otomasyon-servisi" },
+    links: { demo: "", repo: "" },
   },
   {
-    title: "Talep Tahmin Modeli",
-    year: "2024",
+    title: "PauGo — Kampüs İçi Akıllı E-Scooter Paylaşım Sistemi",
+    year: "2025",
     featured: false,
     blurb: {
-      tr: "Geçmiş satış verisinden gelecek dönem talebini öngören makine öğrenmesi modeli.",
-      en: "A machine learning model that forecasts upcoming demand from historical sales data.",
+      tr: "Akıllı mikro-mobilite ekosisteminin SDLC ve nesne yönelimli analiz/tasarım metodolojileriyle kurgulanan uçtan uca sistem tasarımı ve fizibilitesi.",
+      en: "End-to-end system design and feasibility study for a smart micro-mobility ecosystem, built with SDLC and object-oriented analysis/design methodologies.",
     } as L,
     description: {
-      tr: "Veri temizleme, öznitelik mühendisliği ve model karşılaştırma adımlarını içeren bir çalışma. Sonuçlar stok planlama sürecine girdi olacak biçimde raporlanıyor.",
-      en: "Covers data cleaning, feature engineering and model comparison. Results are reported so they can feed directly into stock planning.",
+      tr: "C# ile masaüstü istemci arayüzü, Microsoft SQL Server üzerinde 3NF seviyesinde normalize edilmiş ilişkisel veritabanı şeması ve anlık GPS/IoT telemetri veri akış modelleri yapılandırdım. Sistem gereksinimlerini UML Use Case, DFD (Level 0/1), karar ağaçları ve detaylı HIPO modelleriyle formal olarak dokümante ettim; 3D Secure ödeme geçidi entegrasyon protokollerini planladım. 4.65M TL sermayeli finansal simülasyonlarda %60.07 İç Karlılık Oranı (IRR), 7.22M TL Net Bugünkü Değer (NPV) ve 1.56 yıl indirgenmiş geri ödeme süresiyle projenin finansal fizibilitesini doğruladım.",
+      en: "I built a C# desktop client interface, a relational schema normalised to 3NF on Microsoft SQL Server, and real-time GPS/IoT telemetry data-flow models. System requirements were formally documented with UML use cases, DFDs (level 0/1), decision trees and detailed HIPO models, and 3D Secure payment gateway integration protocols were planned. Financial simulations on 4.65M TRY of capital confirmed feasibility with a 60.07% IRR, 7.22M TRY NPV and a 1.56-year discounted payback period.",
     } as L,
-    tags: ["Python", "pandas", "scikit-learn", "SQL"],
+    tags: ["C#", "MS SQL Server", "3NF", "UML", "DFD", "IoT / GPS", "SDLC", "NPV / IRR"],
     image: "",
-    links: { demo: "", repo: "https://github.com/kullaniciadin/talep-tahmin" },
+    links: { demo: "", repo: "" },
   },
 ];
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 6 · DENEYİM   ⚠ "Şirket Adı" yer tutucudur — gerçek staj/işlerinle değiştir.
- *     Henüz deneyimin yoksa diziyi boşalt: export const experience = [];
+ * 6 · DENEYİM   (CV · DENEYİM)
  * ─────────────────────────────────────────────────────────────────────────── */
 export const experience = [
   {
-    company: "Şirket Adı",
+    company: "NowlSoft",
     url: "",
+    location: { tr: "Batman, Türkiye", en: "Batman, Türkiye" } as L,
     role: { tr: "Yazılım Geliştirme Stajyeri", en: "Software Development Intern" } as L,
-    period: { tr: "2025 · Yaz dönemi", en: "2025 · Summer" } as L,
+    period: { tr: "07/2026 – 08/2026", en: "07/2026 – 08/2026" } as L,
     highlights: {
       tr: [
-        "Hangi projede çalıştığını ve hangi teknolojileri kullandığını yaz.",
-        "Somut olarak neyi geliştirdiğini ve ne sonuç doğurduğunu ekle.",
+        "Kamu & İşletme Çözümleri: Yerel yönetimler, kamu kurumları ve özel sektör işletmeleri için iş süreçlerini dijitalleştiren web ve masaüstü tabanlı kurumsal yazılım çözümlerinin (ERP, süreç otomasyonları, veri yönetimi) geliştirilmesinde aktif rol aldım.",
+        "Backend & Masaüstü Mimarisi: Go (Wails3), C# (.NET), Vue 3 ve React ile yerel ağ (LAN) topolojisinde çalışan dağıtık sistemler, CGO-free mimaride tek dosyalı native masaüstü otomasyonları ve mikro-servis uyumlu backend yapıları kurguladım.",
+        "Finansal & Süreç Yönetim Modülleri: Kur farkı korumalı deterministik finansal hesap motorları, UBL-TR 1.2 standartlarında e-Fatura entegrasyon çekirdeği, dinamik SQL migration sistemleri ve rol tabanlı yetkilendirme (RBAC) katmanları geliştirdim.",
+        "Yapay Zekâ & Saha Entegrasyonu: YOLOv8 bilgisayarlı görü modelleriyle elde edilen otonom teşhis ve analiz verilerini kurumsal ERP ve saha otomasyon sistemlerine bağlayan servis entegrasyonları gerçekleştirdim.",
       ],
       en: [
-        "Describe the project you worked on and the technologies you used.",
-        "Add what you concretely built and what outcome it produced.",
+        "Public sector & business solutions: I took an active role in building web and desktop enterprise software (ERP, process automation, data management) that digitalises workflows for municipalities, public institutions and private companies.",
+        "Backend & desktop architecture: Using Go (Wails3), C# (.NET), Vue 3 and React, I built distributed systems running over LAN topologies, single-file native desktop automations on a CGO-free architecture, and microservice-compatible backends.",
+        "Financial & process modules: I developed deterministic financial calculation engines with exchange-rate protection, a UBL-TR 1.2 compliant e-invoice integration core, dynamic SQL migration systems and role-based access control (RBAC) layers.",
+        "AI & field integration: I built service integrations connecting autonomous diagnosis and analysis data from YOLOv8 computer vision models into enterprise ERP and field automation systems.",
       ],
     } as L<string[]>,
-    tech: ["C#", ".NET", "MS SQL Server"],
+    tech: ["Go", "Wails3", "C#", ".NET", "Vue 3", "React", "UBL-TR 1.2", "RBAC"],
   },
   {
-    company: "Şirket Adı",
+    company: "Pamukkale Üniversitesi İİBF Bilgi İşlem Dairesi",
     url: "",
-    role: { tr: "Bilgi İşlem Stajyeri", en: "IT Intern" } as L,
-    period: { tr: "2024 · Yaz dönemi", en: "2024 · Summer" } as L,
+    location: { tr: "Denizli, Türkiye", en: "Denizli, Türkiye" } as L,
+    role: {
+      tr: "Bilgi Teknolojileri (IT) Destek Asistanı · İŞKUR Gençlik Programı",
+      en: "IT Support Assistant · İŞKUR Youth Programme",
+    } as L,
+    period: { tr: "01/2026 – 06/2026", en: "01/2026 – 06/2026" } as L,
     highlights: {
       tr: [
-        "Sistem analizi ve süreç iyileştirme tarafında üstlendiğin görevleri yaz.",
-        "Kurum içi kullanılan yazılımlara kattığın değeri ekle.",
+        "Fakülte bünyesindeki sunucu ve bilgisayarların işletim sistemi konfigürasyonlarını yönettim; akademik/idari personelin ihtiyaç duyduğu kurumsal yazılımların, veri tabanı istemcilerinin ve geliştirme araçlarının kurulum, lisanslama ve optimizasyon süreçlerini yürüttüm.",
+        "Kullanıcı hesap yönetimi, Active Directory / e-posta sunucusu erişim yetkilendirmeleri ve ağ güvenlik protokollerinin uygulanması süreçlerinde sistem yöneticisine destek verdim.",
+        "Yerel veri tabanı sistemlerinin günlük/haftalık veri yedekleme operasyonlarını takip ederek iş sürekliliği ve veri güvenliği standartlarının korunmasına katkı sağladım.",
+        "Gelen teknik destek ve arıza taleplerini bilet (ticket) sistemi mantığıyla analiz edip kategorize ettim; tekrarlayan kronik sorunları tespit ederek süreç iyileştirme önerileri raporladım.",
       ],
       en: [
-        "Describe your responsibilities in systems analysis and process improvement.",
-        "Add the value you brought to the software used inside the organisation.",
+        "I managed operating system configurations for the faculty's servers and workstations, and handled installation, licensing and optimisation of the enterprise software, database clients and development tools needed by academic and administrative staff.",
+        "I supported the system administrator on user account management, Active Directory / mail server access authorisation and the enforcement of network security protocols.",
+        "I tracked daily and weekly backup operations for local database systems, contributing to business continuity and data security standards.",
+        "I analysed and categorised incoming support and fault requests using ticket-system logic, identified recurring chronic issues and reported process improvement proposals.",
       ],
     } as L<string[]>,
-    tech: ["SQL", "Süreç analizi", "Raporlama"],
+    tech: [
+      "Active Directory",
+      "Windows Server",
+      "Veri yedekleme",
+      "Ağ güvenliği",
+      "Ticket yönetimi",
+    ],
   },
 ];
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 7 · EĞİTİM & SERTİFİKA   (gizlemek için: [])
+ * 7 · EĞİTİM   (gizlemek için: [])
  * ─────────────────────────────────────────────────────────────────────────── */
 export const education = [
   {
     school: { tr: "Pamukkale Üniversitesi", en: "Pamukkale University" } as L,
     degree: {
-      tr: "Yönetim Bilişim Sistemleri, Lisans",
-      en: "BSc Management Information Systems",
+      tr: "Yönetim Bilişim Sistemleri, Lisans (Mezuniyet Aşamasında)",
+      en: "BSc Management Information Systems (Graduand)",
     } as L,
-    /** ⚠ Başlangıç yılını kendi bilgine göre düzelt. */
-    period: "2021 — 2026",
+    period: "09/2022 — 06/2026",
+    note: {
+      tr: "Denizli, Türkiye · Tüm ders yükümlülükleri başarıyla tamamlandı.",
+      en: "Denizli, Türkiye · All coursework successfully completed.",
+    } as L,
   },
 ];
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 8 · İLETİŞİM BÖLÜMÜ
+ * 8 · DİLLER & SERTİFİKALAR   (gizlemek için: [])
+ * ─────────────────────────────────────────────────────────────────────────── */
+export const languages = [
+  {
+    name: { tr: "Türkçe", en: "Turkish" } as L,
+    level: { tr: "Ana dil", en: "Native" } as L,
+  },
+  {
+    name: { tr: "İngilizce", en: "English" } as L,
+    level: { tr: "Orta seviye (B1)", en: "Intermediate (B1)" } as L,
+  },
+  {
+    name: { tr: "Almanca", en: "German" } as L,
+    level: { tr: "Başlangıç (A1)", en: "Beginner (A1)" } as L,
+  },
+];
+
+export const certifications: L[] = [
+  { tr: "Uygulamalarla SQL Öğreniyorum", en: "Learning SQL Through Practice" },
+  { tr: "Versiyon Kontrolleri: Git ve GitHub", en: "Version Control: Git and GitHub" },
+  { tr: "Go ile Programlamaya Giriş", en: "Introduction to Programming with Go" },
+];
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * 9 · REFERANSLAR
+ *     CV'deki referans (Dr. Öğr. Üyesi Mehmet Ulaş KOYUNCUOĞLU) bilinçli olarak
+ *     siteye konmadı: üçüncü bir kişinin e-posta ve telefonunu herkese açık bir
+ *     sayfada yayınlamak onun rızasını gerektirir. Referansı CV üzerinden
+ *     paylaşmaya devam edebilirsin. Yine de sitede görünmesini istersen
+ *     aşağıdaki diziyi doldur — iletişim bilgisi olmadan önerilir.
+ * ─────────────────────────────────────────────────────────────────────────── */
+export const references: { name: string; title: L }[] = [];
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * 10 · İLETİŞİM BÖLÜMÜ
  * ─────────────────────────────────────────────────────────────────────────── */
 export const contact = {
   heading: { tr: "Birlikte çalışalım", en: "Let's work together" } as L,
@@ -285,7 +418,7 @@ export const contact = {
 };
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 9 · ARAYÜZ METİNLERİ  ·  UI STRINGS
+ * 11 · ARAYÜZ METİNLERİ  ·  UI STRINGS
  * ─────────────────────────────────────────────────────────────────────────── */
 export const ui = {
   navAbout: { tr: "Hakkımda", en: "About" } as L,
@@ -302,6 +435,8 @@ export const ui = {
   sectionWork: { tr: "Seçilmiş projeler", en: "Selected work" } as L,
   sectionExperience: { tr: "Deneyim", en: "Experience" } as L,
   sectionEducation: { tr: "Eğitim", en: "Education" } as L,
+  sectionLanguages: { tr: "Diller", en: "Languages" } as L,
+  sectionCertifications: { tr: "Sertifikalar", en: "Certifications" } as L,
   sectionContact: { tr: "İletişim", en: "Contact" } as L,
 
   workIntro: {
@@ -325,25 +460,31 @@ export const ui = {
 };
 
 /* ───────────────────────────────────────────────────────────────────────────
- * 10 · SEO
+ * 12 · SEO
  * ─────────────────────────────────────────────────────────────────────────── */
 export const seo = {
   /** ⚠ Siteyi yayına aldıktan sonra gerçek adresini buraya yaz. */
   siteUrl: "https://bengin-noyan.vercel.app",
   description: {
-    tr: "Software Developer. C#, .NET, Go ve Python ile ERP, süreç otomasyonu, makine öğrenmesi ve görüntü işleme çözümleri.",
-    en: "Software Developer. ERP, process automation, machine learning and computer vision solutions with C#, .NET, Go and Python.",
+    tr: "Software Developer. Go, C#, .NET ve Python ile ERP, süreç otomasyonu, native masaüstü uygulamaları ve YOLOv8 tabanlı görüntü işleme çözümleri.",
+    en: "Software Developer. ERP, process automation, native desktop applications and YOLOv8-based computer vision with Go, C#, .NET and Python.",
   } as L,
   keywords: [
     "Bengin Noyan",
     "software developer",
+    "Go",
+    "Golang",
+    "Wails3",
     "C#",
     ".NET",
-    "Go",
     "Python",
+    "Vue 3",
+    "PostgreSQL",
     "ERP",
-    "machine learning",
+    "YOLOv8",
     "computer vision",
+    "machine learning",
     "yönetim bilişim sistemleri",
+    "Pamukkale Üniversitesi",
   ],
 };

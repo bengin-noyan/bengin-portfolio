@@ -118,7 +118,7 @@ export function Header() {
           {profile.resumeUrl ? (
             <a
               href={profile.resumeUrl}
-              download
+              download={profile.resumeFileName}
               className="hidden items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3.5 py-2 text-xs font-medium text-accent-bright transition-all duration-200 hover:border-accent/70 hover:bg-accent/20 sm:flex"
             >
               <Icon name="download" className="size-4" strokeWidth={1.6} />
