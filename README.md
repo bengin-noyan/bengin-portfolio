@@ -1,2 +1,2 @@
 # bengin-portfolio
-Full-Stack ve Backend odaklı yazılım projelerimi sergilediğim kişisel portfolyo web sitem. 
+Modern teknolojilerle geliştirdiğim masaüstü, web ve AI destekli yazılım projelerimi barındıran kişisel portfolyo sitem.
