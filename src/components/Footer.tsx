@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-ink-800/70">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-fg-subtle sm:flex-row sm:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-base text-fg-subtle sm:flex-row sm:px-8">
         <p>
           © {year} {profile.name}
           <span aria-hidden="true" className="mx-2 text-ink-600">

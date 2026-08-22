@@ -4,25 +4,49 @@
  *  TASARIM TOKEN'LARI  ·  DESIGN TOKENS   —   "Aurora" paleti
  *  Renkleri değiştirmek istersen sadece burayı düzenle; tüm site uyar.
  * ═══════════════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  HAM PALET  —  temayı değiştiren tek yer
+ *
+ *  Neden iki katman? @theme'e doğrudan sabit renk yazılırsa Tailwind opaklık
+ *  varyantlarını (`bg-accent/16`) derlemede o sabite çevirip `var()` bağını
+ *  koparıyor; sonra değişkeni ezmek o yardımcıları etkilemiyordu.
+ *  Token'lar bu ham değişkenlere işaret edince bağ korunuyor.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --p-ink-950: #14171e;
+  --p-ink-900: #1a1e26;
+  --p-ink-850: #21262f;
+  --p-ink-800: #2a2f3a;
+  --p-ink-700: #38404e;
+  --p-ink-600: #4b5464;
+  --p-fg: #edeff4;
+  --p-fg-muted: #c5ccd8;
+  --p-fg-subtle: #939cab;
+  --p-accent: #00e19a;
+  --p-accent-bright: #5cffc9;
+  --p-accent-2: #6f9bff;
+  --p-accent-3: #ff7ab8;
+}
+
 @theme {
   /* Zemin katmanları — nötr, hafif sıcak karbon tonları */
-  --color-ink-950: #08090c;
-  --color-ink-900: #0b0d12;
-  --color-ink-850: #101318;
-  --color-ink-800: #161a21;
-  --color-ink-700: #212630;
-  --color-ink-600: #2e3541;
+  --color-ink-950: var(--p-ink-950);
+  --color-ink-900: var(--p-ink-900);
+  --color-ink-850: var(--p-ink-850);
+  --color-ink-800: var(--p-ink-800);
+  --color-ink-700: var(--p-ink-700);
+  --color-ink-600: var(--p-ink-600);
 
   /* Metin */
-  --color-fg: #edeff4;
-  --color-fg-muted: #9aa3b2;
-  --color-fg-subtle: #6b7482;
+  --color-fg: var(--p-fg);
+  --color-fg-muted: var(--p-fg-muted);
+  --color-fg-subtle: var(--p-fg-subtle);
 
   /* Aksanlar — nane yeşili + periwinkle mavi + yumuşak pembe */
-  --color-accent: #00e19a;
-  --color-accent-bright: #5cffc9;
-  --color-accent-2: #6f9bff;
-  --color-accent-3: #ff7ab8;
+  --color-accent: var(--p-accent);
+  --color-accent-bright: var(--p-accent-bright);
+  --color-accent-2: var(--p-accent-2);
+  --color-accent-3: var(--p-accent-3);
 
   /* Tipografi */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -31,6 +55,82 @@
   /* Yumuşama eğrileri */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  AÇIK TEMA  —  :root koyu, açık tema opt-in
+ *
+ *  Tailwind v4 @theme token'ları :root üzerinde `--color-*` olarak yayar ve
+ *  tüm utility'ler bunlara `var()` ile bakar; dolayısıyla değişkenleri bir
+ *  seçici altında ezmek tüm siteyi yeniden renklendirmeye yetiyor.
+ *
+ *  Aksanlar burada koyulaştırıldı: neon nane (#00e19a) beyaz üzerinde ~1.7:1
+ *  kontrast verir, yani okunmaz. Açık paletteki karşılıkları WCAG AA (4.5:1)
+ *  eşiğini geçecek şekilde seçildi.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  /*  Zemin katmanları — rol sırası koyu temayla aynı:
+   *  950 sayfa zemini · 900 kart · 850 yükseltilmiş yüzey · 800/700/600 kenarlık.
+   *
+   *  Sayfa zemini bilinçli olarak beyaz DEĞİL. Kartlar `bg-ink-900/40` gibi
+   *  yarı saydam yüzeyler; zemin de beyaz olsaydı kart ile arkası aynı renge
+   *  düşer ve kartların sınırı tamamen kaybolurdu.
+   */
+  --p-ink-950: #eef1f6;
+  --p-ink-900: #ffffff;
+  --p-ink-850: #f7f8fb;
+  --p-ink-800: #e2e6ee;
+  --p-ink-700: #ccd2de;
+  --p-ink-600: #a8b1c2;
+
+  /* Metin */
+  --p-fg: #14161c;
+  --p-fg-muted: #3d4657;
+  --p-fg-subtle: #5a6474;
+
+  /*  Aksanlar — aynı renk ailesi, açık zeminde okunacak koyulukta.
+   *  Neon nane (#00e19a) beyaz üzerinde ~1.7:1 verir, yani okunmaz.
+   *  Buradaki değerler iki testi birden geçiyor: beyaz üzerinde metin olarak
+   *  (≥4.5:1) ve dolgu rengi olup üstünde açık metin taşırken (≥4.5:1).
+   */
+  --p-accent: #00694a;
+  --p-accent-bright: #00543b;
+  --p-accent-2: #3354c9;
+  --p-accent-3: #b82a6f;
+}
+
+/* Seçim vurgusu her iki temada da okunur kalsın */
+:root[data-theme="light"] ::selection {
+  color: #ffffff;
+}
+
+/*  Dekoratif aurora lekeleri: koyu zeminde "ışık" gibi okunuyorlar, beyaz
+ *  zeminde ise leke gibi duruyorlardı. Açık temada yalnızca hafif bir renk
+ *  tonu bırakacak kadar kısıldı. */
+:root[data-theme="light"] .aurora-layer {
+  opacity: 0.22;
+}
+
+/*  Cam yüzeyler (menü hapı, düğmeler, mobil panel): açık zeminde %70 saydam
+ *  bir yüzey arkasından ayrışmıyordu. Daha opak hale getirilip gölgeyle
+ *  kaldırıldı — koyu temada bu işi kontrast yapıyor, açıkta gölge yapmalı. */
+:root[data-theme="light"] .glass {
+  background-color: color-mix(in oklab, var(--color-ink-900) 88%, transparent);
+  box-shadow: 0 10px 30px -14px rgb(20 22 28 / 0.28);
+}
+
+/*  Kart yüzeyleri: `bg-ink-900/40` beyaz zeminde neredeyse görünmezdi.
+ *  Açık temada kartları tam opak yapıp ince bir gölgeyle ayırıyoruz. */
+:root[data-theme="light"] .surface {
+  background-color: var(--color-ink-900);
+  box-shadow: 0 1px 2px rgb(20 22 28 / 0.04), 0 8px 24px -16px rgb(20 22 28 / 0.25);
+}
+
+/*  Form alanları: koyu temada dolgusu kontrastla okunuyor, açık temada beyaz
+ *  kartın üstünde beyaz kalıyordu. Hafif gri bir dolgu veriliyor. */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea {
+  background-color: var(--color-ink-850);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -51,8 +151,6 @@
     background-color: var(--color-ink-950);
     color: var(--color-fg);
     font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
@@ -89,36 +187,6 @@
  *  YARDIMCI SINIFLAR
  * ═══════════════════════════════════════════════════════════════════════════ */
 @layer utilities {
-  /* Sabit degrade metin */
-  .text-gradient {
-    background-image: linear-gradient(
-      110deg,
-      var(--color-fg) 0%,
-      var(--color-accent-bright) 45%,
-      var(--color-accent-2) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Sürekli akan degrade metin — hero başlığı için */
-  .text-gradient-anim {
-    background-image: linear-gradient(
-      110deg,
-      var(--color-fg) 0%,
-      var(--color-accent-bright) 25%,
-      var(--color-accent-2) 50%,
-      var(--color-accent-3) 70%,
-      var(--color-fg) 100%
-    );
-    background-size: 250% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-pan 9s ease-in-out infinite;
-  }
-
   /* Cam yüzey */
   .glass {
     background-color: color-mix(in oklab, var(--color-ink-850) 70%, transparent);
@@ -221,18 +289,6 @@
     mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
   }
-
-  .marquee-mask {
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  }
-  .animate-marquee {
-    animation: marquee 38s linear infinite;
-  }
-  /* Fare şeridin üzerindeyken yavaşla */
-  .marquee-mask:hover .animate-marquee {
-    animation-play-state: paused;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -243,8 +299,7 @@
   transform: translateY(22px);
   transition:
     opacity 0.75s var(--ease-out-soft),
-    transform 0.75s var(--ease-out-soft),
-    filter 0.75s var(--ease-out-soft);
+    transform 0.75s var(--ease-out-soft);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -257,7 +312,8 @@
 [data-char] {
   display: inline-block;
   opacity: 0;
-  transform: translateY(0.45em) rotateX(-55deg) scale(0.94);
+  /* perspective() şart: onsuz rotateX 3B dönmez, harfi sadece dikeyde ezer. */
+  transform: perspective(600px) translateY(0.45em) rotateX(-55deg) scale(0.94);
   filter: blur(8px);
   transform-origin: 50% 100%;
   transition:
@@ -295,19 +351,18 @@
   background-clip: text;
   color: transparent;
   animation: gradient-pan 9s ease-in-out infinite;
+
+  /* Degrade harfin kendi kutusuna boyanır. Başlıkta leading 0.95 olduğu için
+     kutu yazı boyutundan kısa kalıyor ve inişler (g, y, p) kutunun dışında
+     kalıp boyasız — yani görünmez — oluyordu. Kutuyu aşağı doğru büyütüp
+     aynı miktarda negatif kenar boşluğuyla yerleşimi sabit tutuyoruz. */
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
  *  KEYFRAME'LER
  * ═══════════════════════════════════════════════════════════════════════════ */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 @keyframes gradient-pan {
   0%,
@@ -363,35 +418,28 @@
   animation: aurora-b 32s ease-in-out infinite;
 }
 
-/* Yazı imleci */
-@keyframes caret-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-.caret {
-  animation: caret-blink 1.05s step-end infinite;
-}
-
-/* Aşağı kaydır oku */
-@keyframes nudge-down {
+/* Portre fotoğrafın yavaş süzülmesi */
+@keyframes float-soft {
   0%,
   100% {
     transform: translateY(0);
-    opacity: 0.5;
   }
   50% {
-    transform: translateY(7px);
-    opacity: 1;
+    transform: translateY(-9px);
   }
 }
-.animate-nudge {
-  animation: nudge-down 2s ease-in-out infinite;
+.animate-float {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+/* Portrenin çevresinde dönen aurora halkası */
+@keyframes ring-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.animate-ring {
+  animation: ring-spin 9s linear infinite;
 }
 
 /* Kartların üzerinden geçen parlama */
@@ -407,20 +455,6 @@
    (ör. `group-hover:animate-sheen`). */
 @utility animate-sheen {
   animation: sheen 1.1s var(--ease-out-soft);
-}
-
-/* Zaman çizelgesi noktasının nefes alması */
-@keyframes dot-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 22%, transparent);
-  }
-  50% {
-    box-shadow: 0 0 0 7px color-mix(in oklab, var(--color-accent) 8%, transparent);
-  }
-}
-.animate-dot-glow {
-  animation: dot-glow 3s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

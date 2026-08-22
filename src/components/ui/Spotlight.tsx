@@ -59,6 +59,12 @@ export function Spotlight({
   );
 
   const onLeave = useCallback(() => {
+    // Bekleyen kare iptal edilmezse sifirlamadan sonra calisip egilmeyi
+    // geri yaziyor ve kart egik kaliyor.
+    if (frame.current) {
+      window.cancelAnimationFrame(frame.current);
+      frame.current = 0;
+    }
     const el = ref.current;
     if (!el) return;
     el.style.setProperty("--rx", "0deg");

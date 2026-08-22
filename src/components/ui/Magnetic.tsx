@@ -42,6 +42,12 @@ export function Magnetic({
   );
 
   const onLeave = useCallback(() => {
+    // Sirada bekleyen bir kare varsa once onu iptal et; yoksa sifirlamadan
+    // sonra calisip ogeyi yeniden kaydirir ve buton kaymis halde kalir.
+    if (frame.current) {
+      window.cancelAnimationFrame(frame.current);
+      frame.current = 0;
+    }
     const el = ref.current;
     if (el) el.style.transform = "translate3d(0, 0, 0)";
   }, []);

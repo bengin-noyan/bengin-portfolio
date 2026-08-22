@@ -6,7 +6,7 @@ export function Background() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-20 overflow-hidden"
+      className="aurora-layer pointer-events-none fixed inset-0 -z-20 overflow-hidden"
     >
       {/* Izgara */}
       <div className="bg-grid mask-fade-b absolute inset-0 opacity-[0.32]" />

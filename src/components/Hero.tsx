@@ -1,32 +1,41 @@
 "use client";
 
-import { profile, skillGroups, socials, ui } from "@/content/site";
+import { profile, socials, ui } from "@/content/site";
 import { useLang } from "@/lib/i18n";
 import { Icon, type IconName } from "./ui/Icon";
 import { Magnetic } from "./ui/Magnetic";
 import { Reveal } from "./ui/Reveal";
-import { RotatingText } from "./ui/RotatingText";
 import { SplitText } from "./ui/SplitText";
 
-/** Şeritte dönecek teknoloji listesi — yetenekler bölümünden türetilir. */
-const marqueeItems = skillGroups.flatMap((g) => g.items);
-
 export function Hero() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
 
   return (
     <section
       id="top"
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-28 pb-16"
     >
-      <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
-        {/* Müsaitlik rozeti */}
-        <Reveal>
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-ink-700 bg-ink-850/70 py-1.5 pr-4 pl-2.5 text-xs font-medium text-fg-muted backdrop-blur">
-            <span className="pulse-ring size-2 rounded-full bg-accent" />
-            {t(profile.availability)}
-          </span>
-        </Reveal>
+      <div className="mx-auto w-full max-w-4xl px-6 text-center sm:px-8">
+        {/* Portre — dosya verilmediyse hiç çizilmez (bozuk görsel çıkmasın) */}
+        {profile.photo ? (
+          <Reveal className="mx-auto mb-8 block w-fit">
+            <div className="animate-float relative size-28 sm:size-36">
+              {/* Dönen aurora halkası: 2px'lik degrade çerçeve */}
+              <div className="animate-ring absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,var(--color-accent),var(--color-accent-2),var(--color-accent-3),var(--color-accent))] opacity-80 blur-[1px]" />
+              <div className="absolute -inset-6 -z-10 rounded-full bg-accent/20 blur-2xl" />
+              {/* Statik export'ta next/image optimizasyonu kapalı; plain img daha öngörülebilir. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={profile.photo}
+                alt={t(profile.photoAlt) || `${profile.name} — ${t(profile.title)}`}
+                width={288}
+                height={288}
+                decoding="async"
+                className="relative size-full rounded-full border-2 border-ink-950 object-cover"
+              />
+            </div>
+          </Reveal>
+        ) : null}
 
         {/* İsim — harf harf belirir */}
         <SplitText
@@ -35,49 +44,31 @@ export function Hero() {
           delay={180}
           stagger={38}
           gradient
-          className="mt-7 block text-5xl leading-[0.95] font-semibold tracking-tighter text-balance sm:text-7xl lg:text-8xl"
+          className="block text-5xl leading-[0.95] font-semibold tracking-tighter text-balance sm:text-7xl lg:text-8xl"
         />
 
-        {/* Ünvan + dönen odak alanları */}
+        {/* Ünvan */}
         <Reveal delay={420}>
-          <div className="mt-5 space-y-2">
-            <p className="flex items-center gap-3 text-xl font-medium text-fg sm:text-2xl lg:text-3xl">
-              <span aria-hidden="true" className="h-px w-8 bg-accent sm:w-12" />
-              {t(profile.title)}
-            </p>
-
-            <p className="flex min-h-[1.75rem] items-center gap-3 pl-11 font-mono text-sm text-accent-2 sm:pl-15 sm:text-base">
-              <RotatingText
-                // dil değişince listeyi tazele
-                key={lang}
-                items={t(profile.focus)}
-              />
-            </p>
-          </div>
+          <p className="mt-5 flex items-center justify-center gap-3 text-xl font-medium text-fg sm:text-2xl lg:text-3xl">
+            <span aria-hidden="true" className="h-px w-8 bg-accent sm:w-12" />
+            {t(profile.title)}
+          </p>
         </Reveal>
 
         {/* Özet cümle */}
         <Reveal delay={520}>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-fg-muted sm:text-lg">
+          <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-fg-muted sm:text-lg">
             {t(profile.tagline)}
-          </p>
-        </Reveal>
-
-        {/* Konum */}
-        <Reveal delay={580}>
-          <p className="mt-5 flex items-center gap-2 text-sm text-fg-subtle">
-            <Icon name="mapPin" className="size-4" strokeWidth={1.5} />
-            {t(profile.location)}
           </p>
         </Reveal>
 
         {/* Eylem butonları */}
         <Reveal delay={640}>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Magnetic strength={0.22}>
               <a
                 href="#work"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-ink-950 shadow-lg shadow-accent/25 transition-shadow duration-300 hover:shadow-xl hover:shadow-accent/45"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3.5 text-base font-semibold text-ink-950 shadow-lg shadow-accent/25 transition-shadow duration-300 hover:shadow-xl hover:shadow-accent/45"
               >
                 <span
                   aria-hidden="true"
@@ -97,7 +88,7 @@ export function Hero() {
                 <a
                   href={profile.resumeUrl}
                   download={profile.resumeFileName}
-                  className="inline-flex items-center gap-2 rounded-xl border border-ink-700 bg-ink-850/60 px-6 py-3.5 text-sm font-semibold text-fg backdrop-blur transition-colors duration-300 hover:border-accent/50 hover:bg-ink-800"
+                  className="inline-flex items-center gap-2 rounded-xl border border-ink-700 bg-ink-850/60 px-6 py-3.5 text-base font-semibold text-fg backdrop-blur transition-colors duration-300 hover:border-accent/50 hover:bg-ink-800"
                 >
                   <Icon name="download" className="size-4" />
                   {t(ui.heroSecondary)}
@@ -124,39 +115,7 @@ export function Hero() {
             </div>
           </div>
         </Reveal>
-
-        {/* Aşağı kaydır ipucu */}
-        <Reveal delay={760}>
-          <a
-            href="#about"
-            className="mt-14 inline-flex items-center gap-2 text-xs tracking-widest text-fg-subtle uppercase transition-colors hover:text-accent-bright"
-          >
-            <span className="animate-nudge inline-flex">
-              <Icon name="arrowDown" className="size-4" strokeWidth={2} />
-            </span>
-            {t(ui.scrollHint)}
-          </a>
-        </Reveal>
       </div>
-
-      {/* Teknoloji şeridi — fare üzerine gelince durur */}
-      <Reveal delay={840}>
-        <div className="marquee-mask mt-16 flex overflow-hidden border-y border-ink-800/70 py-4">
-          <div className="animate-marquee flex shrink-0 items-center gap-10 pr-10">
-            {[...marqueeItems, ...marqueeItems].map((item, i) => (
-              <span
-                key={`${item}-${i}`}
-                className="font-mono text-sm whitespace-nowrap text-fg-subtle transition-colors duration-300 hover:text-accent-bright"
-              >
-                {item}
-                <span aria-hidden="true" className="ml-10 text-accent/50">
-                  /
-                </span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </Reveal>
     </section>
   );
 }

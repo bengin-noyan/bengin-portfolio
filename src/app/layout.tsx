@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { profile, seo } from "@/content/site";
 import { LangProvider } from "@/lib/i18n";
+import { ThemeProvider, themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,8 +48,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090c",
-  colorScheme: "dark",
+  // Provider tema degisince bu meta'nin icerigini gunceller.
+  themeColor: "#14171e",
+  colorScheme: "dark light",
 };
 
 /** Arama motorlarına kim olduğunu anlatan yapısal veri. */
@@ -66,14 +68,29 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${inter.variable} ${mono.variable}`}>
-      <body className="antialiased">
+    // suppressHydrationWarning: asagidaki tema betigi <html>'e React
+    // hidrasyondan once data-theme yaziyor; sunucu ciktisinda bu oznitelik
+    // yok, dolayisiyla React bunu uyusmazlik sayip uyariyordu. Kasitli fark,
+    // sadece bu etiketin kendi oznitelikleri icin bastiriliyor.
+    <html
+      lang="tr"
+      suppressHydrationWarning
+      className={`${inter.variable} ${mono.variable}`}
+    >
+      <body>
+        {/* Ilk boyamadan once calisir: acik tema secmis biri sayfayi bir an
+            koyu gormesin. Govdenin ilk cocugu oldugu icin altindaki icerik
+            henuz boyanmamis olur. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+
         <script
           type="application/ld+json"
           // Sabit, kullanıcı girdisi içermeyen JSON — güvenli.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <LangProvider>{children}</LangProvider>
+        <ThemeProvider>
+          <LangProvider>{children}</LangProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
