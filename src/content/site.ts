@@ -47,8 +47,8 @@ export const profile = {
 
   /** Hero'da isminin üstündeki tek cümlelik özet. */
   tagline: {
-    tr: "C#, .NET, Go ve Python ile uçtan uca sistemler kuruyorum. Kurumsal kaynak planlama ve süreç otomasyonlarını, makine öğrenmesi ve görüntü işleme modelleriyle güçlendiriyorum.",
-    en: "I build end-to-end systems with C#, .NET, Go and Python — strengthening enterprise resource planning and process automation with machine learning and computer vision models.",
+    tr: "C#, .NET, Go ve Python ile uçtan uca sistemler kuruyorum. Kurumsal kaynak planlama ve süreç otomasyonları tasarlıyor, makine öğrenmesi ve görüntü işleme modellerini üretime taşıyorum.",
+    en: "I build end-to-end systems with C#, .NET, Go and Python. I design enterprise resource planning and process automation, and take machine learning and computer vision models to production.",
   } as L,
 
   /** Hero'daki yanıp sönen küçük durum rozeti. */
