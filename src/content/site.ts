@@ -490,7 +490,7 @@ export const contact = {
    *
    * Web3Forms kullanacaksan erişim anahtarını da aşağıya yaz.
    */
-  formEndpoint: "",
+  formEndpoint: "https://formspree.io/f/xeajwlzg",
 
   /** Yalnızca Web3Forms için: panelden aldığın access key. */
   formAccessKey: "",
