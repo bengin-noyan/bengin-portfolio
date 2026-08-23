@@ -6,7 +6,7 @@
 ## Çalıştırma
 
 ```bash
-npx next dev -p 3111
+npm run dev
 ```
 
 Port **3111**, varsayılan 3000 değil.
@@ -54,7 +54,9 @@ Koyu temada kontrastın yaptığı işi açık temada gölge yapmak zorunda:
 
 - `.surface` — yarı saydam kart yüzeyleri (`bg-ink-900/40`) beyaz zeminde
   kayboluyordu. Açık temada tam opak + gölge. Yeni kart eklerken bu sınıfı da ver.
-- `.glass` — menü hapı ve düğmeler; açık temada daha opak + gölge.
+- `.glass` — menü hapı ve düğmeler; açık temada daha opak + gölge. **Mobil
+  menü paneli buna dahil değil**, tam opak (`bg-ink-900`): %70 saydam panelden
+  hero portresi sızıp menü yazılarını okunmaz yapıyordu.
 - `.aurora-layer` — dekoratif lekeler; koyu zeminde "ışık", beyazda "leke" gibi
   duruyor, o yüzden açık temada 0.22 opaklığa kısılı.
 
@@ -70,6 +72,10 @@ metin olarak **ve** dolgu rengi olup üstünde açık metin taşırken (ikisi de
 - **Statik export** (`out/`), sunucu tarafı yok. Server Action, route handler,
   `next/image` optimizasyonu kullanılamaz.
 - Her efekt `prefers-reduced-motion` ve `(pointer: fine)` kontrolünden geçer.
+- **`globals.css` sonundaki mobil performans bloğu** (`max-width: 1023px` VEYA
+  `pointer: coarse`) sürekli boyanan efektleri kapatıyor. Yeni bir efekt
+  eklerken oraya da bak. Sabit konumlu ögeye `backdrop-filter`, sonsuz
+  `background-position` animasyonu ve kalıcı `will-change` mobilde pahalıdır.
 - Tüm metinler `src/content/site.ts`'te, iki dilli. Bileşenlere metin gömme.
 
 ## Bilinmesi gereken incelikler
@@ -91,10 +97,16 @@ metin olarak **ve** dolgu rengi olup üstünde açık metin taşırken (ikisi de
 - **Tema ve dil düğmeleri hedefi gösterir**, mevcut durumu değil (koyu temada
   güneş ikonu, Türkçedeyken `EN`). `aria-label`'lar da aynı şeyi söylüyor.
 
+## Yayın
+
+Site canlı: **https://bengin-portfolio.vercel.app** (Vercel, Hobby plan).
+`main`e her push otomatik yayına çıkıyor, ayrıca bir adım yok.
+
+`seo.siteUrl` bu adresle **birebir aynı kalmalı**: `sitemap.xml`, `robots.txt`,
+canonical ve OG etiketlerinin hepsi oradan türüyor.
+
 ## Açık işler
 
-- `profile.photo` boş — hero portresi dosya verilene kadar çizilmiyor.
 - `contact.formEndpoint` boş — form şu an mesajı `mailto` ile e-posta
-  istemcisinde açıyor. Formspree vb. adres yazılınca arka planda POST'a geçer.
-- `seo.siteUrl` hâlâ tahmini Vercel adresi; yayına alınca gerçek adresle değiştir.
-- `npm run lint` çalışmıyor: projede `eslint.config.*` ve `eslint` bağımlılığı yok.
+  istemcisinde açıyor. Tarayıcıdan webmail kullanan ziyaretçide bu görünürde
+  hiçbir şey yapmıyor. Formspree vb. adres yazılınca arka planda POST'a geçer.

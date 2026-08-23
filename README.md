@@ -11,7 +11,7 @@ Tamamen statik olarak dışa aktarılır — sunucu gerektirmez.
 
 ```bash
 npm install       # bağımlılıklar (bir kez)
-npm run dev       # geliştirme sunucusu → http://localhost:3000
+npm run dev       # geliştirme sunucusu → http://localhost:3111
 npm run build     # üretim derlemesi   → /out klasörü
 ```
 
