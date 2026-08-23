@@ -555,8 +555,11 @@ export const ui = {
  * 12 · SEO
  * ─────────────────────────────────────────────────────────────────────────── */
 export const seo = {
-  /** ⚠ Siteyi yayına aldıktan sonra gerçek adresini buraya yaz. */
-  siteUrl: "https://bengin-noyan.vercel.app",
+  /**
+   * Sitenin canlı adresi. sitemap.xml, robots.txt, canonical ve OG etiketleri
+   * buradan türüyor — alan adı değişirse tek değiştirilecek yer burası.
+   */
+  siteUrl: "https://bengin-portfolio.vercel.app",
   description: {
     tr: "Software Developer. Go, C#, .NET ve Python ile ERP, süreç otomasyonu, native masaüstü uygulamaları ve YOLOv8 tabanlı görüntü işleme çözümleri.",
     en: "Software Developer. ERP, process automation, native desktop applications and YOLOv8-based computer vision with Go, C#, .NET and Python.",
