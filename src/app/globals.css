@@ -111,7 +111,7 @@
   opacity: 0.22;
 }
 
-/*  Cam yüzeyler (menü hapı, düğmeler, mobil panel): açık zeminde %70 saydam
+/*  Cam yüzeyler (menü hapı, düğmeler): açık zeminde %70 saydam
  *  bir yüzey arkasından ayrışmıyordu. Daha opak hale getirilip gölgeyle
  *  kaldırıldı — koyu temada bu işi kontrast yapıyor, açıkta gölge yapmalı. */
 :root[data-theme="light"] .glass {

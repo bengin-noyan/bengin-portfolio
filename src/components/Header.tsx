@@ -213,12 +213,27 @@ export function Header() {
         </div>
       </div>
 
+      {/* Menü açıkken sayfayı karartan katman. İki işi var: panelin arkasındaki
+          parlak ögeleri (hero portresi) bastırmak ve dışarı dokunulunca menüyü
+          kapatmak. Rengi bilinçli olarak temadan bağımsız: karartma her iki
+          temada da koyu olmalı, açık temada `ink-950` beyaza yakın olduğu için
+          token kullanılamıyor. */}
+      <div
+        aria-hidden="true"
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 -z-10 bg-black/50 transition-opacity duration-300 lg:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+
       {/* Mobil menü paneli.
           `invisible`: yalnızca max-height/opacity ile gizlenen panelin
-          bağlantıları kapalıyken de Tab ile odaklanabiliyordu. */}
+          bağlantıları kapalıyken de Tab ile odaklanabiliyordu.
+          Cam değil, tam opak: %70 saydam panelden hero portresi sızıyor ve
+          menü yazıları okunmaz hâle geliyordu. */}
       <div
         id="mobile-menu"
-        className={`glass mx-6 mt-3 overflow-hidden rounded-2xl border border-ink-800 transition-[max-height,opacity,visibility] duration-400 lg:hidden ${
+        className={`mx-6 mt-3 overflow-hidden rounded-2xl border border-ink-800 bg-ink-900 shadow-2xl shadow-ink-950/40 transition-[max-height,opacity,visibility] duration-400 lg:hidden ${
           menuOpen ? "max-h-96 opacity-100" : "invisible max-h-0 opacity-0"
         }`}
       >
