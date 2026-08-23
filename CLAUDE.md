@@ -105,8 +105,7 @@ Site canlı: **https://bengin-portfolio.vercel.app** (Vercel, Hobby plan).
 `seo.siteUrl` bu adresle **birebir aynı kalmalı**: `sitemap.xml`, `robots.txt`,
 canonical ve OG etiketlerinin hepsi oradan türüyor.
 
-## Açık işler
-
-- `contact.formEndpoint` boş — form şu an mesajı `mailto` ile e-posta
-  istemcisinde açıyor. Tarayıcıdan webmail kullanan ziyaretçide bu görünürde
-  hiçbir şey yapmıyor. Formspree vb. adres yazılınca arka planda POST'a geçer.
+İletişim formu **Formspree**'ye POST ediyor (`contact.formEndpoint`).
+Ücretsiz katman **ayda 50 mesaj**; dolarsa gönderimler sessizce reddedilir.
+Adres boşaltılırsa form otomatik olarak `mailto` davranışına düşer — bu
+bilinçli bir yedek, hata değil.
