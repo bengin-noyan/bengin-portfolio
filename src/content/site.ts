@@ -177,6 +177,7 @@ export const skillGroups = [
     items: [
       "YOLOv8",
       "Computer Vision",
+      "Machine Learning",
       "Deep Learning",
       "OpenCV",
       "Ultralytics",
