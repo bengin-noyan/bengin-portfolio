@@ -494,3 +494,58 @@
     display: none !important;
   }
 }
+/* ═══════════════════════════════════════════════════════════════════════════
+ *  MOBİL / DOKUNMATİK PERFORMANS
+ *
+ *  Kapı iki koşullu: dar pencere VEYA kaba işaretçi. Yalnızca genişliğe
+ *  bakmak yatay tutulan telefonu kaçırırdı; yalnızca işaretçiye bakmak
+ *  masaüstünde daraltılmış pencereyi.
+ *
+ *  Buradaki hiçbir kural düzeni değiştirmiyor — yalnızca kare başına yapılan
+ *  boyama işini kısıyor. Efektler duruyor, sürekli yeniden çizilmiyor.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px), (pointer: coarse) {
+  /*  1 · Cam yüzeyler.  `backdrop-filter`, sabit konumlu bir ögede sayfa
+   *  kaydıkça arkasındaki her kareyi yeniden bulanıklaştırıyor. Header
+   *  ekranda sabit durduğu için bu iş kaydırma boyunca hiç bitmiyor —
+   *  mobildeki takılmanın birinci sebebi. Bulanıklık yerine daha opak zemin. */
+  .glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: color-mix(in oklab, var(--color-ink-850) 92%, transparent);
+  }
+  :root[data-theme="light"] .glass {
+    background-color: color-mix(in oklab, var(--color-ink-900) 96%, transparent);
+  }
+
+  /*  2 · Aurora lekeleri.  130px bulanıklık + `scale()` animasyonu, her karede
+   *  dev bir yüzeyin yeniden rasterleştirilmesi demek. Animasyon durunca katman
+   *  bir kez çizilip önbelleğe alınıyor; lekeler duruyor, maliyeti kalmıyor. */
+  .animate-aurora-a,
+  .animate-aurora-b {
+    animation: none;
+  }
+
+  /*  3 · Başlık degradesi.  Her harf kendi degradesini taşıyor ve `gradient-pan`
+   *  sonsuz döngüde `background-position` oynatıyor. Bu özellik compositor'a
+   *  devredilemiyor, ana iş parçacığında boyanıyor — 12 harf, sonsuza kadar.
+   *  Degrade duruyor, yalnızca kayması kalkıyor. */
+  .char-gradient [data-char] {
+    animation: none;
+  }
+
+  /*  4 · Portre halkası.  Konik degradenin dönmesi her karede repaint.
+   *  Halka duruyor, dönmüyor. */
+  .animate-ring {
+    animation: none;
+  }
+
+  /*  5 · `will-change` kalıcı compositor katmanı açıyor. Reveal yüzlerce ögede
+   *  kullanılıyor (tek başına yetenek listesinde ~50 etiket) ve geçiş bittikten
+   *  sonra da katman duruyor. Zaten transform/opacity animasyonu — tarayıcı
+   *  ipucu olmadan da composite ediyor. */
+  [data-reveal],
+  [data-char] {
+    will-change: auto;
+  }
+}
