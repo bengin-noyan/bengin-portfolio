@@ -217,6 +217,53 @@ export const skillGroups = [
  * ─────────────────────────────────────────────────────────────────────────── */
 export const projects = [
   {
+    title: "NowlTarım — Modüler Tarım ERP Sistemi",
+    year: "2026",
+    featured: true,
+    blurb: {
+      tr: "~20.000 dönümlük büyük ölçekli tarım işletmeleri için 13 bağımsız modülden oluşan, uydu görüntüsü ve yapay zekâ analizleriyle beslenen web tabanlı kurumsal kaynak planlama sistemi.",
+      en: "A web-based enterprise resource planning system of 13 independent modules for large-scale farms of ~20,000 decares, fed by satellite imagery and AI-driven analysis.",
+    } as L,
+    description: {
+      tr: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu) ve PostgreSQL 16 üzerinde, Docker ile paketlenen RESTful bir API tasarladım; arayüzü React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirdim. 6 kullanıcı rolü × 13 modül seviyesinde merkezî bir RBAC katmanı kurguladım. Kapanan üretim sezonlarına geriye dönük veri girişini ve kâr/zarar sapmalarını PostgreSQL trigger'ları ve table guard yapılarıyla veritabanı seviyesinde kesin olarak engelledim. UBL-TR 1.2 XML formatında e-Fatura entegrasyon çekirdeği, Sentinel Hub API ile çok bantlı NDVI haritalama katmanı ve YOLOv8 + Gemini API tabanlı zirai analiz servisleri entegre ettim.",
+      en: "I designed a Dockerised RESTful API on Go (chi/v5 router, jackc/pgx/v5 connection pool) and PostgreSQL 16, with a front end built in React 18, TypeScript, Vite, Tailwind CSS and Leaflet. A central RBAC layer governs 6 user roles across 13 modules. Backdated entry into closed production seasons — and the profit/loss drift it causes — is blocked at the database level by PostgreSQL triggers and table guards. I integrated a UBL-TR 1.2 XML e-invoice core, a multi-band NDVI mapping layer over the Sentinel Hub API, and agricultural analysis services built on YOLOv8 and the Gemini API.",
+    } as L,
+    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    highlights: {
+      tr: [
+        { label: "Mimari & backend", text: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu), PostgreSQL 16 ve Docker üzerinde RESTful API mimarisi kurgulandı; arayüz React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirildi." },
+        { label: "Kapsam & yetkilendirme", text: "~20.000 dönümlük büyük ölçekli tarım işletmeleri için 13 bağımsız modül geliştirildi; 6 kullanıcı rolü × 13 modül seviyesinde merkezî rol tabanlı erişim kontrolü (RBAC) katmanı tasarlandı." },
+        { label: "Veri bütünlüğü", text: "PostgreSQL trigger'ları ve table guard yapılarıyla, kapanan üretim sezonlarına/kampanyalarına geriye dönük veri girişi ve kâr/zarar sapmaları veritabanı seviyesinde kesin olarak engellendi." },
+        { label: "Dış entegrasyonlar", text: "UBL-TR 1.2 XML formatında e-Fatura entegrasyon çekirdeği, Sentinel Hub API ile uydu görüntülerinden çok bantlı NDVI (Normalize Edilmiş Fark Bitki İndeksi) haritalama katmanı ve YOLOv8 ile Gemini API tabanlı zirai analiz servisleri entegre edildi." },
+      ],
+      en: [
+        { label: "Architecture & backend", text: "A RESTful API architecture was built on Go (chi/v5 router, jackc/pgx/v5 connection pool), PostgreSQL 16 and Docker, with a front end in React 18, TypeScript, Vite, Tailwind CSS and Leaflet." },
+        { label: "Scope & authorisation", text: "13 independent modules were developed for large-scale farms of ~20,000 decares, governed by a central role-based access control (RBAC) layer spanning 6 user roles × 13 modules." },
+        { label: "Data integrity", text: "PostgreSQL triggers and table guards conclusively block backdated data entry into closed production seasons/campaigns and the profit/loss drift it would cause, at the database level." },
+        { label: "External integrations", text: "A UBL-TR 1.2 XML e-invoice integration core, a multi-band NDVI (Normalised Difference Vegetation Index) mapping layer built on satellite imagery via the Sentinel Hub API, and agricultural analysis services based on YOLOv8 and the Gemini API were integrated." },
+      ],
+    } as L<{ label: string; text: string }[]>,
+    tags: [
+      "Go",
+      "chi/v5",
+      "pgx/v5",
+      "PostgreSQL 16",
+      "Docker",
+      "React 18",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Leaflet",
+      "RBAC",
+      "UBL-TR 1.2",
+      "Sentinel Hub API",
+      "YOLOv8",
+      "Gemini API",
+    ],
+    image: "",
+    links: { demo: "", repo: "" },
+  },
+  {
     title: "Bitki Hastalığı Teşhisi ve Tarımsal Verimlilik Analizi",
     year: "2026",
     featured: true,
