@@ -34,10 +34,10 @@ export const profile = {
    * bozuk görsel ikonu çıkmaz.
    * Öneri: kare kırpılmış, en az 640×640, yüz ortada.
    */
-  photo: "",
+  photo: "/bengin-noyan.jpg",
 
   /** Fotoğrafın alt metni; boşsa isim + ünvan kullanılır. */
-  photoAlt: { tr: "", en: "" } as L,
+  photoAlt: { tr: "Bengin Noyan portresi", en: "Portrait of Bengin Noyan" } as L,
 
   /** Ünvanın. Hero bölümünde isminin altında çıkar. */
   title: {
