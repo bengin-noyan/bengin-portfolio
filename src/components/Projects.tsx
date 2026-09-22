@@ -9,10 +9,8 @@ import { Spotlight } from "./ui/Spotlight";
 
 type Project = (typeof projects)[number];
 
-/**
- * Proje adından türeyen sabit bir renk tonu. Aynı proje her zaman aynı rengi
- * alır; listeye yeni proje eklendiğinde kendi rengiyle gelir.
- */
+// Proje adindan sabit bir renk tonu uretiyorum. Ayni proje her zaman ayni
+// rengi aliyor, listeye yeni proje eklenince kendi rengiyle geliyor.
 function hueOf(title: string): number {
   let hash = 0;
   for (let i = 0; i < title.length; i++) {
@@ -21,11 +19,8 @@ function hueOf(title: string): number {
   return hash;
 }
 
-/**
- * Kartın üst kenarındaki ince aksan çizgisi.
- * Ekran görüntüsü olmayan projeye sahte bir kapak üretmek yer tutucu gibi
- * duruyordu; projeyi ayıran kimliği bu çizgi taşıyor.
- */
+// Kartin ust kenarindaki ince aksan cizgisi. Ekran goruntusu olmayan projeye
+// sahte kapak uretmek yer tutucu gibi duruyordu, projeyi bu cizgi ayiriyor.
 function AccentRule({ title }: { title: string }) {
   const hue = hueOf(title);
   return (
@@ -41,7 +36,7 @@ function AccentRule({ title }: { title: string }) {
   );
 }
 
-/** Kapak alanı — yalnızca gerçek ekran görüntüsü verilmiş projelerde çizilir. */
+// kapak alani, sadece gercekten ekran goruntusu olan projelerde ciziliyor
 function Cover({ project, tall }: { project: Project; tall?: boolean }) {
   if (!project.image) return null;
 
@@ -49,7 +44,7 @@ function Cover({ project, tall }: { project: Project; tall?: boolean }) {
     <div
       className={`${tall ? "aspect-[16/10]" : "aspect-[16/9]"} relative overflow-hidden bg-ink-850`}
     >
-      {/* Statik export'ta next/image optimizasyonu kapalı; plain img daha öngörülebilir. */}
+      {/* statik export'ta next/image optimizasyonu kapali, duz img daha ongorulebilir */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={project.image}
@@ -58,7 +53,7 @@ function Cover({ project, tall }: { project: Project; tall?: boolean }) {
         decoding="async"
         className="size-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
       />
-      {/* Üzerinden geçen parlama */}
+      {/* uzerinden gecen parlama */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/10 opacity-0 group-hover:animate-sheen group-hover:opacity-100"
@@ -70,8 +65,8 @@ function Cover({ project, tall }: { project: Project; tall?: boolean }) {
 function ProjectLinks({ project }: { project: Project }) {
   const { t } = useLang();
 
-  // Depolar gizli oldugu icin cogu projede hic link yok; bos bir kap
-  // birakmak kartin altina sahipsiz bir bosluk ekliyordu.
+  // Depolar gizli oldugu icin cogu projede link yok. Bos kap birakinca kartin
+  // altinda sahipsiz bir bosluk kaliyordu.
   if (!project.links.demo && !project.links.repo) return null;
 
   return (
@@ -107,7 +102,7 @@ function ProjectLinks({ project }: { project: Project }) {
   );
 }
 
-/** CV'deki gibi başlıklı maddeler — her biri alt alta. */
+// CV'deki gibi baslikli maddeler, alt alta
 function Highlights({
   items,
   baseDelay = 0,
@@ -156,7 +151,7 @@ export function Projects() {
 
   return (
     <Section id="work" srTitle={t(ui.sectionWork)} intro={t(ui.workIntro)}>
-      {/* Öne çıkan projeler */}
+      {/* one cikan projeler */}
       <div className="space-y-6">
         {featured.map((project, i) => (
           <Reveal key={project.title} delay={i * 120}>
@@ -165,8 +160,8 @@ export function Projects() {
               tilt
               maxTilt={4}
               className={`surface group relative grid overflow-hidden rounded-3xl border border-ink-800 bg-ink-900/40 backdrop-blur-sm transition-colors duration-500 hover:border-ink-600 hover:bg-ink-900/70 ${
-                // İki sütunlu düzen yalnızca gerçek kapak görseli varken
-                // anlamlı; yoksa kart tek sütunlu editoryal düzene geçer.
+                // iki sutunlu duzen sadece gercek kapak gorseli varken anlamli,
+                // yoksa kart tek sutuna gecsin
                 project.image
                   ? `lg:grid-cols-2 ${i % 2 === 1 ? "lg:[&>*:nth-child(2)]:order-2" : ""}`
                   : ""
@@ -211,7 +206,7 @@ export function Projects() {
         ))}
       </div>
 
-      {/* Diğer projeler — kompakt ızgara, imlece göre hafif eğilir */}
+      {/* diger projeler, kompakt izgara */}
       {rest.length > 0 ? (
         <div className="mt-6 space-y-6">
           {rest.map((project, i) => (

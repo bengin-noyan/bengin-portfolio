@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-/**
- * Kullanıcı işletim sisteminde "hareketi azalt" tercihini açtıysa true döner.
- * Fare takibi / eğilme gibi JS tabanlı efektleri tamamen kapatmak için kullanılır
- * (CSS tabanlı olanları globals.css zaten devre dışı bırakıyor).
- */
+// Kullanici isletim sisteminde "hareketi azalt"i actiysa true donuyor.
+// Fare takibi / egilme gibi JS efektlerini komple kapatmak icin kullaniyorum,
+// CSS tarafindakileri globals.css zaten kapatiyor.
 export function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
 
@@ -21,9 +19,7 @@ export function useReducedMotion() {
   return reduced;
 }
 
-/**
- * İnce işaretçisi olmayan cihazlarda (dokunmatik) fare efektlerini atlamak için.
- */
+// Dokunmatik cihazlarda fare efektlerini atlamak icin.
 export function useFinePointer() {
   const [fine, setFine] = useState(false);
 

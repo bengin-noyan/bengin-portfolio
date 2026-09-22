@@ -18,7 +18,7 @@ export function Contact() {
     >
       <Reveal>
         <div className="surface relative overflow-hidden rounded-3xl border border-ink-800 bg-ink-900/50 px-7 py-16 text-center backdrop-blur-sm sm:px-12 sm:py-20">
-          {/* Kartın arkasındaki hareketli ışıklar */}
+          {/* kartin arkasindaki hareketli isiklar */}
           <div
             aria-hidden="true"
             className="animate-aurora-a pointer-events-none absolute -top-32 left-1/3 size-96 rounded-full bg-accent/20 blur-[100px]"
@@ -38,7 +38,7 @@ export function Contact() {
               className="block text-3xl font-semibold tracking-tighter text-balance sm:text-5xl"
             />
 
-            {/* Giriş cümlesi — e-posta adresi cümlenin içinde bağlantı olarak */}
+            {/* e-posta cumlenin ortasinda link oldugu icin metin ikiye bolundu */}
             <Reveal delay={200}>
               <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-fg-muted">
                 {t(contact.bodyBefore)}{" "}
@@ -56,7 +56,6 @@ export function Contact() {
               <ContactForm />
             </Reveal>
 
-            {/* Sosyal bağlantılar */}
             <Reveal delay={400}>
               <div className="mt-8 flex items-center justify-center gap-2">
                 {socials.map((s) => (

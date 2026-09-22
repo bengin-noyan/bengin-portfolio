@@ -7,13 +7,9 @@ import { Icon } from "./Icon";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-/**
- * İletişim formu. Site statik export edildiği için sunucu tarafı yok:
- *
- * - `contact.formEndpoint` doluysa mesaj oraya POST edilir.
- * - Boşsa mesaj kullanıcının kendi e-posta istemcisinde hazır hâlde açılır
- *   (mailto). Böylece form hiçbir servise kaydolmadan da çalışır.
- */
+// Iletisim formu. Site statik export edildigi icin sunucu tarafi yok:
+// contact.formEndpoint doluysa mesaj oraya POST ediliyor, bossa kullanicinin
+// kendi e-posta programi mailto ile aciliyor.
 export function ContactForm() {
   const { t } = useLang();
   const [status, setStatus] = useState<Status>("idle");
@@ -22,7 +18,7 @@ export function ContactForm() {
   useEffect(() => () => window.clearTimeout(resetTimer.current), []);
 
   function scheduleReset() {
-    // Art arda gönderimde önceki zamanlayıcı kalırsa mesaj erken kaybolur.
+    // art arda gonderimde onceki timer kalirsa mesaj erken kayboluyor
     window.clearTimeout(resetTimer.current);
     resetTimer.current = window.setTimeout(() => setStatus("idle"), 6000);
   }
@@ -34,7 +30,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // Bot tuzağı: gerçek kullanıcı bu alanı göremez, dolduran bot demektir.
+    // bot tuzagi: normal kullanici bu alani goremiyor, doluysa bottur
     if (data.get("_gotcha")) {
       setStatus("sent");
       form.reset();
@@ -42,7 +38,7 @@ export function ContactForm() {
     }
     data.delete("_gotcha");
 
-    // Gönderim adresi yoksa e-posta istemcisine düş.
+    // gonderim adresi yoksa mailto'ya dus
     if (!contact.formEndpoint) {
       const from = String(data.get("email") ?? "");
       const message = String(data.get("message") ?? "");
@@ -101,7 +97,7 @@ export function ContactForm() {
         />
       </label>
 
-      {/* Bal küpü — ekranda ve ekran okuyucuda görünmez, yalnızca botlar doldurur */}
+      {/* bal kupu. ekranda da ekran okuyucuda da gorunmuyor, sadece botlar doldurur */}
       <input
         type="text"
         name="_gotcha"
@@ -124,7 +120,7 @@ export function ContactForm() {
         />
       </button>
 
-      {/* Sonuç bildirimi — ekran okuyucuya da duyurulur */}
+      {/* sonuc mesaji, ekran okuyucuya da duyuruluyor */}
       <p
         aria-live="polite"
         className={`min-h-5 text-base transition-colors duration-300 ${

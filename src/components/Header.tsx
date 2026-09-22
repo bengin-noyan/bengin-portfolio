@@ -21,7 +21,7 @@ export function Header() {
   const [active, setActive] = useState<string>("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Hap menüdeki kayan vurgu — genişliği ve konumu aktif bağlantıdan ölçülür.
+  // hap menudeki kayan vurgu. genisligi ve konumu aktif linkten olculuyor.
   const navRef = useRef<HTMLElement>(null);
   const linkRefs = useRef(new Map<string, HTMLAnchorElement>());
   const [pill, setPill] = useState({ left: 0, width: 0, shown: false });
@@ -35,10 +35,9 @@ export function Header() {
     }
     const left = el.offsetLeft;
     const width = el.offsetWidth;
-    // Degismediyse state'e dokunma: bu olcum ResizeObserver icinden de
-    // cagriliyor ve her seferinde yeniden render tetiklemek tarayicida
-    // "ResizeObserver loop completed with undelivered notifications"
-    // hatasina yol acabiliyor.
+    // degismediyse state'e dokunma. bu olcum ResizeObserver icinden de
+    // cagriliyor ve her seferinde render tetikleyince konsola
+    // "ResizeObserver loop completed with undelivered notifications" dusuyor.
     setPill((p) =>
       p.left === left && p.width === width && p.shown
         ? p
@@ -46,8 +45,7 @@ export function Header() {
     );
   }, [active]);
 
-  // Aktif bölüm değişince, dil değişince (etiket genişlikleri kayar) ve
-  // menü yeniden boyutlanınca vurguyu yeniden ölç.
+  // aktif bolum ve dil degisince (etiket genislikleri kayiyor) yeniden olc
   useEffect(() => {
     measurePill();
   }, [measurePill, lang]);
@@ -60,7 +58,7 @@ export function Header() {
     return () => observer.disconnect();
   }, [measurePill]);
 
-  // Sayfa kaydırılınca header camlaşsın
+  // sayfa kayinca header camlassin
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -68,7 +66,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Aktif bölümü menüde işaretle (scroll-spy)
+  // scroll-spy: hangi bolumdeysem menude isaretli olsun
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -87,7 +85,7 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
-  // Mobil menü açıkken arka planın kaymasını engelle
+  // menu acikken arka plan kaymasin
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -95,8 +93,8 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  // Menü açıkken masaüstü genişliğine geçilirse panel md:hidden ile kaybolur
-  // ama açık sayılmaya devam eder — bu da gövde kaydırmasını kilitli bırakır.
+  // Menu acikken masaustu genisligine gecilirse panel lg:hidden ile kayboluyor
+  // ama menuOpen true kaliyor, o zaman da body scroll kilitli kaliyordu.
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
     const close = () => {
@@ -117,13 +115,13 @@ export function Header() {
       }`}
     >
       <div className="relative mx-auto flex max-w-6xl items-center justify-end gap-4 px-6 sm:px-8">
-        {/* Yüzen hap menü — aktif bölüm kayan bir vurguyla işaretlenir */}
+        {/* yuzen hap menu, aktif bolum kayan vurguyla isaretleniyor */}
         <nav
           ref={navRef}
           aria-label="Primary"
           className="glass absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 rounded-full border border-ink-700/80 p-1 shadow-lg shadow-ink-950/20 lg:flex"
         >
-          {/* Kayan vurgu: layout tetiklemeyen transform ile taşınır */}
+          {/* vurgu transform ile tasiniyor, layout tetiklemesin diye */}
           <span
             aria-hidden="true"
             className="absolute top-1 bottom-1 left-0 -z-10 rounded-full bg-ink-800/90 transition-[transform,width,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -153,7 +151,7 @@ export function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
-          {/* Tema değiştirici — iki ikon üst üste durur, biri dönerek bırakır */}
+          {/* tema dugmesi: iki ikon ust uste, biri donerek cikiyor */}
           <button
             type="button"
             onClick={toggleTheme}
@@ -162,8 +160,8 @@ export function Header() {
             aria-pressed={isLight}
             className="glass grid size-11 place-items-center rounded-xl border border-ink-700 text-fg-muted transition-colors duration-200 hover:border-accent/50 hover:text-accent-bright"
           >
-            {/* İkon hedefi gösterir: koyu temadayken güneş (tıkla → aydınlık),
-                aydınlıkta ay. aria-label da aynı şeyi söylüyor. */}
+            {/* ikon hedefi gosteriyor: koyu temadayken gunes, aciktayken ay.
+                aria-label da ayni seyi soyluyor. */}
             <span className="relative grid size-5 place-items-center">
               <Icon
                 name="sun"
@@ -186,7 +184,6 @@ export function Header() {
             </span>
           </button>
 
-          {/* Dil değiştirici */}
           <button
             type="button"
             onClick={toggle}
@@ -195,11 +192,10 @@ export function Header() {
             className="glass flex items-center gap-2 rounded-xl border border-ink-700 px-3.5 py-2.5 text-base font-medium text-fg-muted transition-colors duration-200 hover:border-accent/50 hover:text-fg"
           >
             <Icon name="globe" className="size-5" strokeWidth={1.6} />
-            {/* Seçili dil değil, tıklanınca geçilecek dil yazar */}
+            {/* secili dili degil, tiklayinca gecilecek dili yaziyor */}
             <span className="font-mono uppercase">{lang === "tr" ? "en" : "tr"}</span>
           </button>
 
-          {/* Mobil menü düğmesi */}
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
@@ -213,11 +209,10 @@ export function Header() {
         </div>
       </div>
 
-      {/* Menü açıkken sayfayı karartan katman. İki işi var: panelin arkasındaki
-          parlak ögeleri (hero portresi) bastırmak ve dışarı dokunulunca menüyü
-          kapatmak. Rengi bilinçli olarak temadan bağımsız: karartma her iki
-          temada da koyu olmalı, açık temada `ink-950` beyaza yakın olduğu için
-          token kullanılamıyor. */}
+      {/* Menu acikken sayfayi karartan katman. Hem panelin arkasindaki parlak
+          seyleri (hero portresi) bastiriyor hem de disariya dokununca menuyu
+          kapatiyor. Rengi bilerek token degil duz siyah: acik temada ink-950
+          beyaza yakin oldugu icin karartma gorevini goremiyor. */}
       <div
         aria-hidden="true"
         onClick={() => setMenuOpen(false)}
@@ -226,11 +221,11 @@ export function Header() {
         }`}
       />
 
-      {/* Mobil menü paneli.
-          `invisible`: yalnızca max-height/opacity ile gizlenen panelin
-          bağlantıları kapalıyken de Tab ile odaklanabiliyordu.
-          Cam değil, tam opak: %70 saydam panelden hero portresi sızıyor ve
-          menü yazıları okunmaz hâle geliyordu. */}
+      {/* Mobil menu paneli.
+          invisible sart: sadece max-height/opacity ile gizleyince kapali panelin
+          linklerine Tab ile odaklanilabiliyordu.
+          Cam degil tam opak, cunku saydam panelden hero portresi sizip menu
+          yazilarini okunmaz yapiyordu. */}
       <div
         id="mobile-menu"
         className={`mx-6 mt-3 overflow-hidden rounded-2xl border border-ink-800 bg-ink-900 shadow-2xl shadow-ink-950/40 transition-[max-height,opacity,visibility] duration-400 lg:hidden ${

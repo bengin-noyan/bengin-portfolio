@@ -6,7 +6,7 @@ import { ThemeProvider, themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({
-  subsets: ["latin", "latin-ext"], // latin-ext: Türkçe karakterler için
+  subsets: ["latin", "latin-ext"], // latin-ext olmazsa Turkce karakterler bozuluyor
   variable: "--font-inter",
   display: "swap",
 });
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: profile.name,
     locale: "tr_TR",
     alternateLocale: ["en_US"],
-    // Link onizlemelerinde cikan kart. metadataBase sayesinde mutlak adrese cevriliyor.
+    // link onizlemesinde cikan gorsel, metadataBase mutlak adrese ceviriyor
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: title }],
   },
   twitter: {
@@ -51,12 +51,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Provider tema degisince bu meta'nin icerigini gunceller.
+  // tema degisince Provider bu meta'yi guncelliyor
   themeColor: "#14171e",
   colorScheme: "dark light",
 };
 
-/** Arama motorlarına kim olduğunu anlatan yapısal veri. */
+// google'a kim oldugumu anlatan yapisal veri
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -71,24 +71,22 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    // suppressHydrationWarning: asagidaki tema betigi <html>'e React
-    // hidrasyondan once data-theme yaziyor; sunucu ciktisinda bu oznitelik
-    // yok, dolayisiyla React bunu uyusmazlik sayip uyariyordu. Kasitli fark,
-    // sadece bu etiketin kendi oznitelikleri icin bastiriliyor.
+    // suppressHydrationWarning lazim: asagidaki tema betigi <html>'e React'ten
+    // once data-theme yaziyor, sunucu ciktisinda o oznitelik yok ve React bunu
+    // uyusmazlik sanip uyari basiyordu.
     <html
       lang="tr"
       suppressHydrationWarning
       className={`${inter.variable} ${mono.variable}`}
     >
       <body>
-        {/* Ilk boyamadan once calisir: acik tema secmis biri sayfayi bir an
-            koyu gormesin. Govdenin ilk cocugu oldugu icin altindaki icerik
-            henuz boyanmamis olur. */}
+        {/* Ilk boyamadan once calismasi lazim, yoksa acik tema secen biri sayfayi
+            bir an koyu goruyor. Govdenin ilk cocugu oldugu icin alti henuz bos. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
 
         <script
           type="application/ld+json"
-          // Sabit, kullanıcı girdisi içermeyen JSON — güvenli.
+          // sabit JSON, icinde kullanici girdisi yok
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <ThemeProvider>

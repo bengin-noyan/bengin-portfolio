@@ -16,14 +16,14 @@ export function Hero() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-28 pb-16"
     >
       <div className="mx-auto w-full max-w-4xl px-6 text-center sm:px-8">
-        {/* Portre — dosya verilmediyse hiç çizilmez (bozuk görsel çıkmasın) */}
+        {/* fotograf verilmediyse hic cizme, bozuk gorsel cikmasin */}
         {profile.photo ? (
           <Reveal className="mx-auto mb-8 block w-fit">
             <div className="animate-float relative size-28 sm:size-36">
-              {/* Dönen aurora halkası: 2px'lik degrade çerçeve */}
+              {/* donen aurora halkasi, 2px'lik degrade cerceve */}
               <div className="animate-ring absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,var(--color-accent),var(--color-accent-2),var(--color-accent-3),var(--color-accent))] opacity-80 blur-[1px]" />
               <div className="absolute -inset-6 -z-10 rounded-full bg-accent/20 blur-2xl" />
-              {/* Statik export'ta next/image optimizasyonu kapalı; plain img daha öngörülebilir. */}
+              {/* statik export'ta next/image optimizasyonu kapali, duz img daha ongorulebilir */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={profile.photo}
@@ -37,7 +37,7 @@ export function Hero() {
           </Reveal>
         ) : null}
 
-        {/* İsim — harf harf belirir */}
+        {/* isim harf harf beliriyor */}
         <SplitText
           as="h1"
           text={profile.name}
@@ -47,7 +47,6 @@ export function Hero() {
           className="block text-5xl leading-[0.95] font-semibold tracking-tighter text-balance sm:text-7xl lg:text-8xl"
         />
 
-        {/* Ünvan */}
         <Reveal delay={420}>
           <p className="mt-5 flex items-center justify-center gap-3 text-xl font-medium text-fg sm:text-2xl lg:text-3xl">
             <span aria-hidden="true" className="h-px w-8 bg-accent sm:w-12" />
@@ -55,14 +54,13 @@ export function Hero() {
           </p>
         </Reveal>
 
-        {/* Özet cümle */}
         <Reveal delay={520}>
           <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-fg-muted sm:text-lg">
             {t(profile.tagline)}
           </p>
         </Reveal>
 
-        {/* Eylem butonları */}
+        {/* butonlar */}
         <Reveal delay={640}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Magnetic strength={0.22}>
@@ -96,7 +94,6 @@ export function Hero() {
               </Magnetic>
             ) : null}
 
-            {/* Sosyal bağlantılar */}
             <div className="ml-1 flex items-center gap-1">
               {socials.map((s) => (
                 <Magnetic key={s.label} strength={0.35}>

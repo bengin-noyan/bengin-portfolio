@@ -1,17 +1,14 @@
-/**
- * Sayfanın arkasındaki dekoratif katman: ızgara dokusu + yavaşça sürüklenen
- * neon lekeler ("aurora"). Tamamen CSS ile animasyonlanır, JS maliyeti yoktur.
- */
+// Arka plandaki dekoratif katman: izgara dokusu + yavasca suruklenen neon
+// lekeler. Hepsi CSS animasyonu, JS tarafinda maliyeti yok.
 export function Background() {
   return (
     <div
       aria-hidden="true"
       className="aurora-layer pointer-events-none fixed inset-0 -z-20 overflow-hidden"
     >
-      {/* Izgara */}
       <div className="bg-grid mask-fade-b absolute inset-0 opacity-[0.32]" />
 
-      {/* Sürüklenen ışık lekeleri */}
+      {/* suruklenen isik lekeleri */}
       <div className="animate-aurora-a absolute -top-40 -left-32 size-[36rem] rounded-full bg-accent/16 blur-[130px]" />
       <div
         className="animate-aurora-b absolute top-[26%] -right-40 size-[32rem] rounded-full bg-accent-2/14 blur-[130px]"
@@ -22,7 +19,7 @@ export function Background() {
         style={{ animationDelay: "-14s" }}
       />
 
-      {/* Alt kısmı koyulaştıran vinyet */}
+      {/* alti koyulastiran vinyet */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-950" />
     </div>
   );

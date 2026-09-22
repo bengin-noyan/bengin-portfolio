@@ -3,10 +3,8 @@
 import { Reveal } from "./Reveal";
 import { SplitText } from "./SplitText";
 
-/**
- * Tüm bölümlerin ortak kabuğu: harf harf beliren başlık,
- * sağa doğru çizilen ayraç çizgisi, tutarlı boşluk ritmi.
- */
+// Butun bolumlerin ortak kabugu: harf harf beliren baslik, altinda ayrac
+// cizgisi ve her yerde ayni bosluk ritmi.
 export function Section({
   id,
   title,
@@ -16,9 +14,9 @@ export function Section({
   className = "",
 }: {
   id: string;
-  /** Boş bırakılırsa başlık satırı çizilmez; yalnızca ekran okuyucu görür. */
+  // bos birakilirsa baslik satiri cizilmiyor, sadece ekran okuyucu goruyor
   title?: string;
-  /** Başlık gizliyken ekran okuyucunun okuyacağı ad. */
+  // baslik gizliyken ekran okuyucunun okuyacagi ad
   srTitle?: string;
   intro?: string;
   children: React.ReactNode;
@@ -33,7 +31,7 @@ export function Section({
         <div className="flex flex-col items-center gap-4">
           <SplitText
             as="h2"
-            // dil değişince harfleri yeniden kur
+            // dil degisince harfleri bastan kur
             key={title}
             text={title}
             className="block text-center text-2xl font-semibold tracking-tight text-fg sm:text-3xl"
@@ -41,7 +39,7 @@ export function Section({
             delay={80}
           />
 
-          {/* Başlığın altındaki kısa, iki yana sönümlenen ayraç */}
+          {/* basligin altindaki kisa ayrac */}
           <Reveal delay={200}>
             <span
               aria-hidden="true"
@@ -50,7 +48,7 @@ export function Section({
           </Reveal>
         </div>
       ) : (
-        /* Başlık gizli ama bölüm adsız kalmasın */
+        /* baslik gizli ama bolum adsiz kalmasin */
         <h2 className="sr-only">{srTitle}</h2>
       )}
 

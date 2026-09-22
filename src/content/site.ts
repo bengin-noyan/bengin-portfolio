@@ -1,57 +1,45 @@
-/* ═══════════════════════════════════════════════════════════════════════════
- *  SİTE İÇERİĞİ  ·  SITE CONTENT
- *  ───────────────────────────────────────────────────────────────────────────
- *  Sitedeki TÜM metinler bu dosyadadır. Başka hiçbir dosyaya dokunmana
- *  gerek yok. Bir alanı değiştir, kaydet — site anında güncellenir.
- *
- *  Çift dilli alanlar şu şekilde yazılır:
- *      { tr: "Türkçe metin", en: "English text" }
- *
- *  İpucu: Bir bölümü tamamen gizlemek için dizisini boş bırak → []
- *
- *  İçerik kaynağı: BENGİN-NOYAN-CV-guncel.pdf (2026). Aşağıdaki metinler
- *  bu CV'den alınmıştır; yer tutucu kalmadı.
- * ═══════════════════════════════════════════════════════════════════════════ */
+// Sitedeki butun metinler bu dosyada, baska bir yere dokunmaya gerek yok.
+// Bir alani degistirip kaydetmek yetiyor.
+//
+// Cift dilli alanlar boyle yaziliyor:  { tr: "Turkce metin", en: "English text" }
+// Bir bolumu komple gizlemek icin dizisini bos birak: []
+//
+// Metinlerin hepsi CV'den geliyor (BENGIN-NOYAN-CV-guncel.pdf, 2026).
 
 export type Lang = "tr" | "en";
 
-/** Çift dilli değer / Bilingual value */
+// cift dilli deger / bilingual value
 export type L<T = string> = { tr: T; en: T };
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 1 · PROFİL
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 1. PROFIL ---
 export const profile = {
-  /** Tam adın. Header'da ve tarayıcı sekmesinde görünür. */
+  // tam adim, header'da ve tarayici sekmesinde gorunuyor
   name: "Bengin Noyan",
 
-  /** Logo olarak kullanılan baş harfler. */
+  // logo olarak kullanilan bas harfler
   initials: "BN",
 
-  /**
-   * Hero'daki portre fotoğraf. Dosyayı `public/` içine koy ve yolunu buraya
-   * yaz (ör. "/portrait.jpg"). Boş bırakılırsa fotoğraf alanı hiç çizilmez —
-   * bozuk görsel ikonu çıkmaz.
-   * Öneri: kare kırpılmış, en az 640×640, yüz ortada.
-   */
+  // Hero'daki portre. Dosyayi public/ icine koyup yolunu buraya yaziyorum
+  // (or. "/portrait.jpg"). Bos birakirsam foto alani hic cizilmiyor, bozuk
+  // gorsel ikonu cikmasin diye. Kare kirpilmis, en az 640x640 olmasi iyi.
   photo: "/bengin-noyan.jpg",
 
-  /** Fotoğrafın alt metni; boşsa isim + ünvan kullanılır. */
+  // fotografin alt metni, bos birakilirsa isim + unvan kullaniliyor
   photoAlt: { tr: "Bengin Noyan portresi", en: "Portrait of Bengin Noyan" } as L,
 
-  /** Ünvanın. Hero bölümünde isminin altında çıkar. */
+  // unvan, hero'da ismin altinda cikiyor
   title: {
     tr: "Software Developer",
     en: "Software Developer",
   } as L,
 
-  /** Hero'da isminin üstündeki tek cümlelik özet. */
+  // hero'da ismin ustundeki tek cumlelik ozet
   tagline: {
     tr: "C#, .NET, Go ve Python ile uçtan uca sistemler kuruyorum. Kurumsal kaynak planlama ve süreç otomasyonları tasarlıyor, makine öğrenmesi ve görüntü işleme modellerini üretime taşıyorum.",
     en: "I build end-to-end systems with C#, .NET, Go and Python. I design enterprise resource planning and process automation, and take machine learning and computer vision models to production.",
   } as L,
 
-  /** Hero'daki yanıp sönen küçük durum rozeti. */
+  // hero'daki kucuk durum rozeti
   availability: {
     tr: "Mezuniyet aşamasında · İş fırsatlarına açığım",
     en: "Graduating · Open to opportunities",
@@ -64,27 +52,20 @@ export const profile = {
 
   email: "benginnyn72@gmail.com",
 
-  /**
-   * Telefon numarası bilinçli olarak sitede gösterilmiyor — yalnızca
-   * indirilen CV'de yer alıyor. Sayfada da göstermek istersen numarayı
-   * buraya yaz ve Contact bileşenine bir satır ekle.
-   */
+  // Telefonu bilerek siteye koymadim, sadece indirilen CV'de var.
+  // Sayfada da gostermek istersem numarayi buraya yazip Contact'a bir satir
+  // eklemem lazim.
   phone: "",
 
-  /**
-   * CV dosyan: public/cv.pdf olarak duruyor.
-   * Butonu gizlemek istersen: ""
-   */
+  // CV dosyasi public/cv.pdf olarak duruyor. Butonu gizlemek icin: ""
   resumeUrl: "/cv.pdf",
 
-  /** İndirilirken dosyaya verilecek ad. */
+  // indirirken dosyaya verilecek ad
   resumeFileName: "Bengin-Noyan-CV.pdf",
 };
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 2 · SOSYAL BAĞLANTILAR
- *     icon seçenekleri: "github" | "linkedin" | "x" | "mail" | "dribbble" | "link"
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 2. SOSYAL LINKLER ---
+// icon secenekleri: "github" | "linkedin" | "x" | "mail" | "dribbble" | "link"
 export const socials = [
   { label: "GitHub", href: "https://github.com/bengin-noyan", icon: "github" },
   {
@@ -95,11 +76,9 @@ export const socials = [
   { label: "E-posta", href: "mailto:" + profile.email, icon: "mail" },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 3 · HAKKIMDA
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 3. HAKKIMDA ---
 export const about = {
-  /** Her dizi elemanı ayrı bir paragraf olur. */
+  // her dizi elemani ayri bir paragraf oluyor
   paragraphs: {
     tr: [
       "Pamukkale Üniversitesi Yönetim Bilişim Sistemleri lisans programındaki tüm ders dönemini başarıyla tamamlamış ve mezuniyet aşamasında bir Yönetim Bilişim Sistemleri mezun adayı olarak; C#, .NET, Go ve Python ekosistemlerinde modern web ve masaüstü uygulamaları geliştiriyorum.",
@@ -113,18 +92,14 @@ export const about = {
     ],
   } as L<string[]>,
 
-  /**
-   * Hakkımda bölümünün yanındaki rakam kartları — şu an kapalı.
-   * Geri açmak için diziye kayıt ekle, ör.:
-   *   { value: "2026", label: { tr: "Mezuniyet yılı", en: "Graduation year" } as L },
-   * Boş kaldığı sürece bölüm tek sütuna düşer ve kart alanı hiç çizilmez.
-   */
+  // Hakkimda'nin yanindaki rakam kartlari, su an kapali.
+  // Geri acmak icin diziye kayit ekle, ornegin:
+  //   { value: "2026", label: { tr: "Mezuniyet yili", en: "Graduation year" } as L },
+  // Bos kaldigi surece bolum tek sutuna dusuyor, kart alani hic cizilmiyor.
   stats: [] as { value: string; label: L }[],
 };
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 4 · YETENEKLER   (CV · BECERİLER)
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 4. YETENEKLER (CV'deki beceriler) ---
 export const skillGroups = [
   {
     title: {
@@ -206,15 +181,12 @@ export const skillGroups = [
   },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 5 · PROJELER   (CV · PROJELER)
- *     featured: true  →  büyük kart olarak, listenin başında gösterilir.
- *     image: görselini public/projects/ içine at, yolunu buraya yaz.
- *            Boş bırakırsan başlıktan türetilen bir degrade kapak üretilir.
- *     links: repo/demo bağlantıların herkese açıksa buraya yaz;
- *            boş bırakılan bağlantının butonu hiç görünmez.
- *     year:  boş bırakırsan yıl rozeti gösterilmez.
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 5. PROJELER (CV'deki projeler) ---
+// featured: true  -> buyuk kart olarak listenin basinda gosteriliyor
+// image: gorseli public/projects/ icine at, yolunu buraya yaz. Bos birakirsan
+//        kapak hic cizilmiyor, kartin ustunde sadece aksan cizgisi kaliyor.
+// links: repo/demo herkese acikssa yaz, bos birakilanin butonu gorunmuyor
+// year:  bos birakirsan yil rozeti cikmiyor
 export const projects = [
   {
     title: "NowlTarım — Modüler Tarım ERP Sistemi",
@@ -228,7 +200,7 @@ export const projects = [
       tr: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu) ve PostgreSQL 16 üzerinde, Docker ile paketlenen RESTful bir API tasarladım; arayüzü React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirdim. 6 kullanıcı rolü × 13 modül seviyesinde merkezî bir RBAC katmanı kurguladım. Kapanan üretim sezonlarına geriye dönük veri girişini ve kâr/zarar sapmalarını PostgreSQL trigger'ları ve table guard yapılarıyla veritabanı seviyesinde kesin olarak engelledim. UBL-TR 1.2 XML formatında e-Fatura entegrasyon çekirdeği, Sentinel Hub API ile çok bantlı NDVI haritalama katmanı ve YOLOv8 + Gemini API tabanlı zirai analiz servisleri entegre ettim.",
       en: "I designed a Dockerised RESTful API on Go (chi/v5 router, jackc/pgx/v5 connection pool) and PostgreSQL 16, with a front end built in React 18, TypeScript, Vite, Tailwind CSS and Leaflet. A central RBAC layer governs 6 user roles across 13 modules. Backdated entry into closed production seasons — and the profit/loss drift it causes — is blocked at the database level by PostgreSQL triggers and table guards. I integrated a UBL-TR 1.2 XML e-invoice core, a multi-band NDVI mapping layer over the Sentinel Hub API, and agricultural analysis services built on YOLOv8 and the Gemini API.",
     } as L,
-    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Mimari & backend", text: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu), PostgreSQL 16 ve Docker üzerinde RESTful API mimarisi kurgulandı; arayüz React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirildi." },
@@ -275,7 +247,7 @@ export const projects = [
       tr: "Derin öğrenme tabanlı bilgisayarlı görü ve bulut mimarilerini entegre eden uçtan uca bir otonom teşhis sistemi tasarladım. Roboflow ve Kaggle veri kümeleri üzerinde transfer learning ve hiper-parametre optimizasyonu ile eğitilen Ultralytics YOLOv8 Medium modeli %94.1 mAP50 doğruluk başarımı ve 2 saniyenin altında çıkarım latansı elde etti. Model çıktıları SQLite ve Firebase mimarileriyle senkronize edilerek, Streamlit tabanlı reaktif arayüzde Pandas ve Plotly ile zirai eylem planlarına dönüştürülüyor.",
       en: "I designed an end-to-end autonomous diagnosis system integrating deep-learning computer vision with cloud architecture. An Ultralytics YOLOv8 Medium model, trained on Roboflow and Kaggle datasets with transfer learning and hyper-parameter optimisation, reached 94.1% mAP50 accuracy at sub-two-second inference latency. Model output is synchronised through SQLite and Firebase and turned into agricultural action plans on a reactive Streamlit interface using Pandas and Plotly.",
     } as L,
-    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Derin öğrenme & mimariler", text: "Derin öğrenme tabanlı bilgisayarlı görü ile bulut mimarilerini entegre eden uçtan uca otonom teşhis sistemi tasarlandı." },
@@ -314,7 +286,7 @@ export const projects = [
       tr: "FDI (ISO 3950) uluslararası dental standardına uygun dinamik diş topolojisi, hekim takvimli asenkron randevu yönetimi, seans tabanlı tedavi planlaması ve taksitli finansal süreç takip modülleri geliştirdim. PostgreSQL 17 üzerinde 23 tablolu normalize şema ve version-controlled sıralı SQL migration yönetimi sağladım; NetGSM entegrasyonlu asenkron arka plan SMS bildirim kuyruğu servisi yapılandırdım.",
       en: "I built a dynamic tooth topology compliant with the FDI (ISO 3950) international dental standard, asynchronous appointment management on practitioner calendars, session-based treatment planning and instalment-based financial tracking modules. On PostgreSQL 17 I delivered a normalised 23-table schema with version-controlled sequential SQL migrations, plus an asynchronous background SMS notification queue service integrated with NetGSM.",
     } as L,
-    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "LAN dağıtık mimarisi", text: "Diş klinikleri için yerel ağ (LAN) topolojisinde istemci-sunucu modelinde eşzamanlı çalışan masaüstü klinik otomasyon sistemi kurgulandı." },
@@ -343,7 +315,7 @@ export const projects = [
       tr: "Kayan nokta hassasiyet kayıplarını ve yuvarlama sapmalarını engellemek için deterministik tamsayı aritmetiği (int64 fixed-point) üzerine kurgulanmış, TCMB XML entegrasyonlu ve izole birim testli bir kur farkı hesap motoru yazdım. Gömülü SQL migration altyapısı, otomatik yedekleme/recovery mekanizmaları, Excelize ile veri dışa aktarımı ve senkronize cari ekstre raporlama altyapısı kurguladım.",
       en: "I wrote an exchange-rate calculation engine built on deterministic integer arithmetic (int64 fixed-point) to eliminate floating-point precision loss and rounding drift, integrated with TCMB XML and covered by isolated unit tests. I also built embedded SQL migration infrastructure, automatic backup/recovery mechanisms, Excelize-based data export and synchronised account-statement reporting.",
     } as L,
-    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "CGO-free native mimarisi", text: "Cross-compilation avantajı sağlayan CGO-free saf Go ve Wails3 mimarisinde, native ve sıfır bağımlılıklı tek dosyalı (.exe) masaüstü otomasyonu geliştirildi." },
@@ -372,7 +344,7 @@ export const projects = [
       tr: "C# ile masaüstü istemci arayüzü, Microsoft SQL Server üzerinde 3NF seviyesinde normalize edilmiş ilişkisel veritabanı şeması ve anlık GPS/IoT telemetri veri akış modelleri yapılandırdım. Sistem gereksinimlerini UML Use Case, DFD (Level 0/1), karar ağaçları ve detaylı HIPO modelleriyle formal olarak dokümante ettim; 3D Secure ödeme geçidi entegrasyon protokollerini planladım. 4.65M TL sermayeli finansal simülasyonlarda %60.07 İç Karlılık Oranı (IRR), 7.22M TL Net Bugünkü Değer (NPV) ve 1.56 yıl indirgenmiş geri ödeme süresiyle projenin finansal fizibilitesini doğruladım.",
       en: "I built a C# desktop client interface, a relational schema normalised to 3NF on Microsoft SQL Server, and real-time GPS/IoT telemetry data-flow models. System requirements were formally documented with UML use cases, DFDs (level 0/1), decision trees and detailed HIPO models, and 3D Secure payment gateway integration protocols were planned. Financial simulations on 4.65M TRY of capital confirmed feasibility with a 60.07% IRR, 7.22M TRY NPV and a 1.56-year discounted payback period.",
     } as L,
-    /** CV'deki madde başlıkları — kartta alt alta listelenir. */
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Sistem analizi & tasarımı (SDLC)", text: "Akıllı mikro-mobilite ekosisteminin System Development Life Cycle (SDLC) ve nesne yönelimli analiz/tasarım (OOA/OOD) metodolojileri doğrultusunda uçtan uca mimari kurgusu yürütüldü." },
@@ -393,9 +365,7 @@ export const projects = [
   },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 6 · DENEYİM   (CV · DENEYİM)
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 6. DENEYIM (CV'deki deneyim) ---
 export const experience = [
   {
     company: "NowlSoft",
@@ -452,9 +422,7 @@ export const experience = [
   },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 7 · EĞİTİM   (gizlemek için: [])
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 7. EGITIM --- (gizlemek icin: [])
 export const education = [
   {
     school: { tr: "Pamukkale Üniversitesi", en: "Pamukkale University" } as L,
@@ -470,9 +438,7 @@ export const education = [
   },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 8 · DİLLER & SERTİFİKALAR   (gizlemek için: [])
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 8. DILLER & SERTIFIKALAR --- (gizlemek icin: [])
 export const languages = [
   {
     name: { tr: "Türkçe", en: "Turkish" } as L,
@@ -498,24 +464,19 @@ export const certifications: L[] = [
   { tr: "Go ile Programlamaya Giriş", en: "Introduction to Programming with Go" },
 ];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 9 · REFERANSLAR
- *     CV'deki referans (Dr. Öğr. Üyesi Mehmet Ulaş KOYUNCUOĞLU) bilinçli olarak
- *     siteye konmadı: üçüncü bir kişinin e-posta ve telefonunu herkese açık bir
- *     sayfada yayınlamak onun rızasını gerektirir. Referansı CV üzerinden
- *     paylaşmaya devam edebilirsin. Yine de sitede görünmesini istersen
- *     aşağıdaki diziyi doldur — iletişim bilgisi olmadan önerilir.
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 9. REFERANSLAR ---
+// CV'deki referansi (Dr. Ogr. Uyesi Mehmet Ulas KOYUNCUOGLU) siteye koymadim:
+// baska birinin e-posta ve telefonunu herkese acik bir sayfada yayinlamak once
+// ona sormayi gerektirir. CV uzerinden paylasmaya devam edebilirim. Yine de
+// sitede gorunsun istersem asagidaki diziyi doldururum, iletisim bilgisi
+// koymadan.
 export const references: { name: string; title: L }[] = [];
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 10 · İLETİŞİM BÖLÜMÜ
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 10. ILETISIM BOLUMU ---
 export const contact = {
   heading: { tr: "Benimle iletişime geçin", en: "Contact me" } as L,
 
-  /* Giriş cümlesi e-posta adresini ortasında bağlantı olarak taşır,
-     bu yüzden iki parçaya ayrıldı. */
+  // giris cumlesinin ortasinda e-posta linki duruyor, o yuzden ikiye bolundu
   bodyBefore: {
     tr: "Bana doğrudan",
     en: "Please contact me directly at",
@@ -525,27 +486,20 @@ export const contact = {
     en: "or through this form.",
   } as L,
 
-  /**
-   * İletişim formunun mesajı POST edeceği adres.
-   * Site statik export edildiği için sunucu tarafı yok; formu çalıştırmak
-   * üçüncü taraf bir servis gerektirir. Boş bırakılırsa form hiç çizilmez,
-   * yalnızca e-posta ve kopyala düğmeleri kalır.
-   *
-   * Formspree  : https://formspree.io       → "https://formspree.io/f/XXXXXXXX"
-   * Web3Forms  : https://web3forms.com      → "https://api.web3forms.com/submit"
-   * Getform    : https://getform.io         → "https://getform.io/f/XXXXXXXX"
-   *
-   * Web3Forms kullanacaksan erişim anahtarını da aşağıya yaz.
-   */
+  // Formun mesaji POST edecegi adres. Site statik export edildigi icin sunucu
+  // tarafi yok, calismasi icin ucuncu parti bir servis lazim. Bos birakilirsa
+  // form mailto'ya dusuyor.
+  //
+  // Formspree : https://formspree.io/f/XXXXXXXX
+  // Web3Forms : https://api.web3forms.com/submit   (access key'i de asagiya yaz)
+  // Getform   : https://getform.io/f/XXXXXXXX
   formEndpoint: "https://formspree.io/f/xeajwlzg",
 
-  /** Yalnızca Web3Forms için: panelden aldığın access key. */
+  // sadece Web3Forms icin, panelden aldigin access key
   formAccessKey: "",
 };
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 11 · ARAYÜZ METİNLERİ  ·  UI STRINGS
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 11. ARAYUZ METINLERI ---
 export const ui = {
   navAbout: { tr: "Hakkımda", en: "About" } as L,
   navWork: { tr: "Projeler", en: "Work" } as L,
@@ -582,7 +536,7 @@ export const ui = {
   switchToLight: { tr: "Açık temaya geç", en: "Switch to light theme" } as L,
   switchToDark: { tr: "Koyu temaya geç", en: "Switch to dark theme" } as L,
 
-  /* İletişim formu */
+  // iletisim formu
   formEmail: { tr: "E-posta adresiniz", en: "Your email" } as L,
   formMessage: { tr: "Mesajınız", en: "Your message" } as L,
   formSend: { tr: "Gönder", en: "Submit" } as L,
@@ -598,14 +552,10 @@ export const ui = {
   formOr: { tr: "ya da", en: "or" } as L,
 };
 
-/* ───────────────────────────────────────────────────────────────────────────
- * 12 · SEO
- * ─────────────────────────────────────────────────────────────────────────── */
+// --- 12. SEO ---
 export const seo = {
-  /**
-   * Sitenin canlı adresi. sitemap.xml, robots.txt, canonical ve OG etiketleri
-   * buradan türüyor — alan adı değişirse tek değiştirilecek yer burası.
-   */
+  // Sitenin canli adresi. sitemap.xml, robots.txt, canonical ve OG etiketleri
+  // hep buradan tureyor, alan adi degisirse tek degisecek yer burasi.
   siteUrl: "https://bengin-portfolio.vercel.app",
   description: {
     tr: "Software Developer. Go, C#, .NET ve Python ile ERP, süreç otomasyonu, native masaüstü uygulamaları ve YOLOv8 tabanlı görüntü işleme çözümleri.",

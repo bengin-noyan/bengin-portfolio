@@ -14,8 +14,8 @@ export function About() {
 
   return (
     <Section id="about" title={t(ui.sectionAbout)}>
-      {/* Kart sütunu kapalıysa ızgarayı iki sütunda tutmak sağda ölü bir
-          boşluk bırakıyordu; tek sütuna düşüp metni okunur genişlikte tutuyoruz. */}
+      {/* stat kartlari kapaliyken iki sutunlu izgara sagda kocaman bos bir alan
+          birakiyordu, o yuzden tek sutuna dusuyor */}
       <div
         className={
           hasStats
@@ -23,7 +23,7 @@ export function About() {
             : "mx-auto max-w-3xl"
         }
       >
-        {/* Metin — paragraflar sırayla belirir */}
+        {/* paragraflar sirayla belirsin */}
         <div className="space-y-5">
           {paragraphs.map((p, i) => (
             <Reveal key={i} delay={i * 130}>
@@ -34,15 +34,15 @@ export function About() {
           ))}
         </div>
 
-        {/* Rakamlar — görünürken sayarak artar */}
+        {/* sayilar gorunur gorunmez sayarak artiyor */}
         {hasStats ? (
           <div className="grid grid-cols-2 gap-4 self-start">
             {about.stats.map((stat, i) => (
               <Reveal
                 key={stat.value + i}
                 delay={140 + i * 100}
-                // Tek sayida kart varsa sonuncusu satiri tam kaplasin,
-                // yoksa 2'li izgarada yarim bosluk asili kalir.
+                // tek sayida kart varsa sonuncusu satiri kaplasin,
+                // yoksa 2'li izgarada yarim bosluk asili kaliyor
                 className={
                   about.stats.length % 2 === 1 && i === about.stats.length - 1
                     ? "col-span-2"

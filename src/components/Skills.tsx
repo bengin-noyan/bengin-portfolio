@@ -6,10 +6,8 @@ import { Reveal } from "./ui/Reveal";
 import { Section } from "./ui/Section";
 import { Spotlight } from "./ui/Spotlight";
 
-/**
- * Grubu ayıran tek işaret, üst kenardaki ince aksan çizgisi. Markanın kendi
- * renkleri kullanılıyor; bunlar tema değişince otomatik uyum sağlıyor.
- */
+// Gruplari ayiran tek sey ust kenardaki aksan cizgisi. Kendi renklerimi
+// kullaniyorum, boylece tema degisince onlar da uyuyor.
 const ACCENT_RULES = [
   "from-accent",
   "from-accent-2",
@@ -17,11 +15,8 @@ const ACCENT_RULES = [
   "from-accent-bright",
 ];
 
-/**
- * Beş grup, altı sütunluk ızgarada 3+3 / 2+2+2 olarak yerleşir — eşit
- * kutulardan oluşan tekdüze bir tabloya göre çok daha canlı duruyor.
- * Grup sayısı değişirse hepsi eşit genişliğe düşer.
- */
+// Bes grup, alti sutunluk izgarada 3+3 / 2+2+2 diziliyor. Hepsi esit kutu
+// olunca tablo gibi duruyordu. Grup sayisi degisirse hepsi esit genislige duser.
 const WIDE_LAYOUT = [
   "lg:col-span-3",
   "lg:col-span-3",
@@ -50,7 +45,7 @@ export function Skills() {
                 maxTilt={5}
                 className="surface group relative h-full overflow-hidden rounded-2xl border border-ink-800 bg-ink-900/40 p-7 backdrop-blur-sm transition-colors duration-300 hover:border-ink-600 hover:bg-ink-900/70"
               >
-                {/* Üst kenardaki aksan çizgisi — gruba özel renk */}
+                {/* ust kenardaki aksan cizgisi, gruba gore renk degisiyor */}
                 <span
                   aria-hidden="true"
                   className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${rule} to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100`}

@@ -3,10 +3,8 @@
 import { useEffect, useRef } from "react";
 import { useFinePointer, useReducedMotion } from "@/lib/motion";
 
-/**
- * İmleci gecikmeli takip eden yumuşak ışık lekesi.
- * Sadece fare/trackpad olan cihazlarda ve hareket azaltma kapalıyken çalışır.
- */
+// Imleci gecikmeli takip eden yumusak isik lekesi.
+// Sadece fare/trackpad olan cihazlarda ve hareket azaltma kapaliyken calisiyor.
 export function CursorGlow() {
   const ref = useRef<HTMLDivElement>(null);
   const fine = useFinePointer();
@@ -16,7 +14,7 @@ export function CursorGlow() {
   useEffect(() => {
     if (!active) return;
 
-    // Hedef ve mevcut konum — aradaki fark yumuşak takibi verir.
+    // hedef ve mevcut konum, aradaki fark yumusak takibi veriyor
     const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const current = { ...target };
     let frame = 0;

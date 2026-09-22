@@ -2,10 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * Sayfanın en üstünde ilerleme çubuğu.
- * scaleX ile çalışır — layout tetiklemez, her karede ucuzdur.
- */
+// Sayfanin en ustundeki ilerleme cubugu.
+// scaleX ile calisiyor, layout tetiklemedigi icin her karede ucuz.
 export function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +20,7 @@ export function ScrollProgress() {
     };
 
     const onScroll = () => {
-      if (frame) return; // kare başına en fazla bir güncelleme
+      if (frame) return; // kare basina en fazla bir guncelleme
       frame = window.requestAnimationFrame(update);
     };
 

@@ -1,17 +1,9 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  TASARIM TOKEN'LARI  ·  DESIGN TOKENS   —   "Aurora" paleti
- *  Renkleri değiştirmek istersen sadece burayı düzenle; tüm site uyar.
- * ═══════════════════════════════════════════════════════════════════════════ */
-/* ═══════════════════════════════════════════════════════════════════════════
- *  HAM PALET  —  temayı değiştiren tek yer
- *
- *  Neden iki katman? @theme'e doğrudan sabit renk yazılırsa Tailwind opaklık
- *  varyantlarını (`bg-accent/16`) derlemede o sabite çevirip `var()` bağını
- *  koparıyor; sonra değişkeni ezmek o yardımcıları etkilemiyordu.
- *  Token'lar bu ham değişkenlere işaret edince bağ korunuyor.
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* Renk paleti. Degistirmek istersen sadece asagidaki --p-* satirlarina dokun.
+   Iki katman olmasinin sebebi: @theme'in icine direkt hex yazinca Tailwind
+   bg-accent/16 gibi opaklik varyantlarini build sirasinda o hex'e ceviriyor,
+   var() bagi kopuyor ve tema degisince o siniflar eski renkte kaliyor. */
 :root {
   --p-ink-950: #14171e;
   --p-ink-900: #1a1e26;
@@ -29,7 +21,7 @@
 }
 
 @theme {
-  /* Zemin katmanları — nötr, hafif sıcak karbon tonları */
+  /* zeminler */
   --color-ink-950: var(--p-ink-950);
   --color-ink-900: var(--p-ink-900);
   --color-ink-850: var(--p-ink-850);
@@ -42,7 +34,7 @@
   --color-fg-muted: var(--p-fg-muted);
   --color-fg-subtle: var(--p-fg-subtle);
 
-  /* Aksanlar — nane yeşili + periwinkle mavi + yumuşak pembe */
+  /* aksanlar: yesil, mavi, pembe */
   --color-accent: var(--p-accent);
   --color-accent-bright: var(--p-accent-bright);
   --color-accent-2: var(--p-accent-2);
@@ -52,30 +44,20 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Yumuşama eğrileri */
+  /* easing */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  AÇIK TEMA  —  :root koyu, açık tema opt-in
- *
- *  Tailwind v4 @theme token'ları :root üzerinde `--color-*` olarak yayar ve
- *  tüm utility'ler bunlara `var()` ile bakar; dolayısıyla değişkenleri bir
- *  seçici altında ezmek tüm siteyi yeniden renklendirmeye yetiyor.
- *
- *  Aksanlar burada koyulaştırıldı: neon nane (#00e19a) beyaz üzerinde ~1.7:1
- *  kontrast verir, yani okunmaz. Açık paletteki karşılıkları WCAG AA (4.5:1)
- *  eşiğini geçecek şekilde seçildi.
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* Acik tema. :root koyu, acik tema opt-in.
+   Tailwind v4 token'lari :root'a --color-* olarak yaydigi ve tum utility'ler
+   var() ile baktigi icin degiskenleri burada ezmek yetiyor.
+   Aksanlar koyulastirildi, neon yesil beyaz uzerinde ~1.7:1 kaliyordu. */
 :root[data-theme="light"] {
-  /*  Zemin katmanları — rol sırası koyu temayla aynı:
-   *  950 sayfa zemini · 900 kart · 850 yükseltilmiş yüzey · 800/700/600 kenarlık.
-   *
-   *  Sayfa zemini bilinçli olarak beyaz DEĞİL. Kartlar `bg-ink-900/40` gibi
-   *  yarı saydam yüzeyler; zemin de beyaz olsaydı kart ile arkası aynı renge
-   *  düşer ve kartların sınırı tamamen kaybolurdu.
-   */
+  /* Rol sirasi koyu temayla ayni: 950 sayfa, 900 kart, 850 yukseltilmis
+     yuzey, 800/700/600 kenarlik.
+     Sayfa zemini bilerek beyaz degil. Kartlar yari saydam (bg-ink-900/40),
+     zemin de beyaz olsa kartin siniri tamamen kayboluyor. */
   --p-ink-950: #eef1f6;
   --p-ink-900: #ffffff;
   --p-ink-850: #f7f8fb;
@@ -88,54 +70,47 @@
   --p-fg-muted: #3d4657;
   --p-fg-subtle: #5a6474;
 
-  /*  Aksanlar — aynı renk ailesi, açık zeminde okunacak koyulukta.
-   *  Neon nane (#00e19a) beyaz üzerinde ~1.7:1 verir, yani okunmaz.
-   *  Buradaki değerler iki testi birden geçiyor: beyaz üzerinde metin olarak
-   *  (≥4.5:1) ve dolgu rengi olup üstünde açık metin taşırken (≥4.5:1).
-   */
+  /* Ayni renk ailesi ama acik zeminde okunacak koyulukta.
+     Iki testi de geciyorlar: beyaz uzerinde metin olarak ve dolgu olup
+     ustunde acik metin tasirken (ikisi de >= 4.5:1). */
   --p-accent: #00694a;
   --p-accent-bright: #00543b;
   --p-accent-2: #3354c9;
   --p-accent-3: #b82a6f;
 }
 
-/* Seçim vurgusu her iki temada da okunur kalsın */
+/* secim rengi iki temada da okunsun */
 :root[data-theme="light"] ::selection {
   color: #ffffff;
 }
 
-/*  Dekoratif aurora lekeleri: koyu zeminde "ışık" gibi okunuyorlar, beyaz
- *  zeminde ise leke gibi duruyorlardı. Açık temada yalnızca hafif bir renk
- *  tonu bırakacak kadar kısıldı. */
+/* Aurora lekeleri koyu zeminde isik gibi duruyor ama beyazda leke gibi
+   gorunuyordu, acik temada opakligi kistim. */
 :root[data-theme="light"] .aurora-layer {
   opacity: 0.22;
 }
 
-/*  Cam yüzeyler (menü hapı, düğmeler): açık zeminde %70 saydam
- *  bir yüzey arkasından ayrışmıyordu. Daha opak hale getirilip gölgeyle
- *  kaldırıldı — koyu temada bu işi kontrast yapıyor, açıkta gölge yapmalı. */
+/* Cam yuzeyler (menu hapi, dugmeler) acik zeminde arkasindan ayrismiyordu.
+   Daha opak yapip golge verdim. */
 :root[data-theme="light"] .glass {
   background-color: color-mix(in oklab, var(--color-ink-900) 88%, transparent);
   box-shadow: 0 10px 30px -14px rgb(20 22 28 / 0.28);
 }
 
-/*  Kart yüzeyleri: `bg-ink-900/40` beyaz zeminde neredeyse görünmezdi.
- *  Açık temada kartları tam opak yapıp ince bir gölgeyle ayırıyoruz. */
+/* bg-ink-900/40 beyaz zeminde neredeyse gorunmuyordu, acik temada kartlar
+   tam opak + golge */
 :root[data-theme="light"] .surface {
   background-color: var(--color-ink-900);
   box-shadow: 0 1px 2px rgb(20 22 28 / 0.04), 0 8px 24px -16px rgb(20 22 28 / 0.25);
 }
 
-/*  Form alanları: koyu temada dolgusu kontrastla okunuyor, açık temada beyaz
- *  kartın üstünde beyaz kalıyordu. Hafif gri bir dolgu veriliyor. */
+/* input'lar beyaz kartin ustunde beyaz kaliyordu, hafif gri dolgu */
 :root[data-theme="light"] input,
 :root[data-theme="light"] textarea {
   background-color: var(--color-ink-850);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  TEMEL KATMAN
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* base */
 @layer base {
   * {
     border-color: var(--color-ink-700);
@@ -159,7 +134,7 @@
     color: #04120c;
   }
 
-  /* Klavye ile gezinenler için net odak halkası */
+  /* klavyeyle gezenler icin odak halkasi */
   :focus-visible {
     outline: 2px solid var(--color-accent-bright);
     outline-offset: 3px;
@@ -183,9 +158,7 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  YARDIMCI SINIFLAR
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* yardimci siniflar */
 @layer utilities {
   /* Cam yüzey */
   .glass {
@@ -217,8 +190,7 @@
     opacity: 1;
   }
 
-  /* ── İmleci takip eden ışık (kartlar) ────────────────────────────────────
-   * --mx / --my değerlerini JS (Spotlight bileşeni) yazar.             */
+  /* imleci takip eden isik. --mx / --my degerlerini Spotlight bileseni yaziyor */
   .spotlight {
     position: relative;
     isolation: isolate;
@@ -270,7 +242,7 @@
     opacity: 0.7;
   }
 
-  /* 3B eğilme — Tilt bileşeni --rx / --ry yazar */
+  /* 3B egilme, --rx / --ry JS'ten geliyor */
   .tilt {
     transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transform-style: preserve-3d;
@@ -291,9 +263,7 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  KAYDIRMAYLA BELİREN İÇERİK  (IntersectionObserver tetikler)
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* scroll'da beliren icerik, IntersectionObserver tetikliyor */
 [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
@@ -312,7 +282,7 @@
 [data-char] {
   display: inline-block;
   opacity: 0;
-  /* perspective() şart: onsuz rotateX 3B dönmez, harfi sadece dikeyde ezer. */
+  /* perspective() sart, yoksa rotateX donmuyor sadece harfi eziyor */
   transform: perspective(600px) translateY(0.45em) rotateX(-55deg) scale(0.94);
   filter: blur(8px);
   transform-origin: 50% 100%;
@@ -326,17 +296,14 @@
 [data-char="shown"] {
   opacity: 1;
   transform: none;
-  /* blur(0) değil `none`: sıfır olmayan bir filter kalıcı stacking context
-     yaratır ve harflerin degradesini bozar. `none` da yumuşak geçer —
-     filter interpolasyonunda kimlik değeri olarak ele alınır. */
+  /* blur(0) degil none: sifir olmayan filter kalici stacking context
+     yaratip degradeyi bozuyor. none da yumusak gecis yapiyor. */
   filter: none;
 }
 
-/* Harflerin her biri kendi degradesini taşır.
-   Degradeyi üst başlığa verip harfleri dönüştürmek, filter/transform'un
-   yarattığı stacking context yüzünden background-clip:text'i bozardı;
-   bu yüzden clip her harfin kendi üzerinde. Hepsi aynı anda animasyonlandığı
-   için başlık tek parça hâlinde renk değiştirir. */
+/* Degradeyi basligin kendisine verip harfleri cevirince transform/filter'in
+   actigi stacking context background-clip:text'i bozuyor, o yuzden her harf
+   kendi degradesini tasiyor. Hepsi ayni anda oynadigi icin fark edilmiyor. */
 .char-gradient [data-char] {
   background-image: linear-gradient(
     110deg,
@@ -352,17 +319,14 @@
   color: transparent;
   animation: gradient-pan 9s ease-in-out infinite;
 
-  /* Degrade harfin kendi kutusuna boyanır. Başlıkta leading 0.95 olduğu için
-     kutu yazı boyutundan kısa kalıyor ve inişler (g, y, p) kutunun dışında
-     kalıp boyasız — yani görünmez — oluyordu. Kutuyu aşağı doğru büyütüp
-     aynı miktarda negatif kenar boşluğuyla yerleşimi sabit tutuyoruz. */
+  /* Degrade harfin kutusuna boyaniyor. Baslikta leading 0.95 oldugu icin
+     kutu yazidan kisa kaliyor, g/y/p'nin kuyrugu disarda kalip bos gorunuyordu.
+     Kutuyu asagi buyutup ayni kadar negatif margin veriyorum. */
   padding-bottom: 0.18em;
   margin-bottom: -0.18em;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  KEYFRAME'LER
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* keyframe'ler */
 
 @keyframes gradient-pan {
   0%,
@@ -451,15 +415,12 @@
     transform: translateX(220%) skewX(-12deg);
   }
 }
-/* Düz sınıf yerine @utility: Tailwind'in varyant üretebilmesi için gerekli
-   (ör. `group-hover:animate-sheen`). */
+/* duz class degil @utility, yoksa group-hover:animate-sheen uretilmiyor */
 @utility animate-sheen {
   animation: sheen 1.1s var(--ease-out-soft);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
- *  HAREKET AZALTMA TERCİHİ  —  erişilebilirlik gereği
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* hareket azaltma tercihi */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -482,7 +443,7 @@
   }
 }
 
-/* Yazdırma — CV olarak çıktı alınabilsin */
+/* yazdirma: CV gibi ciktisi alinabilsin */
 @media print {
   body {
     background: #fff;
@@ -494,21 +455,15 @@
     display: none !important;
   }
 }
-/* ═══════════════════════════════════════════════════════════════════════════
- *  MOBİL / DOKUNMATİK PERFORMANS
- *
- *  Kapı iki koşullu: dar pencere VEYA kaba işaretçi. Yalnızca genişliğe
- *  bakmak yatay tutulan telefonu kaçırırdı; yalnızca işaretçiye bakmak
- *  masaüstünde daraltılmış pencereyi.
- *
- *  Buradaki hiçbir kural düzeni değiştirmiyor — yalnızca kare başına yapılan
- *  boyama işini kısıyor. Efektler duruyor, sürekli yeniden çizilmiyor.
- * ═══════════════════════════════════════════════════════════════════════════ */
+/* Mobil / dokunmatik performans.
+   Kosul ikili: dar pencere VEYA kaba isaretci. Sadece genislige baksam yatay
+   tutulan telefonu, sadece isaretciye baksam daraltilmis masaustu penceresini
+   kaciriyordum. Buradaki kurallar duzeni degistirmiyor, sadece her karede
+   yapilan boyama isini kisiyor. */
 @media (max-width: 1023px), (pointer: coarse) {
-  /*  1 · Cam yüzeyler.  `backdrop-filter`, sabit konumlu bir ögede sayfa
-   *  kaydıkça arkasındaki her kareyi yeniden bulanıklaştırıyor. Header
-   *  ekranda sabit durduğu için bu iş kaydırma boyunca hiç bitmiyor —
-   *  mobildeki takılmanın birinci sebebi. Bulanıklık yerine daha opak zemin. */
+  /* 1. backdrop-filter sabit duran bir ogede, sayfa kaydikca arkasindaki her
+     kareyi yeniden bulaniklastiriyor. Header hep ekranda oldugu icin bu is hic
+     bitmiyor, mobildeki takilmanin bir numarali sebebi. */
   .glass {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -518,32 +473,30 @@
     background-color: color-mix(in oklab, var(--color-ink-900) 96%, transparent);
   }
 
-  /*  2 · Aurora lekeleri.  130px bulanıklık + `scale()` animasyonu, her karede
-   *  dev bir yüzeyin yeniden rasterleştirilmesi demek. Animasyon durunca katman
-   *  bir kez çizilip önbelleğe alınıyor; lekeler duruyor, maliyeti kalmıyor. */
+  /* 2. 130px blur + scale animasyonu her karede dev bir yuzeyi yeniden
+     rasterize ediyor. Animasyon durunca katman bir kez cizilip onbellege
+     giriyor, lekeler duruyor ama maliyeti kalmiyor. */
   .animate-aurora-a,
   .animate-aurora-b {
     animation: none;
   }
 
-  /*  3 · Başlık degradesi.  Her harf kendi degradesini taşıyor ve `gradient-pan`
-   *  sonsuz döngüde `background-position` oynatıyor. Bu özellik compositor'a
-   *  devredilemiyor, ana iş parçacığında boyanıyor — 12 harf, sonsuza kadar.
-   *  Degrade duruyor, yalnızca kayması kalkıyor. */
+  /* 3. Her harf kendi degradesini tasiyor ve gradient-pan sonsuz donguyle
+     background-position oynatiyor. Bu ozellik compositor'a devredilemiyor,
+     ana thread'de boyaniyor. Degrade kaliyor, sadece kaymasi duruyor. */
   .char-gradient [data-char] {
     animation: none;
   }
 
-  /*  4 · Portre halkası.  Konik degradenin dönmesi her karede repaint.
-   *  Halka duruyor, dönmüyor. */
+  /* 4. konik degradenin donmesi her karede repaint, halka duruyor */
   .animate-ring {
     animation: none;
   }
 
-  /*  5 · `will-change` kalıcı compositor katmanı açıyor. Reveal yüzlerce ögede
-   *  kullanılıyor (tek başına yetenek listesinde ~50 etiket) ve geçiş bittikten
-   *  sonra da katman duruyor. Zaten transform/opacity animasyonu — tarayıcı
-   *  ipucu olmadan da composite ediyor. */
+  /* 5. will-change kalici compositor katmani aciyor. Reveal yuzlerce ogede
+     var (tek basina skills listesinde ~50 etiket) ve gecis bitince de katman
+     duruyor. Zaten transform/opacity animasyonu, tarayici ipucusuz da
+     composite ediyor. */
   [data-reveal],
   [data-char] {
     will-change: auto;

@@ -13,17 +13,15 @@ export type Theme = "dark" | "light";
 
 const STORAGE_KEY = "portfolio-theme";
 
-/** Adres çubuğu / tarayıcı arayüzü rengi — globals.css'teki ink-950 ile aynı. */
+// adres cubugu rengi, globals.css'teki ink-950 ile ayni olmali
 const BROWSER_CHROME: Record<Theme, string> = {
   dark: "#14171e",
   light: "#fbfbfd",
 };
 
-/**
- * <head>'e gömülen küçük betik. React devreye girmeden önce çalışır ki
- * açık tema seçmiş biri sayfayı bir an koyu görmesin ("theme flash").
- * Provider ile aynı anahtarı okur.
- */
+// <head>'e gomulen kucuk betik. React devreye girmeden once calisiyor ki
+// acik tema secen biri sayfayi bir an koyu gormesin. Provider'la ayni anahtari
+// okuyor.
 export const themeInitScript = `try{var t=localStorage.getItem(${JSON.stringify(
   STORAGE_KEY,
 )});document.documentElement.dataset.theme=(t==="light"||t==="dark")?t:"dark"}catch(e){}`;
@@ -37,8 +35,8 @@ type Ctx = {
 const ThemeContext = createContext<Ctx | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Sunucu ve ilk istemci render'ı aynı olsun diye koyuyla başla;
-  // kayıtlı tercih aşağıdaki effect'te okunur.
+  // Sunucu ve ilk client render'i ayni olsun diye koyuyla basliyorum,
+  // kayitli tercihi asagidaki effect okuyor.
   const [theme, setThemeState] = useState<Theme>("dark");
 
   useEffect(() => {
@@ -46,7 +44,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const saved = window.localStorage.getItem(STORAGE_KEY);
       if (saved === "light" || saved === "dark") setThemeState(saved);
     } catch {
-      // Depolama kapalıysa (gizli sekme vb.) varsayılan koyu temada kal.
+      // depolama kapaliysa (gizli sekme vs.) koyu temada kal
     }
   }, []);
 
@@ -62,7 +60,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {
-      // Yazamıyorsak tercih bu oturumla sınırlı kalır — sorun değil.
+      // yazamiyorsak tercih sadece bu oturumda gecerli olur, sorun degil
     }
   }, []);
 

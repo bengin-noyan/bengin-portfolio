@@ -2,19 +2,17 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * Metni harflere bölüp sırayla belirtir (blur + 3B döndürme).
- * Ekran okuyucular için tek parça metin `sr-only` olarak korunur;
- * animasyonlu harfler `aria-hidden` işaretlenir.
- */
+// Metni harflere bolup sirayla gosteriyor (blur + 3B donme).
+// Ekran okuyucular icin metnin tamami sr-only duruyor, animasyonlu harfler
+// aria-hidden isaretli.
 export function SplitText({
   text,
   className = "",
-  /** Harfler arası gecikme (ms). */
+  // harfler arasi gecikme (ms)
   stagger = 34,
-  /** İlk harfin gecikmesi (ms). */
+  // ilk harfin gecikmesi (ms)
   delay = 0,
-  /** Harflere sürekli akan degrade uygular (globals.css · .char-gradient). */
+  // harflere akan degrade uygular, globals.css'teki .char-gradient
   gradient = false,
   as: Tag = "span",
 }: {
@@ -58,7 +56,7 @@ export function SplitText({
 
       <span aria-hidden="true">
         {words.map((word, wi) => (
-          // Kelimeler bölünmesin diye her kelime tek bir satır-içi blok
+          // kelimeler ortadan bolunmesin diye her kelime tek bir inline blok
           <span key={wi} className="inline-block whitespace-nowrap">
             {[...word].map((char, ci) => (
               <span

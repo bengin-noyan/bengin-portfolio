@@ -2,11 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * Kaydırdıkça içeriği yumuşak biçimde belirir hâle getirir.
- * Kütüphane kullanmaz — IntersectionObserver + CSS geçişi.
- * `prefers-reduced-motion` açıksa animasyon globals.css tarafından kapatılır.
- */
+// Scroll'da icerigi yumusakca gosteriyor. Kutuphane yok, IntersectionObserver
+// + CSS gecisi. prefers-reduced-motion acikken globals.css animasyonu kapatiyor.
 export function Reveal({
   children,
   delay = 0,
@@ -14,7 +11,7 @@ export function Reveal({
   className = "",
 }: {
   children: React.ReactNode;
-  /** Milisaniye cinsinden gecikme — sıralı beliriş için. */
+  // ms cinsinden gecikme, sirayla belirsinler diye
   delay?: number;
   as?: "div" | "li" | "section" | "article" | "span";
   className?: string;
@@ -29,7 +26,7 @@ export function Reveal({
       ([entry]) => {
         if (!entry.isIntersecting) return;
         el.dataset.reveal = "shown";
-        observer.disconnect(); // bir kez göster, tekrar gizleme
+        observer.disconnect(); // bir kez goster, tekrar gizleme
       },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
     );

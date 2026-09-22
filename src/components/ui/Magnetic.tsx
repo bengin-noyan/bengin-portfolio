@@ -3,13 +3,11 @@
 import { useCallback, useRef } from "react";
 import { useFinePointer, useReducedMotion } from "@/lib/motion";
 
-/**
- * İçindeki öğeyi imlece doğru hafifçe çeker — "mıknatıs" düğme etkisi.
- * Dokunmatik cihazlarda ve hareket azaltma açıkken devre dışıdır.
- */
+// Icindeki ogeyi imlece dogru hafifce cekiyor, miknatis efekti.
+// Dokunmatik cihazlarda ve hareket azaltma acikken devre disi.
 export function Magnetic({
   children,
-  /** Çekim gücü: 0.2 ≈ hafif, 0.5 ≈ belirgin. */
+  // cekim gucu: 0.2 hafif, 0.5 belirgin
   strength = 0.28,
   className = "",
 }: {
@@ -42,8 +40,8 @@ export function Magnetic({
   );
 
   const onLeave = useCallback(() => {
-    // Sirada bekleyen bir kare varsa once onu iptal et; yoksa sifirlamadan
-    // sonra calisip ogeyi yeniden kaydirir ve buton kaymis halde kalir.
+    // Bekleyen kareyi iptal etmezsem sifirlamadan sonra calisip ogeyi yine
+    // kaydiriyor, buton kaymis halde kaliyor.
     if (frame.current) {
       window.cancelAnimationFrame(frame.current);
       frame.current = 0;

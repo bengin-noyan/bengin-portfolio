@@ -3,17 +3,14 @@
 import { useCallback, useRef } from "react";
 import { useFinePointer, useReducedMotion } from "@/lib/motion";
 
-/**
- * Kartın üzerinde farenin bulunduğu noktaya ışık ve kenarlık parıltısı taşır.
- * CSS tarafı `.spotlight` sınıfında (globals.css); burada sadece --mx / --my yazılır.
- *
- * `tilt` açıkken kart imlece göre hafifçe 3B eğilir.
- */
+// Farenin durdugu noktaya isik ve kenarlik parildamasi tasiyor.
+// CSS tarafi globals.css'teki .spotlight, burada sadece --mx / --my yaziliyor.
+// tilt acikken kart imlece gore hafifce 3B egiliyor.
 export function Spotlight({
   children,
   className = "",
   tilt = false,
-  /** Maksimum eğilme açısı (derece). */
+  // maksimum egilme acisi (derece)
   maxTilt = 5,
   as: Tag = "div",
 }: {
@@ -47,7 +44,7 @@ export function Spotlight({
         el.style.setProperty("--my", `${y}px`);
 
         if (tilt) {
-          // Merkeze göre -1..1 aralığında konum
+          // merkeze gore -1..1 arasinda konum
           const px = (x / rect.width - 0.5) * 2;
           const py = (y / rect.height - 0.5) * 2;
           el.style.setProperty("--ry", `${px * maxTilt}deg`);
@@ -59,8 +56,8 @@ export function Spotlight({
   );
 
   const onLeave = useCallback(() => {
-    // Bekleyen kare iptal edilmezse sifirlamadan sonra calisip egilmeyi
-    // geri yaziyor ve kart egik kaliyor.
+    // Bekleyen kareyi iptal etmezsem sifirlamadan sonra calisip egimi geri
+    // yaziyor ve kart egik kaliyor.
     if (frame.current) {
       window.cancelAnimationFrame(frame.current);
       frame.current = 0;

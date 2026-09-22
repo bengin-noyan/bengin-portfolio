@@ -13,7 +13,7 @@ export function Experience() {
   return (
     <Section id="experience" title={t(ui.sectionExperience)}>
       {experience.length > 0 ? (
-        /* Dikey zaman çizelgesi */
+        /* zaman cizelgesi */
         <ol className="space-y-6">
           {experience.map((job, i) => (
             <Reveal key={job.company + i} as="li" delay={i * 130}>
@@ -77,7 +77,7 @@ export function Experience() {
         </ol>
       ) : null}
 
-      {/* Eğitim */}
+      {/* egitim */}
       {education.length > 0 ? (
         <div id="education" className={experience.length > 0 ? "mt-16" : ""}>
           <Reveal>
@@ -113,7 +113,7 @@ export function Experience() {
         </div>
       ) : null}
 
-      {/* Diller & sertifikalar */}
+      {/* diller ve sertifikalar */}
       {languages.length > 0 || certifications.length > 0 ? (
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {languages.length > 0 ? (

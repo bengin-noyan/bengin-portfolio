@@ -16,7 +16,7 @@ type Ctx = {
   lang: Lang;
   setLang: (lang: Lang) => void;
   toggle: () => void;
-  /** Çift dilli bir değeri aktif dile göre çözer. */
+  // cift dilli bir degeri aktif dile gore cozuyor
   t: <T>(value: L<T>) => T;
 };
 
@@ -25,7 +25,7 @@ const LangContext = createContext<Ctx | null>(null);
 export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>("tr");
 
-  // Kayıtlı tercih yoksa tarayıcı diline bak.
+  // kayitli tercih yoksa tarayici diline bak
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved === "tr" || saved === "en") {

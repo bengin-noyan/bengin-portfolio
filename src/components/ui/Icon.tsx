@@ -1,7 +1,5 @@
-/**
- * Tek dosyada, bağımlılıksız ikon seti.
- * Yeni ikon eklemek için `paths` nesnesine bir kayıt ekle.
- */
+// Bagimliliksiz, tek dosyalik ikon seti.
+// Yeni ikon icin paths'e bir kayit eklemek yetiyor.
 
 type IconName = keyof typeof paths;
 
@@ -31,7 +29,7 @@ const paths = {
   send: "M4 12 20 4l-8 16-2-6-6-2Z",
 } as const;
 
-/** İçi dolu (fill) çizilecek ikonlar — logo tipi olanlar. */
+// ici dolu (fill) cizilenler, logo tipi olanlar
 const filled = new Set<IconName>(["github", "linkedin", "x", "dribbble", "sparkle"]);
 
 export function Icon({

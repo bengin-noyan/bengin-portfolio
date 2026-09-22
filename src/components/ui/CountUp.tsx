@@ -3,12 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/lib/motion";
 
-/**
- * Görünür olduğunda sayıyı 0'dan hedefe sayar.
- * "10+", "2026", "ERP" gibi değerleri kabul eder: yalnızca baştaki rakam
- * bloğu animasyonlanır, kalan karakterler (ör. "+") olduğu gibi korunur.
- * Rakam içermeyen değerler doğrudan yazılır.
- */
+// Gorunur olunca sayiyi 0'dan hedefe sayiyor.
+// "10+", "2026", "ERP" gibi degerleri kabul ediyor: sadece bastaki rakam kismi
+// animasyonlu, kalan karakterler oldugu gibi duruyor. Rakam yoksa direkt yazar.
 export function CountUp({
   value,
   duration = 1400,
@@ -46,7 +43,7 @@ export function CountUp({
     const step = (now: number) => {
       if (!start) start = now;
       const progress = Math.min((now - start) / duration, 1);
-      // easeOutExpo — hızlı başlayıp yumuşak duran sayaç
+      // easeOutExpo, hizli baslayip yumusak duruyor
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       setDisplay(`${Math.round(eased * target)}${suffix}`);
       if (progress < 1) frame = window.requestAnimationFrame(step);
@@ -70,7 +67,7 @@ export function CountUp({
 
   return (
     <span ref={ref} className={className}>
-      {/* Ekran okuyucu son değeri okusun, ara adımları değil */}
+      {/* ekran okuyucu ara adimlari degil son degeri okusun */}
       <span aria-hidden="true">{display}</span>
       <span className="sr-only">{value}</span>
     </span>
