@@ -61,7 +61,7 @@ export const profile = {
   resumeUrl: "/cv.pdf",
 
   // indirirken dosyaya verilecek ad
-  resumeFileName: "Bengin-Noyan-CV.pdf",
+  resumeFileName: "BENGİN-NOYAN-CV.pdf",
 };
 
 // --- 2. SOSYAL LINKLER ---
