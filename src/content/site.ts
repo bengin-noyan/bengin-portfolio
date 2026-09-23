@@ -372,7 +372,7 @@ export const experience = [
     url: "",
     location: { tr: "Batman, Türkiye", en: "Batman, Türkiye" } as L,
     role: { tr: "Yazılım Geliştirme Stajyeri", en: "Software Development Intern" } as L,
-    period: { tr: "07/2026 – 08/2026", en: "07/2026 – 08/2026" } as L,
+    period: { tr: "07/2026 – 10/2026", en: "07/2026 – 10/2026" } as L,
     highlights: {
       tr: [
         "Kamu & İşletme Çözümleri: Yerel yönetimler, kamu kurumları ve özel sektör işletmeleri için iş süreçlerini dijitalleştiren web ve masaüstü tabanlı kurumsal yazılım çözümlerinin (ERP, süreç otomasyonları, veri yönetimi) geliştirilmesinde aktif rol aldım.",
@@ -432,8 +432,8 @@ export const education = [
     } as L,
     period: "09/2022 — 06/2026",
     note: {
-      tr: "Denizli, Türkiye · Tüm ders yükümlülükleri başarıyla tamamlandı.",
-      en: "Denizli, Türkiye · All coursework successfully completed.",
+      tr: "Denizli, Türkiye · Tüm ders yükümlülükleri tamamlandı. 13 Ekim 2026'da zorunlu staj süreci bitiyor ve mezuniyet gerçekleşiyor; bu tarihten itibaren tam zamanlı çalışmaya uygunum.",
+      en: "Denizli, Türkiye · All coursework completed. The mandatory internship ends on 13 October 2026 and graduation follows; I am available for full-time work from that date.",
     } as L,
   },
 ];
