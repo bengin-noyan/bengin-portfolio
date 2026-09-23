@@ -21,7 +21,7 @@ npm run build     # üretim derlemesi   → /out klasörü
 
 `src/content/site.ts` içindeki tüm metinler **BENGİN-NOYAN-CV-guncel.pdf**'ten alındı
 (2026). Yer tutucu kalmadı. CV'nin kendisi `public/cv.pdf` olarak duruyor ve
-header ile hero'daki **CV'yi indir** düğmeleri `Bengin-Noyan-CV.pdf` adıyla indiriyor.
+hero'daki **CV'yi indir** düğmesi `BENGİN-NOYAN-CV.pdf` adıyla indiriyor.
 
 Geriye kalan birkaç açık nokta:
 
@@ -93,8 +93,9 @@ tercihi `localStorage`'a yazılır. İlk ziyarette tarayıcı diline göre otoma
 
 **Bir bölümü gizlemek** — dizisini boşalt: `export const education = [];`
 
-**CV eklemek** — PDF'i `public/cv.pdf` olarak koy. Kaldırmak için
-`profile.resumeUrl` değerini `""` yap; buton kendiliğinden kaybolur.
+**CV eklemek** — PDF'i `public/cv.pdf` olarak koy. İnerken verilecek dosya adı
+`profile.resumeFileName` alanında. Kaldırmak için `profile.resumeUrl` değerini
+`""` yap; buton kendiliğinden kaybolur.
 
 **Proje görseli eklemek** — dosyayı `public/projects/` içine at,
 yolunu `image` alanına `/projects/dosya.png` biçiminde yaz.
