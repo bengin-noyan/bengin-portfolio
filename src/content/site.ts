@@ -189,6 +189,46 @@ export const skillGroups = [
 // year:  bos birakirsan yil rozeti cikmiyor
 export const projects = [
   {
+    title: "DentalPro — Diş Kliniği & Protez Laboratuvarı SaaS Platformu",
+    year: "2026",
+    featured: true,
+    blurb: {
+      tr: "Diş klinikleri ve protez laboratuvarları için canlıda (dentalpro.tr) çalışan, çok kiracılı (multi-tenant) web tabanlı yönetim yazılımı.",
+      en: "Multi-tenant, web-based management software for dental clinics and prosthetic labs, live in production at dentalpro.tr.",
+    } as L,
+    description: {
+      tr: "Masaüstü uygulaması olarak başlayıp web tabanlı bir SaaS ürününe dönüştürdüğüm, diş klinikleri ve protez laboratuvarları için çok kiracılı bir yönetim yazılımı geliştirdim. Kiracı verilerini PostgreSQL Row-Level Security (RLS) ile birbirinden tamamen izole ettim; 58 sürümlü migration, Docker Compose, nginx ve GitHub Actions (CI) ile Linux sunucuda dağıtım altyapısını kurdum. iyzico, NetGSM, SMTP, QNB e-Fatura/e-Arşiv, Google Takvim, WhatsApp Business ve Firebase entegrasyonlarını yaptım; gömülü PostgreSQL ile birim/entegrasyon, Playwright ile uçtan uca ve yük testleri yazdım.",
+      en: "I developed multi-tenant management software for dental clinics and prosthetic labs that began as a desktop application and grew into a web-based SaaS product. Tenant data is fully isolated with PostgreSQL Row-Level Security (RLS), and I built the deployment pipeline on a Linux server with 58 versioned migrations, Docker Compose, nginx and GitHub Actions (CI). I integrated iyzico, NetGSM, SMTP, QNB e-invoice/e-archive, Google Calendar, WhatsApp Business and Firebase, and wrote unit/integration tests against embedded PostgreSQL plus end-to-end and load tests with Playwright.",
+    } as L,
+    // CV'deki madde basliklari, kartta alt alta listeleniyor
+    highlights: {
+      tr: [
+        { label: "Çok kiracılı SaaS mimarisi", text: "Masaüstü uygulaması olarak başlayıp web tabanlı SaaS ürününe dönüştürülen, diş klinikleri ve protez laboratuvarları için canlıda (dentalpro.tr) çalışan çok kiracılı (multi-tenant) yönetim yazılımı geliştirildi." },
+        { label: "Veri izolasyonu & altyapı", text: "PostgreSQL Row-Level Security (RLS) ile kiracı verileri birbirinden tamamen izole edildi; 58 sürümlü migration, Docker Compose, nginx ve GitHub Actions (CI) ile Linux sunucuda dağıtım altyapısı kuruldu." },
+        { label: "Entegrasyonlar & test", text: "iyzico (ödeme), NetGSM (SMS), SMTP, QNB e-Fatura/e-Arşiv, Google Takvim, WhatsApp Business ve Firebase entegrasyonları yapıldı; gömülü PostgreSQL ile birim/entegrasyon, Playwright ile uçtan uca (e2e) ve yük testleri yazıldı." },
+      ],
+      en: [
+        { label: "Multi-tenant SaaS architecture", text: "Multi-tenant management software for dental clinics and prosthetic labs was developed; it began as a desktop application, became a web-based SaaS product and runs live at dentalpro.tr." },
+        { label: "Data isolation & infrastructure", text: "Tenant data is fully isolated with PostgreSQL Row-Level Security (RLS); a deployment pipeline on a Linux server was built with 58 versioned migrations, Docker Compose, nginx and GitHub Actions (CI)." },
+        { label: "Integrations & testing", text: "iyzico (payments), NetGSM (SMS), SMTP, QNB e-invoice/e-archive, Google Calendar, WhatsApp Business and Firebase were integrated; unit/integration tests run against embedded PostgreSQL, with end-to-end (e2e) and load tests in Playwright." },
+      ],
+    } as L<{ label: string; text: string }[]>,
+    tags: [
+      "Go",
+      "chi",
+      "Vue 3",
+      "TypeScript",
+      "Vite",
+      "PostgreSQL",
+      "Docker",
+      "nginx",
+      "GitHub Actions",
+      "Playwright",
+    ],
+    image: "",
+    links: { demo: "https://dentalpro.tr", repo: "" },
+  },
+  {
     title: "NowlTarım — Modüler Tarım ERP Sistemi",
     year: "2026",
     featured: true,
@@ -273,46 +313,6 @@ export const projects = [
     ],
     image: "",
     links: { demo: "", repo: "" },
-  },
-  {
-    title: "DentalPro — Diş Kliniği & Protez Laboratuvarı SaaS Platformu",
-    year: "2026",
-    featured: true,
-    blurb: {
-      tr: "Diş klinikleri ve protez laboratuvarları için canlıda (dentalpro.tr) çalışan, çok kiracılı (multi-tenant) web tabanlı yönetim yazılımı.",
-      en: "Multi-tenant, web-based management software for dental clinics and prosthetic labs, live in production at dentalpro.tr.",
-    } as L,
-    description: {
-      tr: "Masaüstü uygulaması olarak başlayıp web tabanlı bir SaaS ürününe dönüştürdüğüm, diş klinikleri ve protez laboratuvarları için çok kiracılı bir yönetim yazılımı geliştirdim. Kiracı verilerini PostgreSQL Row-Level Security (RLS) ile birbirinden tamamen izole ettim; 58 sürümlü migration, Docker Compose, nginx ve GitHub Actions (CI) ile Linux sunucuda dağıtım altyapısını kurdum. iyzico, NetGSM, SMTP, QNB e-Fatura/e-Arşiv, Google Takvim, WhatsApp Business ve Firebase entegrasyonlarını yaptım; gömülü PostgreSQL ile birim/entegrasyon, Playwright ile uçtan uca ve yük testleri yazdım.",
-      en: "I developed multi-tenant management software for dental clinics and prosthetic labs that began as a desktop application and grew into a web-based SaaS product. Tenant data is fully isolated with PostgreSQL Row-Level Security (RLS), and I built the deployment pipeline on a Linux server with 58 versioned migrations, Docker Compose, nginx and GitHub Actions (CI). I integrated iyzico, NetGSM, SMTP, QNB e-invoice/e-archive, Google Calendar, WhatsApp Business and Firebase, and wrote unit/integration tests against embedded PostgreSQL plus end-to-end and load tests with Playwright.",
-    } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
-    highlights: {
-      tr: [
-        { label: "Çok kiracılı SaaS mimarisi", text: "Masaüstü uygulaması olarak başlayıp web tabanlı SaaS ürününe dönüştürülen, diş klinikleri ve protez laboratuvarları için canlıda (dentalpro.tr) çalışan çok kiracılı (multi-tenant) yönetim yazılımı geliştirildi." },
-        { label: "Veri izolasyonu & altyapı", text: "PostgreSQL Row-Level Security (RLS) ile kiracı verileri birbirinden tamamen izole edildi; 58 sürümlü migration, Docker Compose, nginx ve GitHub Actions (CI) ile Linux sunucuda dağıtım altyapısı kuruldu." },
-        { label: "Entegrasyonlar & test", text: "iyzico (ödeme), NetGSM (SMS), SMTP, QNB e-Fatura/e-Arşiv, Google Takvim, WhatsApp Business ve Firebase entegrasyonları yapıldı; gömülü PostgreSQL ile birim/entegrasyon, Playwright ile uçtan uca (e2e) ve yük testleri yazıldı." },
-      ],
-      en: [
-        { label: "Multi-tenant SaaS architecture", text: "Multi-tenant management software for dental clinics and prosthetic labs was developed; it began as a desktop application, became a web-based SaaS product and runs live at dentalpro.tr." },
-        { label: "Data isolation & infrastructure", text: "Tenant data is fully isolated with PostgreSQL Row-Level Security (RLS); a deployment pipeline on a Linux server was built with 58 versioned migrations, Docker Compose, nginx and GitHub Actions (CI)." },
-        { label: "Integrations & testing", text: "iyzico (payments), NetGSM (SMS), SMTP, QNB e-invoice/e-archive, Google Calendar, WhatsApp Business and Firebase were integrated; unit/integration tests run against embedded PostgreSQL, with end-to-end (e2e) and load tests in Playwright." },
-      ],
-    } as L<{ label: string; text: string }[]>,
-    tags: [
-      "Go",
-      "chi",
-      "Vue 3",
-      "TypeScript",
-      "Vite",
-      "PostgreSQL",
-      "Docker",
-      "nginx",
-      "GitHub Actions",
-      "Playwright",
-    ],
-    image: "",
-    links: { demo: "https://dentalpro.tr", repo: "" },
   },
   {
     title: "BraDent — Diş Kliniği Yönetim Otomasyonu",
