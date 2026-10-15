@@ -15,22 +15,27 @@ const ACCENT_RULES = [
   "from-accent-bright",
 ];
 
-// Bes grup, alti sutunluk izgarada 3+3 / 2+2+2 diziliyor. Hepsi esit kutu
-// olunca tablo gibi duruyordu. Grup sayisi degisirse hepsi esit genislige duser.
-const WIDE_LAYOUT = [
-  "lg:col-span-3",
-  "lg:col-span-3",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-];
+// Alti sutunluk izgarada genis ve dar satirlar sirayla diziliyor. Hepsi esit
+// kutu olunca tablo gibi duruyordu. Listede olmayan grup sayisinda hepsi esit
+// genislige duser.
+const LAYOUTS: Record<number, string[]> = {
+  // 3+3 / 2+2+2
+  5: ["lg:col-span-3", "lg:col-span-3", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2"],
+  // 3+3 / 2+2+2 / 3+3. Tablette iki sutun var, tek kalan son grup tam satira yayiliyor.
+  7: [
+    "lg:col-span-3",
+    "lg:col-span-3",
+    "lg:col-span-2",
+    "lg:col-span-2",
+    "lg:col-span-2",
+    "lg:col-span-3",
+    "sm:col-span-2 lg:col-span-3",
+  ],
+};
 
 export function Skills() {
   const { t } = useLang();
-  const spans =
-    skillGroups.length === WIDE_LAYOUT.length
-      ? WIDE_LAYOUT
-      : skillGroups.map(() => "lg:col-span-2");
+  const spans = LAYOUTS[skillGroups.length] ?? skillGroups.map(() => "lg:col-span-2");
 
   return (
     <Section id="skills" title={t(ui.sectionSkills)}>
