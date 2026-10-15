@@ -41,8 +41,8 @@ export const profile = {
 
   // hero'daki kucuk durum rozeti
   availability: {
-    tr: "Mezuniyet aşamasında · İş fırsatlarına açığım",
-    en: "Graduating · Open to opportunities",
+    tr: "YBS mezunu · İş fırsatlarına açığım",
+    en: "MIS graduate · Open to opportunities",
   } as L,
 
   location: {
@@ -81,12 +81,12 @@ export const about = {
   // her dizi elemani ayri bir paragraf oluyor
   paragraphs: {
     tr: [
-      "Pamukkale Üniversitesi Yönetim Bilişim Sistemleri lisans programındaki tüm ders dönemini başarıyla tamamlamış ve mezuniyet aşamasında bir Yönetim Bilişim Sistemleri mezun adayı olarak; C#, .NET, Go ve Python ekosistemlerinde modern web ve masaüstü uygulamaları geliştiriyorum.",
+      "Pamukkale Üniversitesi Yönetim Bilişim Sistemleri bölümü mezunu olarak; C#, .NET, Go ve Python ekosistemlerinde modern web ve masaüstü uygulamaları geliştiriyorum.",
       "Kurumsal kaynak planlama (ERP), süreç otomasyonları ve veritabanı mimarileri üzerine uçtan uca sistemler kurgularken; yazılım altyapımı Makine Öğrenmesi (Machine Learning) ve Görüntü İşleme (Computer Vision) modellerini uygulamalara entegre etme yetkinliğiyle güçlendiriyorum.",
       "Yönetim Bilişim Sistemleri disiplininden gelen sistem analizi ve süreç yönetimi vizyonumu, güçlü yazılım pratikleriyle harmanlayarak karmaşık iş problemlerine katma değerli ve sürdürülebilir çözümler sunmayı hedefliyorum.",
     ],
     en: [
-      "As a Management Information Systems graduand who has successfully completed all coursework in the MIS undergraduate programme at Pamukkale University, I develop modern web and desktop applications across the C#, .NET, Go and Python ecosystems.",
+      "As a Management Information Systems graduate of Pamukkale University, I develop modern web and desktop applications across the C#, .NET, Go and Python ecosystems.",
       "I design end-to-end systems around enterprise resource planning (ERP), process automation and database architecture, while strengthening that foundation with the ability to integrate machine learning and computer vision models into production applications.",
       "By blending the systems analysis and process management perspective that Management Information Systems gives me with solid software engineering practice, I aim to deliver high-value, sustainable solutions to complex business problems.",
     ],
@@ -427,13 +427,13 @@ export const education = [
   {
     school: { tr: "Pamukkale Üniversitesi", en: "Pamukkale University" } as L,
     degree: {
-      tr: "Yönetim Bilişim Sistemleri, Lisans (Mezuniyet Aşamasında)",
-      en: "BSc Management Information Systems (Graduand)",
+      tr: "Yönetim Bilişim Sistemleri, Lisans",
+      en: "BSc Management Information Systems",
     } as L,
     period: "09/2022 — 06/2026",
     note: {
-      tr: "Denizli, Türkiye · Tüm ders yükümlülükleri tamamlandı. 13 Ekim 2026'da zorunlu staj süreci bitiyor ve mezuniyet gerçekleşiyor; bu tarihten itibaren tam zamanlı çalışmaya uygunum.",
-      en: "Denizli, Türkiye · All coursework completed. The mandatory internship ends on 13 October 2026 and graduation follows; I am available for full-time work from that date.",
+      tr: "Denizli, Türkiye · Tam zamanlı çalışmaya hazırım.",
+      en: "Denizli, Türkiye · Available for full-time work.",
     } as L,
   },
 ];
