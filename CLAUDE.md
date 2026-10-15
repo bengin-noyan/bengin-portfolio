@@ -109,3 +109,37 @@ canonical ve OG etiketlerinin hepsi oradan türüyor.
 Ücretsiz katman **ayda 50 mesaj**; dolarsa gönderimler sessizce reddedilir.
 Adres boşaltılırsa form otomatik olarak `mailto` davranışına düşer — bu
 bilinçli bir yedek, hata değil.
+
+## Planlanan iş: "Retro Oda" (`/tv`) — henüz başlanmadı
+
+Ziyaretçi raftaki VHS kasetlerden birini oynatıcıya takar (sürükle-bırak
+veya tıkla), CV'nin ilgili bölümü tüplü TV ekranında oynar. Yol haritası
+konuşuldu, **iki karar kullanıcı onayı bekliyor**:
+
+1. **2.5D CSS** (önerilen) mi, three.js ile 3D mi? 3D, "animasyon
+   kütüphanesi yok" kuralını bilerek esnetmeyi gerektirir.
+2. **Ayrı sayfa `/tv`** (önerilen), hero'da "CV'yi TV'de izle" düğmesiyle.
+   Ana sayfa hafif kalır, PDF indirme yedeği her zaman görünür.
+
+Kasetler: Hakkımda, Deneyim, Eğitim, Projeler, Yetenekler, İletişim. İçerik
+yeni metin değil, `site.ts`'teki mevcut bölümler. Kaset/ekran yazıları
+`site.ts`'e `tv` bölümü olarak, iki dilli girecek.
+
+Fazlar (sırayla; önce çalışan sürüm, efekt sonra):
+
+1. İskelet: `src/app/tv/page.tsx` + `src/components/tv/` (`Room`, `Tape`,
+   `Vcr`, `CrtScreen`). Kasetler `<button>`; ekrandaki içerik canvas değil
+   **gerçek HTML metin** (erişilebilirlik, SEO).
+2. `useReducer` durum makinesi: `idle → inserting → loading → playing →
+   ejecting`. Oynarken başka kaset seçilirse önce çıkar.
+3. Sürükle-bırak: Pointer Events + rAF (`Magnetic` kalıbı), yuvaya
+   mıknatıslanma, kasetlerde `touch-action: none`. Tıklama/klavye yolu kalır.
+4. CRT efektleri: kavis, tarama çizgisi, karıncalanma (`steps()` ile gürültü
+   görseli), `VT323` ile OSD (`▶ PLAY`, sayaç).
+5. Kumanda: `◀◀ ▶▶` kaset içi sayfalar, `⏏` çıkar; mobilde ana kontrol.
+6. Uyum: reduced-motion (anında takma), mobil performans bloğu, açık tema
+   (`--p-*`), `aria-live` duyurusu, isteğe bağlı ses (varsayılan kapalı).
+7. Hero düğmesi, `sitemap.ts`'e `/tv`, OG görseli, "düz CV" çıkışı.
+
+Animasyonlar toplamda ~1 sn'yi geçmesin ve atlanabilsin; uzun içerik ekran
+içinde kaydırılır veya kumandayla sayfalanır.
