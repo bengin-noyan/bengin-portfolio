@@ -62,6 +62,15 @@ function Cover({ project, tall }: { project: Project; tall?: boolean }) {
   );
 }
 
+// "https://www.dentalpro.tr/" -> "dentalpro.tr"
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
 function ProjectLinks({ project }: { project: Project }) {
   const { t } = useLang();
 
@@ -78,7 +87,7 @@ function ProjectLinks({ project }: { project: Project }) {
           rel="noreferrer noopener"
           className="group/link inline-flex items-center gap-1.5 rounded-lg border border-accent/40 bg-accent/10 px-3.5 py-2 text-sm font-medium text-accent-bright transition-colors duration-200 hover:border-accent/70 hover:bg-accent/20"
         >
-          {t(ui.liveDemo)}
+          {t(ui.live)} · {hostOf(project.links.demo)}
           <Icon
             name="arrowUpRight"
             className="size-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"

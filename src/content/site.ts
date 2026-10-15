@@ -563,7 +563,8 @@ export const ui = {
     en: "The work I enjoyed most. For each one I have written down the problem, the solution I built and the technologies I used.",
   } as L,
 
-  liveDemo: { tr: "Canlı demo", en: "Live demo" } as L,
+  // canli link dugmesi, yanina linkin alan adi ekleniyor: "Canlida · dentalpro.tr"
+  live: { tr: "Canlıda", en: "Live" } as L,
   sourceCode: { tr: "Kaynak kod", en: "Source code" } as L,
   backToTop: { tr: "Yukarı dön", en: "Back to top" } as L,
   builtWith: {
