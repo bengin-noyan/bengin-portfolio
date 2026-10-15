@@ -493,7 +493,13 @@
     animation: none;
   }
 
-  /* 5. will-change kalici compositor katmani aciyor. Reveal yuzlerce ogede
+  /* 5. "Canlida" rozetinin noktasi: box-shadow animasyonu her karede
+     repaint. Nokta duruyor, sadece halkasi yayilmiyor. */
+  .pulse-ring {
+    animation: none;
+  }
+
+  /* 6. will-change kalici compositor katmani aciyor. Reveal yuzlerce ogede
      var (tek basina skills listesinde ~50 etiket) ve gecis bitince de katman
      duruyor. Zaten transform/opacity animasyonu, tarayici ipucusuz da
      composite ediyor. */

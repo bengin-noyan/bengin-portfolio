@@ -71,6 +71,20 @@ function hostOf(url: string): string {
   }
 }
 
+// Yayindaki urunu kartin ustunde belli ediyor. Isveren kartlari goz
+// gezdirerek tariyor, dugmeye kadar inmeden de gorsun diye.
+function LiveBadge({ project }: { project: Project }) {
+  const { t } = useLang();
+  if (!project.links.demo) return null;
+
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-xs text-accent-bright">
+      <span aria-hidden="true" className="pulse-ring size-1.5 rounded-full bg-accent" />
+      {t(ui.live)}
+    </span>
+  );
+}
+
 function ProjectLinks({ project }: { project: Project }) {
   const { t } = useLang();
 
@@ -186,6 +200,7 @@ export function Projects() {
                       {project.year}
                     </span>
                   ) : null}
+                  <LiveBadge project={project} />
                   <span className="font-mono text-xs tracking-widest text-fg-subtle uppercase">
                     Featured
                   </span>
@@ -230,11 +245,14 @@ export function Projects() {
                 <Cover project={project} />
 
                 <div className="flex flex-1 flex-col items-center p-7 text-center sm:p-10">
-                  {project.year ? (
-                    <span className="w-fit rounded-full border border-accent-2/30 bg-accent-2/10 px-2.5 py-1 font-mono text-xs text-accent-2">
-                      {project.year}
-                    </span>
-                  ) : null}
+                  <div className="flex items-center gap-3">
+                    {project.year ? (
+                      <span className="w-fit rounded-full border border-accent-2/30 bg-accent-2/10 px-2.5 py-1 font-mono text-xs text-accent-2">
+                        {project.year}
+                      </span>
+                    ) : null}
+                    <LiveBadge project={project} />
+                  </div>
 
                   <h3 className="mt-4 max-w-3xl text-center text-2xl font-semibold tracking-tight text-balance text-fg transition-colors duration-300 group-hover:text-accent-bright sm:text-3xl">
                     {project.title}
