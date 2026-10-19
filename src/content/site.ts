@@ -445,6 +445,15 @@ export const experience = [
     company: "NowlSoft",
     url: "",
     location: { tr: "Batman, Türkiye", en: "Batman, Türkiye" } as L,
+    role: { tr: "Proje Lideri", en: "Project Lead" } as L,
+    period: { tr: "10/2026 – Devam ediyor", en: "10/2026 – Present" } as L,
+    highlights: { tr: [], en: [] } as L<string[]>,
+    tech: [] as string[],
+  },
+  {
+    company: "NowlSoft",
+    url: "",
+    location: { tr: "Batman, Türkiye", en: "Batman, Türkiye" } as L,
     role: { tr: "Yazılım Geliştirme Stajyeri", en: "Software Development Intern" } as L,
     period: { tr: "07/2026 – 10/2026", en: "07/2026 – 10/2026" } as L,
     highlights: {
