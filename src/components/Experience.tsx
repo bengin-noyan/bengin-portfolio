@@ -51,26 +51,30 @@ export function Experience() {
                   </span>
                 </div>
 
-                <ul className="mx-auto mt-5 max-w-3xl space-y-3">
-                  {t(job.highlights).map((line, li) => (
-                    <Reveal key={li} as="li" delay={i * 130 + 140 + li * 80}>
-                      <span className="block text-center text-base leading-relaxed text-fg-muted">
-                        {line}
-                      </span>
-                    </Reveal>
-                  ))}
-                </ul>
+                {t(job.highlights).length > 0 ? (
+                  <ul className="mx-auto mt-5 max-w-3xl space-y-3">
+                    {t(job.highlights).map((line, li) => (
+                      <Reveal key={li} as="li" delay={i * 130 + 140 + li * 80}>
+                        <span className="block text-center text-base leading-relaxed text-fg-muted">
+                          {line}
+                        </span>
+                      </Reveal>
+                    ))}
+                  </ul>
+                ) : null}
 
-                <ul className="mt-5 flex flex-wrap justify-center gap-2">
-                  {job.tech.map((tech) => (
-                    <li
-                      key={tech}
-                      className="rounded-md bg-ink-800/70 px-2 py-1 font-mono text-xs text-fg-subtle transition-colors duration-200 hover:text-accent-bright"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
+                {job.tech.length > 0 ? (
+                  <ul className="mt-5 flex flex-wrap justify-center gap-2">
+                    {job.tech.map((tech) => (
+                      <li
+                        key={tech}
+                        className="rounded-md bg-ink-800/70 px-2 py-1 font-mono text-xs text-fg-subtle transition-colors duration-200 hover:text-accent-bright"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </Spotlight>
             </Reveal>
           ))}
