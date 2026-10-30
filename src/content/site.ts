@@ -4,11 +4,11 @@
 // Cift dilli alanlar boyle yaziliyor:  { tr: "Turkce metin", en: "English text" }
 // Bir bolumu komple gizlemek icin dizisini bos birak: []
 //
-// Metinlerin hepsi CV'den geliyor (BENGIN-NOYAN-CV-guncel.pdf, 2026).
+// Metinlerin hepsi CV'den geliyor (public/cv.pdf).
 
 export type Lang = "tr" | "en";
 
-// cift dilli deger / bilingual value
+// cift dilli deger
 export type L<T = string> = { tr: T; en: T };
 
 // --- 1. PROFIL ---
@@ -567,10 +567,6 @@ export const contact = {
   // Formun mesaji POST edecegi adres. Site statik export edildigi icin sunucu
   // tarafi yok, calismasi icin ucuncu parti bir servis lazim. Bos birakilirsa
   // form mailto'ya dusuyor.
-  //
-  // Formspree : https://formspree.io/f/XXXXXXXX
-  // Web3Forms : https://api.web3forms.com/submit   (access key'i de asagiya yaz)
-  // Getform   : https://getform.io/f/XXXXXXXX
   formEndpoint: "https://formspree.io/f/xeajwlzg",
 
   // sadece Web3Forms icin, panelden aldigin access key
