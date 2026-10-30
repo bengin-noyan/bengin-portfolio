@@ -221,6 +221,7 @@ export const skillGroups = [
 //        kapak hic cizilmiyor, kartin ustunde sadece aksan cizgisi kaliyor.
 // links: repo/demo herkese acikssa yaz, bos birakilanin butonu gorunmuyor
 // year:  bos birakirsan yil rozeti cikmiyor
+// highlights: CV'deki madde basliklari, kartta alt alta listeleniyor
 export const projects = [
   {
     title: "DentalPro — Diş Kliniği & Protez Laboratuvarı SaaS Platformu",
@@ -234,7 +235,6 @@ export const projects = [
       tr: "Masaüstü uygulaması olarak başlayıp web tabanlı bir SaaS ürününe dönüştürdüğüm, diş klinikleri ve protez laboratuvarları için çok kiracılı bir yönetim yazılımı geliştirdim. Kiracı verilerini PostgreSQL Row-Level Security (RLS) ile birbirinden tamamen izole ettim; 58 sürümlü migration, Docker Compose, nginx ve GitHub Actions (CI) ile Linux sunucuda dağıtım altyapısını kurdum. iyzico, NetGSM, SMTP, QNB e-Fatura/e-Arşiv, Google Takvim, WhatsApp Business ve Firebase entegrasyonlarını yaptım; gömülü PostgreSQL ile birim/entegrasyon, Playwright ile uçtan uca ve yük testleri yazdım.",
       en: "I developed multi-tenant management software for dental clinics and prosthetic labs that began as a desktop application and grew into a web-based SaaS product. Tenant data is fully isolated with PostgreSQL Row-Level Security (RLS), and I built the deployment pipeline on a Linux server with 58 versioned migrations, Docker Compose, nginx and GitHub Actions (CI). I integrated iyzico, NetGSM, SMTP, QNB e-invoice/e-archive, Google Calendar, WhatsApp Business and Firebase, and wrote unit/integration tests against embedded PostgreSQL plus end-to-end and load tests with Playwright.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Çok kiracılı SaaS mimarisi", text: "Masaüstü uygulaması olarak başlayıp web tabanlı SaaS ürününe dönüştürülen, diş klinikleri ve protez laboratuvarları için canlıda (dentalpro.tr) çalışan çok kiracılı (multi-tenant) yönetim yazılımı geliştirildi." },
@@ -274,7 +274,6 @@ export const projects = [
       tr: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu) ve PostgreSQL 16 üzerinde, Docker ile paketlenen RESTful bir API tasarladım; arayüzü React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirdim. 6 kullanıcı rolü × 13 modül seviyesinde merkezî bir RBAC katmanı kurguladım. Kapanan üretim sezonlarına geriye dönük veri girişini ve kâr/zarar sapmalarını PostgreSQL trigger'ları ve table guard yapılarıyla veritabanı seviyesinde kesin olarak engelledim. UBL-TR 1.2 XML formatında e-Fatura entegrasyon çekirdeği, Sentinel Hub API ile çok bantlı NDVI haritalama katmanı ve YOLOv8 + Gemini API tabanlı zirai analiz servisleri entegre ettim.",
       en: "I designed a Dockerised RESTful API on Go (chi/v5 router, jackc/pgx/v5 connection pool) and PostgreSQL 16, with a front end built in React 18, TypeScript, Vite, Tailwind CSS and Leaflet. A central RBAC layer governs 6 user roles across 13 modules. Backdated entry into closed production seasons — and the profit/loss drift it causes — is blocked at the database level by PostgreSQL triggers and table guards. I integrated a UBL-TR 1.2 XML e-invoice core, a multi-band NDVI mapping layer over the Sentinel Hub API, and agricultural analysis services built on YOLOv8 and the Gemini API.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Mimari & backend", text: "Go (chi/v5 router, jackc/pgx/v5 bağlantı havuzu), PostgreSQL 16 ve Docker üzerinde RESTful API mimarisi kurgulandı; arayüz React 18, TypeScript, Vite, Tailwind CSS ve Leaflet ile geliştirildi." },
@@ -321,7 +320,6 @@ export const projects = [
       tr: "Derin öğrenme tabanlı bilgisayarlı görü ve bulut mimarilerini entegre eden uçtan uca bir otonom teşhis sistemi tasarladım. Roboflow ve Kaggle veri kümeleri üzerinde transfer learning ve hiper-parametre optimizasyonu ile eğitilen Ultralytics YOLOv8 Medium modeli %94.1 mAP50 doğruluk başarımı ve 2 saniyenin altında çıkarım latansı elde etti. Model çıktıları SQLite ve Firebase mimarileriyle senkronize edilerek, Streamlit tabanlı reaktif arayüzde Pandas ve Plotly ile zirai eylem planlarına dönüştürülüyor.",
       en: "I designed an end-to-end autonomous diagnosis system integrating deep-learning computer vision with cloud architecture. An Ultralytics YOLOv8 Medium model, trained on Roboflow and Kaggle datasets with transfer learning and hyper-parameter optimisation, reached 94.1% mAP50 accuracy at sub-two-second inference latency. Model output is synchronised through SQLite and Firebase and turned into agricultural action plans on a reactive Streamlit interface using Pandas and Plotly.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Derin öğrenme & mimariler", text: "Derin öğrenme tabanlı bilgisayarlı görü ile bulut mimarilerini entegre eden uçtan uca otonom teşhis sistemi tasarlandı." },
@@ -360,7 +358,6 @@ export const projects = [
       tr: "FDI (ISO 3950) uluslararası dental standardına uygun dinamik diş topolojisi, hekim takvimli asenkron randevu yönetimi, seans tabanlı tedavi planlaması ve taksitli finansal süreç takip modülleri geliştirdim. PostgreSQL 17 üzerinde 23 tablolu normalize şema ve version-controlled sıralı SQL migration yönetimi sağladım; NetGSM entegrasyonlu asenkron arka plan SMS bildirim kuyruğu servisi yapılandırdım.",
       en: "I built a dynamic tooth topology compliant with the FDI (ISO 3950) international dental standard, asynchronous appointment management on practitioner calendars, session-based treatment planning and instalment-based financial tracking modules. On PostgreSQL 17 I delivered a normalised 23-table schema with version-controlled sequential SQL migrations, plus an asynchronous background SMS notification queue service integrated with NetGSM.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "LAN dağıtık mimarisi", text: "Diş klinikleri için yerel ağ (LAN) topolojisinde istemci-sunucu modelinde eşzamanlı çalışan masaüstü klinik otomasyon sistemi kurgulandı." },
@@ -389,7 +386,6 @@ export const projects = [
       tr: "Kayan nokta hassasiyet kayıplarını ve yuvarlama sapmalarını engellemek için deterministik tamsayı aritmetiği (int64 fixed-point) üzerine kurgulanmış, TCMB XML entegrasyonlu ve izole birim testli bir kur farkı hesap motoru yazdım. Gömülü SQL migration altyapısı, otomatik yedekleme/recovery mekanizmaları, Excelize ile veri dışa aktarımı ve senkronize cari ekstre raporlama altyapısı kurguladım.",
       en: "I wrote an exchange-rate calculation engine built on deterministic integer arithmetic (int64 fixed-point) to eliminate floating-point precision loss and rounding drift, integrated with TCMB XML and covered by isolated unit tests. I also built embedded SQL migration infrastructure, automatic backup/recovery mechanisms, Excelize-based data export and synchronised account-statement reporting.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "CGO-free native mimarisi", text: "Cross-compilation avantajı sağlayan CGO-free saf Go ve Wails3 mimarisinde, native ve sıfır bağımlılıklı tek dosyalı (.exe) masaüstü otomasyonu geliştirildi." },
@@ -418,7 +414,6 @@ export const projects = [
       tr: "C# ile masaüstü istemci arayüzü, Microsoft SQL Server üzerinde 3NF seviyesinde normalize edilmiş ilişkisel veritabanı şeması ve anlık GPS/IoT telemetri veri akış modelleri yapılandırdım. Sistem gereksinimlerini UML Use Case, DFD (Level 0/1), karar ağaçları ve detaylı HIPO modelleriyle formal olarak dokümante ettim; 3D Secure ödeme geçidi entegrasyon protokollerini planladım. 4.65M TL sermayeli finansal simülasyonlarda %60.07 İç Karlılık Oranı (IRR), 7.22M TL Net Bugünkü Değer (NPV) ve 1.56 yıl indirgenmiş geri ödeme süresiyle projenin finansal fizibilitesini doğruladım.",
       en: "I built a C# desktop client interface, a relational schema normalised to 3NF on Microsoft SQL Server, and real-time GPS/IoT telemetry data-flow models. System requirements were formally documented with UML use cases, DFDs (level 0/1), decision trees and detailed HIPO models, and 3D Secure payment gateway integration protocols were planned. Financial simulations on 4.65M TRY of capital confirmed feasibility with a 60.07% IRR, 7.22M TRY NPV and a 1.56-year discounted payback period.",
     } as L,
-    // CV'deki madde basliklari, kartta alt alta listeleniyor
     highlights: {
       tr: [
         { label: "Sistem analizi & tasarımı (SDLC)", text: "Akıllı mikro-mobilite ekosisteminin System Development Life Cycle (SDLC) ve nesne yönelimli analiz/tasarım (OOA/OOD) metodolojileri doğrultusunda uçtan uca mimari kurgusu yürütüldü." },
