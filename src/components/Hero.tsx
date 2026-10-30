@@ -60,7 +60,6 @@ export function Hero() {
           </p>
         </Reveal>
 
-        {/* butonlar */}
         <Reveal delay={640}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Magnetic strength={0.22}>

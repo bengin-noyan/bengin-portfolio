@@ -174,7 +174,6 @@ export function Projects() {
 
   return (
     <Section id="work" srTitle={t(ui.sectionWork)} intro={t(ui.workIntro)}>
-      {/* one cikan projeler */}
       <div className="space-y-6">
         {featured.map((project, i) => (
           <Reveal key={project.title} delay={i * 120}>
@@ -230,7 +229,6 @@ export function Projects() {
         ))}
       </div>
 
-      {/* diger projeler, kompakt izgara */}
       {rest.length > 0 ? (
         <div className="mt-6 space-y-6">
           {rest.map((project, i) => (
