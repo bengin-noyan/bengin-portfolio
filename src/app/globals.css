@@ -118,7 +118,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem; /* sabit header başlıkları örtmesin */
+    scroll-padding-top: 6rem; /* sabit header basliklari ortmesin */
     -webkit-text-size-adjust: 100%;
   }
 
@@ -160,14 +160,13 @@
 
 /* yardimci siniflar */
 @layer utilities {
-  /* Cam yüzey */
   .glass {
     background-color: color-mix(in oklab, var(--color-ink-850) 70%, transparent);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
   }
 
-  /* Kartın üst kenarındaki ince ışık çizgisi */
+  /* hover'da kartin ust kenarinda yanan ince cizgi */
   .edge-light {
     position: relative;
   }
@@ -195,7 +194,7 @@
     position: relative;
     isolation: isolate;
   }
-  /* Yüzeydeki yumuşak parıltı */
+  /* ::after yuzeydeki parilti, ::before kenarliktaki iz */
   .spotlight::after {
     content: "";
     position: absolute;
@@ -214,7 +213,6 @@
   .spotlight:hover::after {
     opacity: 1;
   }
-  /* Kenarlıktaki parlayan iz */
   .spotlight::before {
     content: "";
     position: absolute;
@@ -249,7 +247,6 @@
     transition: transform 0.35s var(--ease-out-soft);
   }
 
-  /* Arka plandaki ızgara dokusu */
   .bg-grid {
     background-image:
       linear-gradient(to right, color-mix(in oklab, var(--color-ink-700) 55%, transparent) 1px, transparent 1px),
@@ -278,7 +275,7 @@
   transform: none;
 }
 
-/* Harf harf beliren başlık */
+/* SplitText'in harfleri */
 [data-char] {
   display: inline-block;
   opacity: 0;
@@ -353,7 +350,7 @@
   animation: pulse-ring 2.4s ease-out infinite;
 }
 
-/* Arka plan lekelerinin yavaş sürüklenmesi */
+/* Background'daki lekeler */
 @keyframes aurora-a {
   0%,
   100% {
@@ -382,7 +379,6 @@
   animation: aurora-b 32s ease-in-out infinite;
 }
 
-/* Portre fotoğrafın yavaş süzülmesi */
 @keyframes float-soft {
   0%,
   100% {
@@ -396,7 +392,6 @@
   animation: float-soft 6s ease-in-out infinite;
 }
 
-/* Portrenin çevresinde dönen aurora halkası */
 @keyframes ring-spin {
   to {
     transform: rotate(1turn);
@@ -406,7 +401,6 @@
   animation: ring-spin 9s linear infinite;
 }
 
-/* Kartların üzerinden geçen parlama */
 @keyframes sheen {
   from {
     transform: translateX(-120%) skewX(-12deg);
